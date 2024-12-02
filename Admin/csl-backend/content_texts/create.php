@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("INSERT INTO content_text_management (name, content_fr, content_en) VALUES (?, ?, ?)");
     $stmt->execute([$name, $content_fr, $content_en]);
 
-    echo "Élément ajouté avec succès.";
+    $_SESSION['error'] =  "Élément ajouté avec succès.";
 }
 
 ?>

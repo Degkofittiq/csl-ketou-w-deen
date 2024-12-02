@@ -12,11 +12,11 @@ if (isset($_GET['id'])) {
 
     // Vérifier si l'élément existe
     if (!$aboutUs) {
-        echo "L'élément demandé n'existe pas.";
+         $_SESSION['error'] =  "L'élément demandé n'existe pas.";
         exit;
     }
 } else {
-    echo "Aucun identifiant spécifié.";
+     $_SESSION['error'] =  "Aucun identifiant spécifié.";
     exit;
 }
 ?>
@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Nom</label>
-                                <input class="form-control my-2" type="text" name="name" id="name" value="<?php echo htmlspecialchars($aboutUs['name']); ?>" readonly>
+                                <input class="form-control my-2" type="text" name="name" id="name" value="<?php  echo  htmlspecialchars($aboutUs['name']); ?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="email">email</label>

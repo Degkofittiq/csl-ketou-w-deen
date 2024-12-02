@@ -19,15 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare("INSERT INTO activities (name, description, little_title, image) VALUES (?, ?, ?, ?)");
             $stmt->execute([$name, $description, $little_title, $image_name]);
 
-            echo "Activité ajoutée avec succès.";
+             $_SESSION['error'] =  "Activité ajoutée avec succès.";
         } else {
-            echo "Erreur lors du téléchargement de l'image.";
+             $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
         }
     } else {
         // Si pas de nouvelle image, utiliser une valeur par défaut
         $stmt = $pdo->prepare("INSERT INTO activities (name, description, little_title, image) VALUES (?, ?, ?, ?)");
         $stmt->execute([$name, $description, $little_title, 'default_image.jpg']); // Par défaut une image
-        echo "Activité ajoutée avec l'image par défaut.";
+         $_SESSION['error'] =  "Activité ajoutée avec l'image par défaut.";
     }
 }
 ?>

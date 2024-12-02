@@ -38,17 +38,17 @@ if (isset($_GET['id'])) {
 
             try {
                 $stmt->execute([$client_name, $client_num, $event_id, $id]);
-                echo "La réservation a été mise à jour avec succès.";
+                 $_SESSION['error'] =  "La réservation a été mise à jour avec succès.";
             } catch (Exception $e) {
-                echo "Erreur : " . $e->getMessage();
+                 $_SESSION['error'] =  "Erreur : " . $e->getMessage();
             }
         }
     } else {
-        echo "L'élément demandé n'existe pas.";
+         $_SESSION['error'] =  "L'élément demandé n'existe pas.";
         exit;
     }
 } else {
-    echo "Aucun identifiant spécifié.";
+     $_SESSION['error'] =  "Aucun identifiant spécifié.";
     exit;
 }
 ?>

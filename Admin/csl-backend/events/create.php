@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("INSERT INTO events (name, date, description) VALUES (?, ?, ?)");
     $stmt->execute([$name, $date, $description]);
 
-    echo "Élément ajouté avec succès.";
+    $_SESSION['error'] =  "Élément ajouté avec succès.";
 }
 
 ?>

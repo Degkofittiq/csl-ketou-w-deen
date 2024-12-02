@@ -12,11 +12,11 @@ if (isset($_GET['id'])) {
 
     // Vérifier si l'élément existe
     if (!$aboutUs) {
-        echo "L'élément demandé n'existe pas.";
+        $_SESSION['error'] =  "L'élément demandé n'existe pas.";
         exit;
     }
 } else {
-    echo "Aucun identifiant spécifié.";
+    $_SESSION['error'] =  "Aucun identifiant spécifié.";
     exit;
 }
 
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validation de l'extension de fichier
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($imageExtension, $allowedExtensions)) {
-            echo "L'extension de l'image n'est pas autorisée.";
+            $_SESSION['error'] =  "L'extension de l'image n'est pas autorisée.";
             exit;
         }
 
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 unlink($targetDirectory . $aboutUs['image']);
             }
         } else {
-            echo "Erreur lors du téléchargement de l'image.";
+            $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
             exit;
         }
     } else {

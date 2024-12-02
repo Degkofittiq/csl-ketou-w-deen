@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
         $stmt_update = $pdo->prepare("UPDATE space_locations SET client_name = ?, client_email = ?, client_number = ?, space_id = ? WHERE id = ?");
         $stmt_update->execute([$client_name, $client_email, $client_number, $space_id, $id]);
 
-        echo "Réservation mise à jour avec succès.";
+        $_SESSION['success'] =  "Réservation mise à jour avec succès.";
     }
 }
 ?>

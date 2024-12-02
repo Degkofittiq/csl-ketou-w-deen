@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validation de l'extension de fichier
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($imageExtension, $allowedExtensions)) {
-            echo "L'extension de l'image n'est pas autorisée.";
+            $_SESSION['error'] = "L'extension de l'image n'est pas autorisée.";
             exit;
         }
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Vérifier si le dossier "images/" existe, sinon le créer
         if (!is_dir($targetDirectory)) {
             if (!mkdir($targetDirectory, 0777, true)) {
-                echo "Erreur lors de la création du dossier d'images.";
+                $_SESSION['error'] =  "Erreur lors de la création du dossier d'images.";
                 exit;
             }
         }
@@ -45,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: index.php");
             exit;
         } else {
-            echo "Erreur lors du téléchargement de l'image.";
+             $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
         }
     } else {
-        echo "Aucun fichier image téléchargé ou erreur lors du téléchargement.";
+         $_SESSION['error'] =  "Aucun fichier image téléchargé ou erreur lors du téléchargement.";
     }
 }
 ?>

@@ -20,10 +20,10 @@ if (isset($_GET['id'])) {
         $updateStmt = $pdo->prepare("UPDATE hourlies SET days = ?, h_open = ?, h_close = ? WHERE id = ?");
         $updateStmt->execute([$days, $h_open, $h_close, $id]);
 
-        echo "Horaire mis à jour avec succès.";
+         $_SESSION['success'] =  "Horaire mis à jour avec succès.";
     }
 } else {
-    echo "Aucun horaire trouvé.";
+     $_SESSION['error'] =  "Aucun horaire trouvé.";
 }
 ?>
 

@@ -12,11 +12,11 @@ if (isset($_GET['id'])) {
 
     // Vérifier si l'élément existe
     if (!$aboutUs) {
-        echo "L'élément demandé n'existe pas.";
+         $_SESSION['error'] =  "L'élément demandé n'existe pas.";
         exit;
     }
 } else {
-    echo "Aucun identifiant spécifié.";
+     $_SESSION['error'] =  "Aucun identifiant spécifié.";
     exit;
 }
 
@@ -48,9 +48,9 @@ if (isset($_GET['id'])) {
                     // Mettre à jour l'image dans la base de données
                     $stmt = $pdo->prepare("UPDATE activities SET name = ?, description = ?, little_title = ?, image = ? WHERE id = ?");
                     $stmt->execute([$name, $description, $little_title, $image_name, $id]);
-                    echo "Activité mise à jour avec la nouvelle image.";
+                     $_SESSION['error'] =  "Activité mise à jour avec la nouvelle image.";
                 } else {
-                    echo "Erreur lors du téléchargement de l'image.";
+                     $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
                 }
             } else {
                 // Si aucune nouvelle image, conserver l'ancienne image
@@ -60,10 +60,10 @@ if (isset($_GET['id'])) {
             }
         }
     } else {
-        echo "L'activité demandée n'existe pas.";
+         $_SESSION['error'] =  "L'activité demandée n'existe pas.";
     }
 } else {
-    echo "Aucun identifiant spécifié.";
+     $_SESSION['error'] =  "Aucun identifiant spécifié.";
     exit;
 }
 

@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query = "INSERT INTO content_image_management (name, path, type) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$fileName, $destinationPath, $fileType]);
-            echo "L'image a été téléchargée et enregistrée dans la base de données.";
+             $_SESSION['error'] =  "L'image a été téléchargée et enregistrée dans la base de données.";
         } else {
-            echo "Erreur lors du téléchargement de l'image.";
+             $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
         }
     }
 }

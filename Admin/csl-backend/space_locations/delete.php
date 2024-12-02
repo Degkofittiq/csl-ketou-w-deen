@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $stmt = $pdo->prepare("DELETE FROM space_locations WHERE id = ?");
     $stmt->execute([$id]);
 
-    echo "Réservation supprimée avec succès.";
+    $_SESSION['error'] =  "Réservation supprimée avec succès.";
     // Rediriger vers la page principale ou la liste des éléments
     header("Location: index.php"); // Rediriger vers la page de la liste (ou une autre page de votre choix)
 }

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("INSERT INTO event_reservations (client_name, client_num, event_id) VALUES (?, ?, ?)");
     $stmt->execute([$client_name, $client_num, $event_id]);
 
-    echo "Réservation ajoutée avec succès.";
+    $_SESSION['error'] =  "Réservation ajoutée avec succès.";
 }
 
 // Récupérer la liste des événements pour le dropdown

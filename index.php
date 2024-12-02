@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <?php
         // Include navigation bar
         include('./includes/head.php') ;    
-    ?>
-    <title>Accueil</title>
-    <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
+    ?>  
 </head>
-
 <body>
+        
     <?php
-        // Include navigation bar
-        include('./includes/header.php') ;  
-
+        
         // Inclure le fichier PHPMailer
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
-    
-        require 'vendor/autoload.php';  // Si tu utilises Composer
+
+        require '../vendor/autoload.php';  // Si tu utilises Composer
         
         $mail = new PHPMailer(true);  // Créer une instance de PHPMailer
-    
-        if (!empty($_POST)) {
+
+        if (!empty($_POST)  && isset($_POST['btn_contact'])) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // client_name-email-subject-phone-message
+                // name-email-subject-phone-message
                 // var_dump($_POST);
-                $client_name = $_POST['client_name'];
-                $client_num = $_POST['client_num'];
-                $event_id = $_POST['event_id']; //$_POST['event_id'];
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $subject = "No subject"; //$_POST['subject'];
+                $phone = $_POST['phone'];
 
                 // Validation des données
-                if ($client_name == "" || $client_num == "" || $event_id == "") {
+                if ($name == "" || $email == "" || $subject == "" || $phone == "") {
                     // echo "Tous les champs sont requis.";
                     $_SESSION['error'] =  "Tous les champs sont requis.";
                     // exit;
                 }
-                
-                $message = "Nom: $client_name; client_num: $client_num;Event number: $event_id;";
+                        
+                // Vérifiez que le champ contient uniquement des chiffres ou un "+"
+                if (preg_match('/^\+?[0-9]*$/', $phone)) {
+                    $_SESSION['error'] = "Numéro de téléphone valide : " . htmlspecialchars($phone);
+                }
+                $message = "Nom: $name; Email: $email;Subject: $subject;Phone: $phone";
                 // $pdo = Database::getConnection();
                 
-
+    
                 // Préparation de la requête SQL pour insérer les données
-                // client_name	client_num	event_id	phone	message	created_at	
+                // name	email	subject	phone	message	created_at	
 
-                $sql = "INSERT INTO event_reservations (client_name,client_num,event_id) VALUES (?,?,?)";
+                $sql = "INSERT INTO contact_email (name,email,subject,phone) VALUES (?,?,?,?)";
                 $stmt = $pdo->prepare($sql);
-                // var_dump($stmt->execute(array($client_name,$client_num,$event_id,$phone,$message)));
+                // var_dump($stmt->execute(array($name,$email,$subject,$phone,$message)));
                 // die();
-                $stmt->execute(array($client_name,$client_num,$event_id));
+                $stmt->execute(array($name,$email,$subject,$phone));
                 // /*
                     try {
                         // Configuration du serveur SMTP de Gmail
@@ -70,7 +67,7 @@
                     
                         // Contenu de l'email
                         $mail->isHTML(true);                                  // Définit l'email comme au format HTML
-                        $mail->subject = 'Contact Mail from CSL-KETOU';
+                        $mail->Subject = 'Contact Mail from CSL-KETOU';
                         $mail->Body    = $message;
                         $mail->AltBody = 'Ceci est le corps du message en texte brut pour les clients mail qui n\'acceptent pas le HTML';
                     
@@ -86,238 +83,192 @@
             }
         }
     ?>
-    
-    <?php        
-        // Vérifier si un message est stocké dans la session success
-        if (isset($_SESSION['success'])) {  
-            ?>
-                <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                    <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header">
-                            <strong class="me-auto">Notification</strong>
-                            <small class="text-muted">Just now</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">
-                            <?= $_SESSION['success'] ?>
-                        </div>
-                    </div>
+    <section class="container-fluid">
+        <?php
+            // Include navigation bar
+            include('./includes/navbar.php') ;    
+        ?>
+    </section>
+    <section class="container-fluid" id="section1" style="padding-left: 0px; padding-right: 0px;">
+        <div id="customCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
+            <!-- Carousel Items -->
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="padding: 0px;">
+                    <img src="image/2.png" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
                 </div>
-            <?php
-        } unset($_SESSION['success']);
-    ?>
-    
-    
-    <?php
-        // Vérifier si un message est stocké dans la session error
-        if (isset($_SESSION['error'])) {  
-            ?>
-                <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                    <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header">
-                            <strong class="me-auto">Notification</strong>
-                            <small class="text-muted">Just now</small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">
-                            <?= $_SESSION['error'] ?>
-                        </div>
-                    </div>
+                <div class="carousel-item" style="padding: 0px;">
+                    <img src="image/2.png" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
                 </div>
-            <?php
-        }unset($_SESSION['error']);
-    ?>
-    
-    <br>
-    <section id="section1" class="container-lg ccc" data-aos="zoom-in" data-aos-delay="100">
-        <div class="row position">
-            <div class="col-12 col-md-5 mb-3 order-2 order-md-1 align-items-stretch">
-                <br>
-                <h1 class="ccc1" style="font-weight: 800; color: #252B42;"><?= $bddContentTexts['premier_titre_de_home']['content_fr'] ?? "Vivez l'Émotion du Sport et le Plaisir des
-                    Loisirs" ?> </h1>
-
-                <p class="fs-5 tex"><?= $bddContentTexts['premier_sous_titre_de_home']['content_fr'] ?? "Plongez dans un univers où performance, détente et passion se rencontrent pour
-                    répondre à toutes vos envies sportives et récréatives." ?></p>
-
-                <div class="d-flex">
-                    <div class="tex">
-                        <button type="button" class="btn btn-success px-3 py-2"><?= $bddContentTexts['bouton_nous_rejoindre']['content_fr'] ?? "Nous rejoindre" ?></button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-12 col-md-7 mb-3 order-1 order-md-2 align-items-stretch" data-aos="zoom-out"
-                data-aos-delay="100">
-                <div class="flex-fill">
-                    <img src="image/<?= $bddContentTexts['home_banner_image']['path'] ?? "woman-working-with-personal-trainer.jpg" ?>" alt="" class="img-fluid w-100">
+                <div class="carousel-item" style="padding: 0px;">
+                    <img src="image/2.png" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
+        
+            <!-- Navigation Buttons -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active custom-indicator" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1" class="custom-indicator" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="2" class="custom-indicator" aria-label="Slide 3"></button>
+            </div>
 
-
+            <div class="pos">
+                <p><strong style="color: #61BC45;">Welcome to CSL Arojú Owò </strong></p>
+                <h1 class="text-white" style="font-weight: 900;">
+                    The Heart of <br>
+                    Sports & Leisure!
+                </h1>
+                <p class="text-white">Explore a world of fitness, fun, and <br> community activities tailored for all ages.</p>
+                <div class="row mt-3">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
+                        <div>
+                            <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='#section3'">
+                                Explore Activities <i class="bi bi-arrow-right-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
+                        <div>
+                            <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='#section4'">
+                            Become A Member <i class="bi bi-arrow-right-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row tex2">
-            <div class="col-6 col-md-3 mb-3 mb-md-0">
-                <h1 class="text-center" style="font-weight: 700; color: #96BB7C;"><?= $bddContentTexts['clients_content_nombre']['content_fr'] ?? "15K" ?></h1>
-                <p class="text-center" style="color: #252B42;"><?= $bddContentTexts['clients_content_texte']['content_fr'] ?? "Happy Customers" ?> </p>
+    </section>
+    <br><br>
+    <section class="container-lg my-3" id="section3">
+        <div class="row">
+            <div class="col-12 col-md-4 mx-auto mb-3">
+                <h2 class="text-center fw-bold" style="text-transform: uppercase;"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
             </div>
-            <div class="col-6 col-md-3 mb-3 mb-md-0">
-                <h1 class="text-center" style="font-weight: 700; color: #96BB7C;"><?= $bddContentTexts['nombre_visiteurs']['content_fr'] ?? "150K" ?></h1>
-                <p class="text-center" style="color: #252B42;"><?= $bddContentTexts['texte_nombre_visiteurs']['content_fr'] ?? "Monthly Visitors" ?> </p>
-            </div>
-            <div class="col-6 col-md-3 mb-3 mb-md-0">
-                <h1 class="text-center" style="font-weight: 700; color: #96BB7C;"><?= $bddContentTexts['nombre_de_pays']['content_fr'] ?? "15" ?></h1>
-                <p class="text-center" style="color: #252B42;"><?= $bddContentTexts['nombre_de_pays_texte']['content_fr'] ?? "Countries Worldwide" ?> </p>
-            </div>
-            <div class="col-6 col-md-3 mb-3 mb-md-0">
-                <h1 class="text-center" style="font-weight: 700; color: #96BB7C;"><?= $bddContentTexts['nombre_de_partenaires']['content_fr'] ?? "100+" ?></h1>
-                <p class="text-center" style="color: #252B42;"><?= $bddContentTexts['texte_de_nombre_de_partenaire']['content_fr'] ?? "Top Partners" ?> </p>
+            <div class="col-md-6"></div>
+            <div class="col-12 col-md-2 mx-auto mb-3">
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-white px-3 text-white" style="background: #61BC45;" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
+                </div>
             </div>
         </div>
 
+        <div class="swiper">
+            <div class="card-wrapper">
+              <!-- Card slides container -->
+              <ul class="card-list swiper-wrapper">
+                <li class="card-item swiper-slide">
+                    <div class="relative">
+                        <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <div class="ppos d-none d-lg-block">
+                            <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                        </div>
+                    </div>
+                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h2 class="mt-5 text-center fw-bold">Football</h2>
+                        <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
+                        <div class="mt-3">
+                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                Learn More 
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="relative">
+                        <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <div class="ppos d-none d-lg-block">
+                            <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
+                        </div>
+                    </div>
+                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
+                        <p class="mt-3 text-center">Stay active with our <br>
+                            vibrant classes</p>
+                        <div class="mt-3">
+                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                Learn More 
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="relative">
+                        <img src="image/5.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <div class="ppos d-none d-lg-block">
+                            <img src="image/Group 3.png" alt="" class="image-fluid" style="width: 90%;">
+                        </div>
+                    </div>
+                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h2 class="mt-5 text-center fw-bold">Cultural Events</h2>
+                        <p class="mt-3 text-center">Celebrate tradition and unity</p>
+                        <div class="mt-5">
+                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                Learn More 
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="relative">
+                        <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <div class="ppos d-none d-lg-block">
+                            <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                        </div>
+                    </div>
+                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h2 class="mt-5 text-center fw-bold">Football</h2>
+                        <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
+                        <div class="mt-3">
+                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                Learn More 
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="relative">
+                        <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                        <div class="ppos d-none d-lg-block">
+                            <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
+                        </div>
+                    </div>
+                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                        <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
+                        <p class="mt-3 text-center">Stay active with our <br>
+                            vibrant classes</p>
+                        <div class="mt-3">
+                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                Learn More 
+                            </button>
+                        </div>
+                    </div>
+                </li>
+              </ul>
+               <!-- Pagination -->
+              <div class="swiper-pagination"></div>
+              <!-- Navigation Buttons -->
+              <!-- <div class="swiper-slide-button swiper-button-prev"></div>
+              <div class="swiper-slide-button swiper-button-next"></div> -->
+            </div>
+          </div>
 
     </section>
-    <br>
-
-    <section id="facilities" class="container-fluid p-5" style="background-color: #96bb7c; " data-aos="zoom-in"
-        data-aos-delay="100">
-
-        <h2 class="text-center" style="color: #252B42; font-weight: 600;"><?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Decouvrez nos activites" ?></h2>
-        <p class="text-center" style="max-width:50% !important; ext-align: justify; margin:auto">
-        <?= $bddContentTexts['sous_titre_section_activites']['content_fr'] ?? "Problems trying to resolve the conflict between <br>
-            the two major realms of Classical physics: Newtonian mechanics" ?>
-            
-        </p>
-
-        <div class="row list">
-            <div class="scroll-container">
-                        <?php
-                            
-                            $stmt = $pdo->query("SELECT * FROM activities");
-                            $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                            foreach ($activities as $activity) {
-                        ?>
-                            <div class="scroll-item">
-                                <div class="image-container">
-                                    <img src="image/<?= $activity['image'] ?? "[freepicdownloader.com]-men-with-battle-rope-battle-ropes-exercise-fitness-gym-crossfit-concept-gym-sport-rope-training-athlete-workout-normal.jpg" ?>"
-                                        alt="" class="img-fluid w-100">
-                                    <div class="overlay">
-                                        <h2><?= $activity['name']?></h2>
-                                        <p class="description"><?= $activity['little_title']?></p>
-                                    </div>
-                                </div>
-                            </div> 
-                        <?php
-
-                            }
-                            if (empty($activities)) {
-                                ?>
-
-                                <a class="mt-3" href="#" style="color: #737373; text-decoration: none; font-weight: 600; font-size: 16px;">
-                                    No Activity yet
-                                </a>
-                                <br> <br>
-                            <?php
-                            }
-                        ?>
-            </div>
-
-        </div>
-
-        <br>
-    </section>
-
-
-    <section id="section2" class="container-fluid bg-white p-4" data-aos="zoom-in" data-aos-delay="100" style=" padding: 100px 0 !important;">
+    <br><br>
+    <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;">
         <div class="container-lg">
-
-            <br><br>
-            <div class="row mt-2">
-                        <?php
-                            
-                            $stmt = $pdo->query("SELECT * FROM about_us LIMIT 1");
-                            $aboutus = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                            foreach ($aboutus as $about) {
-                        ?>
-                            <div class="col-12 col-md-5 mb-3 order-2 order-md-1 align-self-center mt-5">
-                                <span style="display: block; width: 30%; border: 5px solid #E74040;"></span>
-                                <br><br>
-                                <h2 style="font-weight: 800;"> <?= $about['name'] ?? "A propos de nous" ?> </h2>
-                                <p class="mt-2 fs-5">
-                                    <?= $about['description'] ?? "Problems trying to resolve the conflict between
-                                    the two major realms of Classical physics:
-                                    <br>
-                                    Newtonian mechanics Problems trying to resolve the conflict between
-                                    the two major realms of Classical physics:
-                                    <br>
-                                    Newtonian mechanics Problems trying to resolve the conflict" ?>
-                                </p>
-                                <br><br><br>
-                                <div>
-                        <button type="button" class="btn btn-success fs-4" style="border: none;" data-bs-toggle="modal"
-                        data-bs-target="#founderModal">Cliquez pour voir la bio du fondateur <i
-                                class="bi bi-chevron-right ms-3"></i></button>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-7 mb-3 order-1 order-md-2" data-aos="zoom-out" data-aos-delay="100">
-                                <div class="flex-fill">
-                                    <img src="image/<?= $about['image'] ?? "[freepicdownloader.com]-men-with-battle-rope-battle-ropes-exercise-fitness-gym-crossfit-concept-gym-sport-rope-training-athlete-workout-normal.jpg" ?>"
-                                        alt="" class="img-fluid w-100">
-                                </div>
-                            </div>
-                        <?php
-
-                            }
-                            if (empty($aboutus)) {
-                                ?>
-
-                                <a class="mt-3" href="#" style="color: #737373; text-decoration: none; font-weight: 600; font-size: 16px;">
-                                    No About text yet
-                                </a>
-                                <br> <br>
-                            <?php
-                            }
-                        ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal -->
-    <div class="modal fade" id="founderModal" tabindex="-1" aria-labelledby="founderModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="founderModalLabel">À propos du fondateur</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="row mt-3">
+                <div class="col-12 col-md-4 mx-auto mb-3">
+                    <h2 class="text-center fw-bold" style="text-transform: uppercase; white-space: nowrap;"><?= $bddContentTexts['upcoming_events']['content_fr'] ?? "Upcoming Events" ?></h2>
                 </div>
-                <div class="modal-body text-center">
-                    <?php                                              
-                        $stmt = $pdo->query("SELECT * FROM founder_bio LIMIT 1");
-                        $founder = $stmt->fetch(PDO::FETCH_ASSOC);
-                    ?>
-                    <img src="image/<?= $founder['image'] ?? 'man.jpg' ?>" alt="Photo du fondateur" class="rounded-circle mb-3"
-                        style="width: 200px; height: 200px; object-fit: cover;">
-                    <p><?= $founder['description'] ?? "Jean ASSESSI est un entrepreneur passionné qui a fondé ce centre avec pour mission de créer une
-                        communauté dynamique. Avec plus de 10 ans d'expérience dans le domaine, il est connu pour son
-                        engagement envers l'excellence.</p>" ?>
-                        <p><strong>Contact :</strong><?= $bddContentTexts['phone_content']['content_fr'] ?? "+229 90 00 00 00" ?> </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <div class="col-md-6"></div>
+                <div class="col-12 col-md-2 mx-auto mb-3">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-white px-3 text-white" style="background: #61BC45;" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <section class="container-fluid p-5 events" style="background-color: #FFE0E0;">
-        <div class="container-lg">
-            <span style="display: block; width: 30%; border: 5px solid #E74040;"></span>
-            <br><br>
-            <h2 style="font-weight: 800;"><?= $bddContentTexts['titre_pour_la_section_evenement']['content_fr'] ?? "Programmes et Evenements" ?> </h2>
-            <p class="mt-2 fs-5">
-                <?= $bddContentTexts['description_titre_pour_la_section_evenement']['content_fr'] ?? "Problems trying to resolve the conflict between the two major realms of Classical physics:" ?>
-            </p>
-
-
-            <div class="row eventi titi">
+            <div class="swiper mt-4">
+                <div class="slider-wrapper">
+                  <div class="card-list swiper-wrapper">
             <?php
                 $stmt = $pdo->query("SELECT * FROM events");
                 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -332,149 +283,345 @@
                         setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
                         $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
                         ?>
-                        <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto" style="background-color: #F2C94C; border-radius: 20px; margin: 0 30px !important;">
-                            <div class="p-3 d-flex justify-content-between">
-                                <div>
-                                    <h3 style="font-weight: 900;"><?= $day ?></h3>
-                                    <p style="font-size: 12px;"><?= ucfirst($month) ?></p> <!-- Mois en majuscule initiale -->
-                                </div>
-                                <div class="">
-                                    <div class="d-flex" style="justify-content: center;">
-                                        <div>
-                                            <p><?= htmlspecialchars($event['name']) ?></p>
+                            <div class="card-item swiper-slide">
+                                <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; padding-right:10px !important">
+                                    <div class="row">
+                                        <div class="col-6 mx-auto">
+                                            <div class="position-relative">
+                                                <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                <div class="tto">
+                                                    <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                        <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
+                                                        <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                            <h4 class="text-center text-white fw-bold"><?= (substr($month, 0, 3)) ?></h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="align-self-center">
-                                            <span class="ms-3 mb-3" style="display: block; border-bottom: 2px solid black; width: 4rem;"></span>
+                                        <div class="col-6 mx-auto">
+                                            <p class="fw-bold pt-2">
+                                                <?= htmlspecialchars($event['name']) ?>
+                                            </p>
+                                            <p class="mt-3 break">
+                                                <!-- <?= $event['description'] ?> -->
+                                                ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+                                            </p>
                                         </div>
                                     </div>
-                                    <br>
-                                    <p style="font-weight: 800;"><?= htmlspecialchars($event['description']) ?></p>
+                                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
                                 </div>
-                            </div>
-                            <form action="" method="post">
-                                <div class="row rowex justify-content-md-center" style="padding: 0 50px;">
-                                        <input name="event_id" value="<?= $event['id'] ?>" hidden  type="text" class="form-control py-3">
-                                    <div class="col-12 col-md-4 mb-3 rowexi">
-                                        <input name="client_name" type="email" class="form-control py-3" placeholder="Email" required>
-                                    </div>
-                                    <div class="col-12 col-md-4 mb-3 rowexi">
-                                        <input name="client_num" type="text" class="form-control py-3" placeholder="Numero" required>
-                                    </div>
-                                    <div class="col-12 col-md-4 mb-3 rowexi">
-                                        <button type="submit" class="btn btn-dark w-100 py-3" style="border: 1px solid white; background: #000000;">SOUSCRIRE</button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                         <?php
                     }
                 } else {
                     ?>
-                        <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto" style="background-color: #F2C94C; border-radius: 20px; margin: 0 30px !important;">
-                            <div class="p-3 d-flex justify-content-between">
-                                <div>
-                                    <h3 style="font-weight: 900;">#</h3>
-                                    <p style="font-size: 12px;">*****</p>
-                                </div>
-                                <div class="">
-                                    <div class="d-flex" style="justify-content: center;">
-                                        <div>
-                                            <p>Evenements</p>
-                                        </div>
-                                        <div class="align-self-center">
-                                            <span class="ms-3 mb-3" style="display: block; border-bottom: 2px solid black; width: 4rem;"></span>
+                        <div class="card-item swiper-slide">
+                            <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                <div class="row">
+                                    <div class="col-6 mx-auto">
+                                        <div class="position-relative">
+                                            <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                            <div class="tto">
+                                                <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                    <h2 class="text-center text-white fw-bold">12</h2>
+                                                    <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                        <h4 class="text-center text-white fw-bold">Dec 24</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <br>
-                                    <p style="font-weight: 800;">
-                                        no event yet
-                                    </p>
+                                    <div class="col-6 mx-auto">
+                                        <p class="fw-bold">Lorem ipsum n dolor sit</p>
+                                        <p class="mt-3">
+                                            Quisque commodo felis diam, eu viverra ipsum varius
+                                        </p>
+                                    </div>
                                 </div>
+                                <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
                             </div>
-                            <!-- <div class="row rowex justify-content-md-center" style="padding: 0 50px;">
-                                <div class="col-12 col-md-4 mb-3 rowexi">
-                                    <input type="text" class="form-control py-3" placeholder="Phone">
-                                </div>
-                                <div class="col-12 col-md-4 mb-3 rowexi">
-                                    <input type="text" class="form-control py-3" placeholder="Phone">
-                                </div>
-                                <div class="col-12 col-md-4 mb-3 rowexi">
-                                    <button class="btn btn-dark w-100 py-3" style="border: 1px solid white; background: #000000;">SOUSCRIRE</button>
-                                </div>
-                            </div> -->
                         </div>
                     <?php
                 }
             ?>
-
-            </div>
-
-            <div class="row eventi" id="section3">
-    
-                <div class=" table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col"><?= $bddContentTexts['horaire_section_titre_jour']['content_fr'] ?? 'Jours'  ?></th>
-                                <th scope="col"><?= $bddContentTexts['horaire_section_titre_ouverture']['content_fr'] ?? 'Ouverture'  ?></th>
-                                <th scope="col"><?= $bddContentTexts['horaire_section_titre_fermeture']['content_fr'] ?? 'Fermeture'  ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                                                        
-                            // Récupérer tous les horaires de la table hourlies
-                            $stmt = $pdo->prepare("SELECT * FROM hourlies");
-                            $stmt->execute();
-                            $hourlies = $stmt->fetchAll();
-                            foreach ($hourlies as $hourly) {
-                        ?>
-                            <tr>
-                                <td><?= $activity['days'] ?></td>
-                                <td><input type="time" class="form-control" value="<?= $activity['h_open'] ?>"></td>
-                                <td><input type="time" class="form-control" value="<?= $activity['h_close'] ?>"></td>
-                            </tr>
-                        <?php
-
-                            }
-                            if (empty($hourlies)) {
-                                ?>
-
-                            <tr>
-                                <td>Monday</td>
-                                <td><input type="time" class="form-control" value="09:00"></td>
-                                <td><input type="time" class="form-control" value="18:00"></td>
-                            </tr>
-                            <?php
-                            }
-                        ?>
-                        </tbody>
-                    </table>
+                  </div>
+                  <!-- <div class="swiper-pagination"></div> -->
+                  <div class="swiper-slide-button swiper-button-prev"></div>
+                  <div class="swiper-slide-button swiper-button-next"></div>
                 </div>
-    
-            </div>
-
+              </div>
         </div>
+    </section>
+    <br><br>
+    <section class="container-lg" id="section4">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
+                <img src="image/7.png" alt="" class="w-100 image-fluid">
+            </div>
+            <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
+                <h2 class="fw-bold">About Founder</h2>
+                <p class="mt-3" style="font-size: 13px;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec vulputate arcu, non ultrices sapien. Suspendisse sodales non neque sed congue. In ac fermentum orci, vel euismod lorem. Vestibulum justo purus, aliquam ac nibh ac, commodo ultrices orci. Aliquam erat volutpat. 
+                    <br><br>
+                    Sed posuere ultricies enim, scelerisque egestas nunc laoreet nec. Nulla mauris nulla, posuere tristique nibh sit amet, molestie egestas sem. Vivamus faucibus a est a iaculis.
+                    <br><br>
+                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris dapibus quam eu egestas eleifend. Cras nec pellentesque neque. Sed sit amet tempor nibh. Integer hendrerit, mi vitae lacinia faucibus, risus ligula mattis diam, a pellentesque nisl magna sit amet metus. 
+                    <br><br>
+                    Mauris facilisis enim quis felis aliquet maximus. Curabitur luctus convallis condimentum. Duis porttitor, augue ut elementum vestibulum, dui massa vehicula nunc.
+                </p>
+                <div class="mt-3">
+                    <button class="btn btn-white text-white py-2 px-4" style="background-color: #61BC45;">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    <section class="container-fluid" id="section6" style="padding-left: 0px; padding-right: 0px;">
+        <div class="hero">
+            <div class="p-md-5">
+               <div class="p-5" style="background-color: #000000; border-radius: 10px;">
+                <h2 class="fw-bold text-white">Join Our Community</h2>
+                <form class="mt-3" action="" method="POST">
+                    <div class="mb-3">
+                        <input name="name" type="text" class="form-control" placeholder="Name *" style="border-radius: 0;">
+                    </div>
+                    <div class="mb-3">
+                        <input name="email" type="email" class="form-control" placeholder="Email Address *" style="border-radius: 0;">
+                    </div>
+                    <div class="mb-3">
+                        <input name="phone" required pattern="^\+?[0-9]*$" placeholder="+229190000000" type="text" class="form-control" placeholder="Phone No.*" style="border-radius: 0;">
+                    </div>
+                    <div class="">
+                        <button name="btn_contact" class="btn btn-white w-100 text-white" style="background: #61BC45; border-radius: 0;">Join Now <i class="bi bi-arrow-right-circle"></i></button>
+                    </div>
+                </form>
+               </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    <section class="container-lg" id="section3">
+        <h2 class="fw-bold text-center mb-4">What People are Saying</h2>
 
-
-
-
+        <div class="swiper">
+            <div class="card-wrapper">
+              <!-- Card slides container -->
+              <ul class="card-list swiper-wrapper">
+                <li class="card-item swiper-slide ccsc">
+                    <div class="">
+                        <div class="row p-5" style="background-color: #F2F2F2;">
+                            <div class="col-3 mx-auto">
+                                <img src="image/Ellipse 2.png" alt="Person 1" class="img-fluid w-100">
+                            </div>
+                            <div class="col-9">
+                                <div class="d-flex">
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                </div>
+                                <p><strong>Highly recommended!</strong></p>
+                                <p>
+                                    Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit
+                                </p>
+                                <p>-Alena Josksowinsigs</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide ccsc">
+                    <div class="">
+                        <div class="row p-5" style="background-color: #F2F2F2;">
+                            <div class="col-3 mx-auto">
+                                <img src="image/Ellipse 2.png" alt="Person 1" class="img-fluid w-100">
+                            </div>
+                            <div class="col-9">
+                                <div class="d-flex">
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                </div>
+                                <p><strong>Highly recommended!</strong></p>
+                                <p>
+                                    Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit
+                                </p>
+                                <p>-Alena Josksowinsigs</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide ccsc">
+                    <div class="">
+                        <div class="row p-5" style="background-color: #F2F2F2;">
+                            <div class="col-3 mx-auto">
+                                <img src="image/Ellipse 2.png" alt="Person 1" class="img-fluid w-100">
+                            </div>
+                            <div class="col-9">
+                                <div class="d-flex">
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                </div>
+                                <p><strong>Highly recommended!</strong></p>
+                                <p>
+                                    Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit
+                                </p>
+                                <p>-Alena Josksowinsigs</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+              </ul>
+               <!-- Pagination -->
+              <div class="swiper-pagination"></div>
+              <!-- Navigation Buttons -->
+              <!-- <div class="swiper-slide-button swiper-button-prev"></div>
+              <div class="swiper-slide-button swiper-button-next"></div> -->
+            </div>
+          </div>
 
     </section>
+    <br><br>
+    <section class="container-fluid my-4" style="padding-left: 0px; padding-right: 0px;">
+        <div class="hero1">
+            <section class="search-section posi">
+                <ul class="nav search-tabs">
+                  <li class="search-item">
+                    <a class="search-link active" href="#" data-target="destination">Football fields</a>
+                  </li>
+                  <li class="search-item">
+                    <a class="search-link" href="#" data-target="business-trip">Gym & dance studio</a>
+                  </li>
+                  <li class="search-item">
+                    <a class="search-link" href="#" data-target="featured">Event spaces</a>
+                  </li>
+                  <li class="search-item">
+                    <a class="search-link" href="#" data-target="featured1">Cultural hall</a>
+                  </li>
+                </ul>
+              
+                <!-- Contenu dynamique pour chaque onglet -->
+                <div class="text-white search-content" id="destination">
+                  <p >aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                </div>
+              
+                <div class="text-white search-content" id="business-trip" style="display: none;">
+                <p>bbbbbbbbbbbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                </div>
+              
+                <div class="text-white search-content" id="featured" style="display: none;">
+                <p>ccccccccccccccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                </div>
 
-    <br><br><br>
+                <div class="text-white search-content" id="featured1" style="display: none;">
+                <p>dddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                </div>
+              </section>
+        </div>
+    </section>
     
     <?php
-        include('./includes/footer.php');
-        include('./includes/scripts.php');
+        // Include navigation bar
+        include('./includes/footer.php') ;    
     ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Script pour afficher automatiquement le toast -->
-    <script>
-        const myToast = document.getElementById('myToast');
-        const toast = new bootstrap.Toast(myToast);
-        toast.show();
-    </script>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper('.card-wrapper', {
+        loop: true,
+        spaceBetween: 30,
+        // Pagination bullets
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true
+        },
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // Responsive breakpoints
+        breakpoints: {
+            0: {
+                slidesPerView: 1
+            },
+            768: {
+                slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 3
+            }
+        }
+    });
+    </script>
+    <!--  -->
+      <script>
+        const swiper = new Swiper('.slider-wrapper', {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 30,
+            // Pagination bullets
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Responsive breakpoints
+            breakpoints: {
+                0: {
+                slidesPerView: 1
+                },
+                768: {
+                slidesPerView: 2
+                },
+                1024: {
+                slidesPerView: 3
+                }
+            }
+            });
+      </script>
+
+    <script>
+        document.querySelectorAll('.search-link').forEach(link => {
+          link.addEventListener('click', function(event) {
+            event.preventDefault();
+      
+            // Retirer la classe active de tous les liens
+            document.querySelectorAll('.search-link').forEach(l => l.classList.remove('active'));
+      
+            // Ajouter la classe active au lien cliqué
+            this.classList.add('active');
+      
+            // Masquer tous les contenus
+            document.querySelectorAll('.search-content').forEach(content => content.style.display = 'none');
+      
+            // Afficher le contenu correspondant à l'onglet cliqué
+            const targetId = this.getAttribute('data-target');
+            document.getElementById(targetId).style.display = 'block';
+          });
+        });
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+
+</body>
 </html>

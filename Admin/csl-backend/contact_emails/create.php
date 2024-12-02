@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("INSERT INTO contact_email (name, email, subject, phone) VALUES (?, ?, ?, ?)");
     $stmt->execute([$name, $email, $subject, $phone]);
 
-    echo "Contact ajouté avec succès.";
+    $_SESSION['error'] =  "Contact ajouté avec succès.";
 }
 
 ?>

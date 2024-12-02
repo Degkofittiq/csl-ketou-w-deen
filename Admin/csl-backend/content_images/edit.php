@@ -12,11 +12,11 @@ if (isset($_GET['id'])) {
 
     // Vérifier si l'élément existe
     if (!$aboutUs) {
-        echo "L'élément demandé n'existe pas.";
+         $_SESSION['error'] =  "L'élément demandé n'existe pas.";
         exit;
     }
 } else {
-    echo "Aucun identifiant spécifié.";
+     $_SESSION['error'] =  "Aucun identifiant spécifié.";
     exit;
 }
 // Fonction pour générer une chaîne aléatoire
@@ -58,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query = "UPDATE content_image_management SET path = ?, type = ? WHERE id = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$newFileName, $fileType, $imageId]);
-            echo "L'image a été mise à jour.";
+             $_SESSION['error'] =  "L'image a été mise à jour.";
         } else {
-            echo "Erreur lors du téléchargement de l'image.";
+             $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
         }
     }
 }

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("INSERT INTO space_locations (client_name, client_email, client_number, space_id) VALUES (?, ?, ?, ?)");
     $stmt->execute([$client_name, $client_email, $client_number, $space_id]);
 
-    echo "Espace réservé avec succès.";
+    $_SESSION['success'] =  "Espace réservé avec succès.";
 }
 ?>
 

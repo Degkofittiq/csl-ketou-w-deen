@@ -11,7 +11,7 @@
         $stmt = $pdo->prepare("INSERT INTO hourlies (days, h_open, h_close) VALUES (?, ?, ?)");
         $stmt->execute([$days, $h_open, $h_close]);
 
-        echo "Horaire ajouté avec succès.";
+        $_SESSION['error'] =  "Horaire ajouté avec succès.";
     }
 ?>
 
