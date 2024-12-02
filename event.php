@@ -62,104 +62,52 @@
     </section>
     <section class="my-5 container-lg">
         <div class="row mt-4">
-            <div class="col-lg-4 mx-auto mb-4">
-                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-5 mx-auto align-self-center">
-                            <img src="image/6.png" alt="" class="img-fluid w-100">
-                        </div>
-                        <div class="col-7 mx-auto">
-                            <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                            <p class="mt-3">
-                                Quisque commodo felis diam, eu viverra ipsum varius
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-4">
-                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-5 mx-auto align-self-center">
-                            <img src="image/6.png" alt="" class="img-fluid w-100">
-                        </div>
-                        <div class="col-7 mx-auto">
-                            <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                            <p class="mt-3">
-                                Quisque commodo felis diam, eu viverra ipsum varius
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-4">
-                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-5 mx-auto align-self-center">
-                            <img src="image/6.png" alt="" class="img-fluid w-100">
-                        </div>
-                        <div class="col-7 mx-auto">
-                            <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                            <p class="mt-3">
-                                Quisque commodo felis diam, eu viverra ipsum varius
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-lg-4 mx-auto mb-4">
-                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-5 mx-auto align-self-center">
-                            <img src="image/6.png" alt="" class="img-fluid w-100">
-                        </div>
-                        <div class="col-7 mx-auto">
-                            <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                            <p class="mt-3">
-                                Quisque commodo felis diam, eu viverra ipsum varius
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-4">
-                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-5 mx-auto align-self-center">
-                            <img src="image/6.png" alt="" class="img-fluid w-100">
-                        </div>
-                        <div class="col-7 mx-auto">
-                            <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                            <p class="mt-3">
-                                Quisque commodo felis diam, eu viverra ipsum varius
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-4">
-                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                    <div class="row">
-                        <div class="col-5 mx-auto align-self-center">
-                            <img src="image/6.png" alt="" class="img-fluid w-100">
-                        </div>
-                        <div class="col-7 mx-auto">
-                            <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                            <p class="mt-3">
-                                Quisque commodo felis diam, eu viverra ipsum varius
-                            </p>
-                        </div>
-                    </div>
-                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                </div>
-            </div>
+            <?php
+                $stmt = $pdo->query("SELECT * FROM events LIMIT 5");
+                $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                if (!empty($events)) {
+                    foreach ($events as $event) {
+                            // Récupérer la date de l'événement
+                            $eventDate = $event['date'];
+                            $date = new DateTime($eventDate);
+
+                            // Extraire le jour et le mois
+                            $day = $date->format('j'); // Jour (ex: 13)
+                            setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
+                            $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
+                        ?>
+                            <div class="col-lg-4 mx-auto mb-4">
+                                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                    <div class="row">
+                                        <div class="col-6 mx-auto">
+                                            <div class="position-relative">
+                                                <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                <div class="tto">
+                                                    <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                        <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
+                                                        <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                            <h4 class="text-center text-white fw-bold"><?= (substr($month, 0, 3)) ?></h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mx-auto">
+                                            <p class="fw-bold pt-2">
+                                                <?= htmlspecialchars($event['name']) ?>
+                                            </p>
+                                            <p class="mt-3 break">
+                                                <?= $event['description'] ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                }
+            ?>
         </div>
     </section>
     <?php

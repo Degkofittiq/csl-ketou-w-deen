@@ -5,7 +5,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';  // Si tu utilises Composer
+require 'vendor/autoload.php';  // Si tu utilises Composer
 
 $mail = new PHPMailer(true);  // Créer une instance de PHPMailer
 
@@ -110,10 +110,10 @@ if (!empty($_POST) && isset($_POST['btn_footer_subscribe'])) {
                 </div>
                 <div class="col-lg-2 mx-auto mb-3 mb-md-0">
                     <div class="d-none d-lg-block">
-                        <img src="images/1.png" alt="" class="image-fluid w-100">
+                        <img src="image/1.png" alt="" class="image-fluid w-100">
                     </div>
                     <div class="d-lg-none">
-                        <img src="images/1.png" alt="" class="image-fluid w-50">
+                        <img src="image/1.png" alt="" class="image-fluid w-50">
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@ if (!empty($_POST) && isset($_POST['btn_footer_subscribe'])) {
             <span class="d-block my-4" style="border-top: 1px solid #000000; "></span>
             <p class="text-center py-3">© Copyright 2024  CSL Arojú Owò  All Rights Reserved  | Terms of use  | Privacy Policy</p>
             <div class="pot">
-                <a href=""><img src="images/chatbot.png" alt=""></a>
+                <a href=""><img src="image/chatbot.png" alt=""></a>
             </div>
         </div>
     </footer>

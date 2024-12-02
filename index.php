@@ -14,7 +14,7 @@
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
 
-        require '../vendor/autoload.php';  // Si tu utilises Composer
+        require 'vendor/autoload.php';  // Si tu utilises Composer
         
         $mail = new PHPMailer(true);  // Créer une instance de PHPMailer
 
@@ -94,13 +94,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active" style="padding: 0px;">
-                    <img src="image/2.png" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/2.png" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/2.png" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -112,24 +112,26 @@
             </div>
 
             <div class="pos">
-                <p><strong style="color: #61BC45;">Welcome to CSL Arojú Owò </strong></p>
+                <p><strong style="color: #61BC45;"> <?= $bddContentTexts['welcome_text']['content_fr'] ?? "Welcome to CSL Arojú Owò" ?> </strong></p>
                 <h1 class="text-white" style="font-weight: 900;">
-                    The Heart of <br>
-                    Sports & Leisure!
+                <?= $bddContentTexts['text_after_welcome']['content_fr'] ?? "The Heart of <br> Sports & Leisure!" ?> 
+                    
                 </h1>
-                <p class="text-white">Explore a world of fitness, fun, and <br> community activities tailored for all ages.</p>
+                <p class="text-white"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
                 <div class="row mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
                         <div>
                             <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='#section3'">
-                                Explore Activities <i class="bi bi-arrow-right-circle"></i>
+                                <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Explore Activities" ?>
+                                <i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
                         <div>
                             <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='#section4'">
-                            Become A Member <i class="bi bi-arrow-right-circle"></i>
+                            <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?>
+                            <i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </div>
                     </div>
@@ -155,99 +157,36 @@
             <div class="card-wrapper">
               <!-- Card slides container -->
               <ul class="card-list swiper-wrapper">
-                <li class="card-item swiper-slide">
-                    <div class="relative">
-                        <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                        <div class="ppos d-none d-lg-block">
-                            <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
-                        </div>
-                    </div>
-                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <h2 class="mt-5 text-center fw-bold">Football</h2>
-                        <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
-                        <div class="mt-3">
-                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                                Learn More 
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="card-item swiper-slide">
-                    <div class="relative">
-                        <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                        <div class="ppos d-none d-lg-block">
-                            <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
-                        </div>
-                    </div>
-                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
-                        <p class="mt-3 text-center">Stay active with our <br>
-                            vibrant classes</p>
-                        <div class="mt-3">
-                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                                Learn More 
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="card-item swiper-slide">
-                    <div class="relative">
-                        <img src="image/5.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                        <div class="ppos d-none d-lg-block">
-                            <img src="image/Group 3.png" alt="" class="image-fluid" style="width: 90%;">
-                        </div>
-                    </div>
-                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <h2 class="mt-5 text-center fw-bold">Cultural Events</h2>
-                        <p class="mt-3 text-center">Celebrate tradition and unity</p>
-                        <div class="mt-5">
-                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                                Learn More 
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="card-item swiper-slide">
-                    <div class="relative">
-                        <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                        <div class="ppos d-none d-lg-block">
-                            <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
-                        </div>
-                    </div>
-                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <h2 class="mt-5 text-center fw-bold">Football</h2>
-                        <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
-                        <div class="mt-3">
-                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                                Learn More 
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="card-item swiper-slide">
-                    <div class="relative">
-                        <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                        <div class="ppos d-none d-lg-block">
-                            <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
-                        </div>
-                    </div>
-                    <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
-                        <p class="mt-3 text-center">Stay active with our <br>
-                            vibrant classes</p>
-                        <div class="mt-3">
-                            <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                                Learn More 
-                            </button>
-                        </div>
-                    </div>
-                </li>
+                    <?php
+                        $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+                        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        if (!empty($activities)) {
+                            foreach ($activities as $activity) {
+                                ?>
+                                    <li class="card-item swiper-slide">
+                                        <div class="relative">
+                                            <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <div class="ppos d-none d-lg-block">
+                                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                                            </div>
+                                        </div>
+                                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                            <h2 class="mt-5 text-center fw-bold"><?= $activity['name'] ?? "Activities Name" ?></h2>
+                                            <p class="mt-3 text-center"><?= $activity['description'] ?? "Description" ?></p>
+                                            <div class="mt-3">
+                                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                                <?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php
+                            }
+                        }
+                    ?>
               </ul>
                <!-- Pagination -->
               <div class="swiper-pagination"></div>
-              <!-- Navigation Buttons -->
-              <!-- <div class="swiper-slide-button swiper-button-prev"></div>
-              <div class="swiper-slide-button swiper-button-next"></div> -->
             </div>
           </div>
 
@@ -269,82 +208,81 @@
             <div class="swiper mt-4">
                 <div class="slider-wrapper">
                   <div class="card-list swiper-wrapper">
-            <?php
-                $stmt = $pdo->query("SELECT * FROM events");
-                $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                if (!empty($events)) {
-                    foreach ($events as $event) {
-                        // Récupérer la date de l'événement
-                        $eventDate = $event['date'];
-                        $date = new DateTime($eventDate);
+                    <?php
+                        $stmt = $pdo->query("SELECT * FROM events LIMIT 5");
+                        $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        if (!empty($events)) {
+                            foreach ($events as $event) {
+                                // Récupérer la date de l'événement
+                                $eventDate = $event['date'];
+                                $date = new DateTime($eventDate);
 
-                        // Extraire le jour et le mois
-                        $day = $date->format('j'); // Jour (ex: 13)
-                        setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
-                        $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
-                        ?>
-                            <div class="card-item swiper-slide">
-                                <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; padding-right:10px !important">
-                                    <div class="row">
-                                        <div class="col-6 mx-auto">
-                                            <div class="position-relative">
-                                                <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
-                                                <div class="tto">
-                                                    <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                        <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
-                                                        <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                            <h4 class="text-center text-white fw-bold"><?= (substr($month, 0, 3)) ?></h4>
+                                // Extraire le jour et le mois
+                                $day = $date->format('j'); // Jour (ex: 13)
+                                setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
+                                $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
+                                ?>
+                                    <div class="card-item swiper-slide">
+                                        <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; padding-right:10px !important">
+                                            <div class="row">
+                                                <div class="col-6 mx-auto">
+                                                    <div class="position-relative">
+                                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                        <div class="tto">
+                                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                                <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
+                                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                                    <h4 class="text-center text-white fw-bold"><?= (substr($month, 0, 3)) ?></h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 mx-auto">
+                                                    <p class="fw-bold pt-2">
+                                                        <?= htmlspecialchars($event['name']) ?>
+                                                    </p>
+                                                    <p class="mt-3 break">
+                                                        <?= $event['description'] ?>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
+                                        </div>
+                                    </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                                <div class="card-item swiper-slide">
+                                    <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                        <div class="row">
+                                            <div class="col-6 mx-auto">
+                                                <div class="position-relative">
+                                                    <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                    <div class="tto">
+                                                        <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                            <h2 class="text-center text-white fw-bold">12</h2>
+                                                            <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                                <h4 class="text-center text-white fw-bold">Dec 24</h4>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6 mx-auto">
-                                            <p class="fw-bold pt-2">
-                                                <?= htmlspecialchars($event['name']) ?>
-                                            </p>
-                                            <p class="mt-3 break">
-                                                <!-- <?= $event['description'] ?> -->
-                                                ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                                </div>
-                        </div>
-                        <?php
-                    }
-                } else {
-                    ?>
-                        <div class="card-item swiper-slide">
-                            <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                                <div class="row">
-                                    <div class="col-6 mx-auto">
-                                        <div class="position-relative">
-                                            <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
-                                            <div class="tto">
-                                                <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                    <h2 class="text-center text-white fw-bold">12</h2>
-                                                    <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                        <h4 class="text-center text-white fw-bold">Dec 24</h4>
-                                                    </div>
-                                                </div>
+                                            <div class="col-6 mx-auto">
+                                                <p class="fw-bold">Lorem ipsum n dolor sit</p>
+                                                <p class="mt-3">
+                                                    Quisque commodo felis diam, eu viverra ipsum varius
+                                                </p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6 mx-auto">
-                                        <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                                        <p class="mt-3">
-                                            Quisque commodo felis diam, eu viverra ipsum varius
-                                        </p>
+                                        <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
                                     </div>
                                 </div>
-                                <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
-                            </div>
-                        </div>
-                    <?php
-                }
-            ?>
+                            <?php
+                        }
+                    ?>
                   </div>
                   <!-- <div class="swiper-pagination"></div> -->
                   <div class="swiper-slide-button swiper-button-prev"></div>
@@ -356,24 +294,28 @@
     <br><br>
     <section class="container-lg" id="section4">
         <div class="row">
-            <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
-                <img src="image/7.png" alt="" class="w-100 image-fluid">
-            </div>
-            <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
-                <h2 class="fw-bold">About Founder</h2>
-                <p class="mt-3" style="font-size: 13px;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec vulputate arcu, non ultrices sapien. Suspendisse sodales non neque sed congue. In ac fermentum orci, vel euismod lorem. Vestibulum justo purus, aliquam ac nibh ac, commodo ultrices orci. Aliquam erat volutpat. 
-                    <br><br>
-                    Sed posuere ultricies enim, scelerisque egestas nunc laoreet nec. Nulla mauris nulla, posuere tristique nibh sit amet, molestie egestas sem. Vivamus faucibus a est a iaculis.
-                    <br><br>
-                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris dapibus quam eu egestas eleifend. Cras nec pellentesque neque. Sed sit amet tempor nibh. Integer hendrerit, mi vitae lacinia faucibus, risus ligula mattis diam, a pellentesque nisl magna sit amet metus. 
-                    <br><br>
-                    Mauris facilisis enim quis felis aliquet maximus. Curabitur luctus convallis condimentum. Duis porttitor, augue ut elementum vestibulum, dui massa vehicula nunc.
-                </p>
-                <div class="mt-3">
-                    <button class="btn btn-white text-white py-2 px-4" style="background-color: #61BC45;">Learn More</button>
-                </div>
-            </div>
+            <?php
+                    $stmt = $pdo->query("SELECT * FROM founder_bio LIMIT 1");
+                    $founders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    if (!empty($founders)) {
+                        foreach ($founders as $founder) {
+                ?>
+                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
+                        <img src="image/<?=  $founder['image'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
+                    </div>
+                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
+                        <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
+                        <p class="mt-3" style="font-size: 13px;">
+                            <?=  $founder['description'] ?>
+                        </p>
+                        <div class="mt-3">
+                            <button class="btn btn-white text-white py-2 px-4" style="background-color: #61BC45;"><?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?></button>
+                        </div>
+                    </div>
+                <?php
+                    }
+                }
+            ?>
         </div>
     </section>
     <br><br>
@@ -381,7 +323,7 @@
         <div class="hero">
             <div class="p-md-5">
                <div class="p-5" style="background-color: #000000; border-radius: 10px;">
-                <h2 class="fw-bold text-white">Join Our Community</h2>
+                <h2 class="fw-bold text-white"><?= $bddContentTexts['join_community']['content_fr'] ?? "Join Our Community" ?></h2>
                 <form class="mt-3" action="" method="POST">
                     <div class="mb-3">
                         <input name="name" type="text" class="form-control" placeholder="Name *" style="border-radius: 0;">
@@ -393,7 +335,7 @@
                         <input name="phone" required pattern="^\+?[0-9]*$" placeholder="+229190000000" type="text" class="form-control" placeholder="Phone No.*" style="border-radius: 0;">
                     </div>
                     <div class="">
-                        <button name="btn_contact" class="btn btn-white w-100 text-white" style="background: #61BC45; border-radius: 0;">Join Now <i class="bi bi-arrow-right-circle"></i></button>
+                        <button name="btn_contact" class="btn btn-white w-100 text-white" style="background: #61BC45; border-radius: 0;"><?= $bddContentTexts['join_now']['content_fr'] ?? "Join Now" ?><i class="bi bi-arrow-right-circle"></i></button>
                     </div>
                 </form>
                </div>
@@ -402,7 +344,7 @@
     </section>
     <br><br>
     <section class="container-lg" id="section3">
-        <h2 class="fw-bold text-center mb-4">What People are Saying</h2>
+        <h2 class="fw-bold text-center mb-4"><?= $bddContentTexts['what_people_saying']['content_fr'] ?? "What People are Saying" ?></h2>
 
         <div class="swiper">
             <div class="card-wrapper">
@@ -422,11 +364,11 @@
                                     <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
                                     <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
                                 </div>
-                                <p><strong>Highly recommended!</strong></p>
+                                <p><strong><?= $bddContentTexts['highly_recommended']['content_fr'] ?? "Highly recommended!" ?></strong></p>
                                 <p>
-                                    Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit
+                                    <?= $bddContentTexts['highly_recommended_content_1']['content_fr'] ?? "111Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
                                 </p>
-                                <p>-Alena Josksowinsigs</p>
+                                <p>-<?= $bddContentTexts['highly_recommended_name_1']['content_fr'] ?? "Alena Josksowinsigs!" ?></p>
                             </div>
                         </div>
                     </div>
@@ -445,11 +387,11 @@
                                     <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
                                     <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
                                 </div>
-                                <p><strong>Highly recommended!</strong></p>
+                                <p><strong><?= $bddContentTexts['highly_recommended_2']['content_fr'] ?? "Highly recommended!222" ?></strong></p>
                                 <p>
-                                    Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit
+                                <?= $bddContentTexts['highly_recommended_content_2']['content_fr'] ?? "333Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
                                 </p>
-                                <p>-Alena Josksowinsigs</p>
+                                <p>-<?= $bddContentTexts['highly_recommended_name_2']['content_fr'] ?? "Test Josksowinsigs!" ?></p>
                             </div>
                         </div>
                     </div>
@@ -468,11 +410,11 @@
                                     <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
                                     <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
                                 </div>
-                                <p><strong>Highly recommended!</strong></p>
+                                <p><strong><?= $bddContentTexts['highly_recommended_3']['content_fr'] ?? "Highly recommended!333" ?></strong></p>
                                 <p>
-                                    Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit
+                                <?= $bddContentTexts['highly_recommended_content_3']['content_fr'] ?? "333Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
                                 </p>
-                                <p>-Alena Josksowinsigs</p>
+                                <p>-<?= $bddContentTexts['highly_recommended_name_3']['content_fr'] ?? "Test 3 Josksowinsigs!" ?></p>
                             </div>
                         </div>
                     </div>
@@ -493,34 +435,34 @@
             <section class="search-section posi">
                 <ul class="nav search-tabs">
                   <li class="search-item">
-                    <a class="search-link active" href="#" data-target="destination">Football fields</a>
+                    <a class="search-link active" href="#" data-target="destination"><?= $bddContentTexts['first_pane_tittle_1']['content_fr'] ?? "Football fields" ?></a>
                   </li>
                   <li class="search-item">
-                    <a class="search-link" href="#" data-target="business-trip">Gym & dance studio</a>
+                    <a class="search-link" href="#" data-target="business-trip"><?= $bddContentTexts['first_pane_tittle_2']['content_fr'] ?? "Gym & dance studio" ?></a>
                   </li>
                   <li class="search-item">
-                    <a class="search-link" href="#" data-target="featured">Event spaces</a>
+                    <a class="search-link" href="#" data-target="featured"><?= $bddContentTexts['first_pane_tittle_3']['content_fr'] ?? "Event spaces" ?></a>
                   </li>
                   <li class="search-item">
-                    <a class="search-link" href="#" data-target="featured1">Cultural hall</a>
+                    <a class="search-link" href="#" data-target="featured1"><?= $bddContentTexts['first_pane_tittle_4']['content_fr'] ?? "Cultural hall" ?></a>
                   </li>
                 </ul>
               
                 <!-- Contenu dynamique pour chaque onglet -->
                 <div class="text-white search-content" id="destination">
-                  <p >aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                  <p><?= $bddContentTexts['first_pane_content_1']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
                 </div>
               
                 <div class="text-white search-content" id="business-trip" style="display: none;">
-                <p>bbbbbbbbbbbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                <p><?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
                 </div>
               
                 <div class="text-white search-content" id="featured" style="display: none;">
-                <p>ccccccccccccccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                <p><?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
                 </div>
 
                 <div class="text-white search-content" id="featured1" style="display: none;">
-                <p>dddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                <p><?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
                 </div>
               </section>
         </div>

@@ -5,7 +5,7 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require '../vendor/autoload.php';  // Si tu utilises Composer
+    require 'vendor/autoload.php';  // Si tu utilises Composer
     
     $mail = new PHPMailer(true);  // Créer une instance de PHPMailer
 
@@ -72,7 +72,7 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-2 mx-auto align-self-center">
-                <img src="images/1.png" alt="" style="width: 70%;" class="image-fluid">
+                <img src="image/1.png" alt="" style="width: 70%;" class="image-fluid">
             </div>
             <div class="col-10 mx-auto" style="border-left: 1px solid #00000033;">
                 <div class="row py-2">
@@ -125,7 +125,7 @@
 <div class="d-lg-none">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-lg">
-            <a class="navbar-brand" href="#"><img src="images/image 1.png" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="image/image 1.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
