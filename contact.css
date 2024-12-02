@@ -1,0 +1,25 @@
+*{
+    font-family: "Montserrat", sans-serif;
+}
+body{
+    background-color: #FAFAFA;
+}
+.container-lg {
+    max-width: 1000px; /* Limite la largeur à 1140px sur grands écrans */
+}
+
+@media (min-width: 1600px) {
+    .container-lg {
+        max-width: 1440px; /* Augmente la largeur maximale sur très grands écrans */
+    }
+}
+
+
+.bi {
+    font-size: 1.5rem;
+}
+
+/* section1 */
+.form-control:hover{
+    border: 2px solid #CD4631;
+}

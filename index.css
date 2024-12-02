@@ -1,0 +1,276 @@
+*{
+  font-family: "Montserrat", sans-serif;
+
+}
+body{
+  background-color: #FAFAFA;
+  overflow-x: hidden;
+}
+.sor{
+position: relative;
+z-index: 5;
+}
+
+.ccc1{
+  font-size: 4rem;
+}
+#section1 {
+  /* margin-bottom: 250px; */
+}
+.position{
+  position: relative;
+  justify-content: center;
+  align-items: center;
+
+}
+.position1{
+  position: absolute;
+  top: 80%;
+  align-items: center;
+}
+.container-lg {
+  max-width: 1000px; /* Limite la largeur à 1140px sur grands écrans */
+}
+
+@media (min-width: 1600px) {
+  .container-lg {
+      max-width: 1440px; /* Augmente la largeur maximale sur très grands écrans */
+  }
+}
+@media (max-width: 1600px) {
+  .ccc1{
+      font-size: 3rem;
+   }
+}
+@media (max-width: 800px) {
+  #section1 {
+      margin-bottom: 1px;
+  }
+  .ccc1{
+      font-size: 3rem;
+   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.bi {
+  font-size: 1.5rem;
+}
+
+/* section1 */
+.form-control:hover{
+  border: 2px solid #CD4631;
+}
+
+
+
+.log{
+  width: 150px;
+  object-fit: cover;
+}
+.tex{
+  margin-top: 2rem;
+}
+.tex2{
+  margin: 6rem 0;
+}
+
+.listt{
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+  gap: 20px;
+  /* max-width: 90%; */
+  padding-bottom: 30px;
+  scrollbar-width: thin;
+}
+
+.nomsport{
+  background-color: #252B42;
+  text-align: center;
+  padding: 20px;
+  margin: 10px 0;
+}
+.events{
+  padding: 50px 0;
+}
+.eventi{
+  padding: 50px 0;
+  position: relative;
+  z-index: 5;
+
+}
+td{
+  padding: 20px !important;
+}
+.scroll-container {
+  display: flex;
+  gap: 35px;
+  overflow-x: auto;
+  padding: 35px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scroll-behavior: smooth;
+  justify-content: center;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.scroll-item {
+  flex: 0 0 auto; /* Les éléments gardent leur largeur et ne se réduisent pas */
+  width: 400px; /* Ajustez selon vos besoins */
+  position: relative;
+}
+
+.scroll-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden; /* Assure que rien ne dépasse */
+  box-shadow: 1px 1px 40px 0px #333e28;
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+  transition: 0.5s ease-in-out; /* Transition fluide pour l'assombrissement */
+}
+
+.image-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 10px;
+}
+
+.image-container .overlay h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  background-color: #212529bf;
+  padding: 10px 30px;
+  /* border-radius: 8px; */
+  z-index: 2;
+}
+
+.image-container .overlay .description {
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour la description */
+  padding: 8px 15px;
+  margin-top: 20px;
+  opacity: 0; /* Caché par défaut */
+  transition: opacity 0.5s ease-in-out; /* Animation fluide pour l'apparition */
+}
+
+.image-container:hover img {
+  filter: brightness(50%); /* Assombrit l'image */
+}
+
+.image-container:hover .overlay .description {
+  opacity: 1; /* Affiche la description au survol */
+}
+.titi{
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+  overflow-x: scroll;
+}
+
+.bi {
+  font-size: 1.5rem;
+}
+
+/* section1 */
+.form-control:hover{
+  border: 2px solid #CD4631;
+}
+.lox{
+  text-align: end;
+}
+@media (max-width: 1135px) {
+.rowex{
+flex-direction: column;
+}
+.rowexi{
+  width: 100%;
+}
+}
+
+@media (max-width: 768px) {
+.lox{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.tablo{
+  width: 100% !important;
+  margin: 0 auto;
+}
+#program{
+  padding: 40px 0 !important;
+}
+.log{
+  width: 90px;
+  object-fit: cover;
+}
+
+}
+.propos{
+  justify-content: space-between;
+}
+.tablo{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.svv{
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0.2;
+  /* z-index: 1; */
+  transform: scale(1.9);
+}
+
+.svv2{
+  position: absolute;
+  right: 0;
+  /* top: 0; */
+  opacity: 0.4;
+  z-index: 1;
+  transform: scale(1.9);
+}
+
+.svv3{
+  position: absolute;
+  left: -45px;
+  margin-top: 25%;
+  /* top: 0; */
+  opacity: 0.4;
+  z-index: 1;
+  transform: scale(1.3) scaleX(-1) rotate(45deg);
+}
