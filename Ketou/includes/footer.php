@@ -109,7 +109,12 @@ if (!empty($_POST) && isset($_POST['btn_footer_subscribe'])) {
                     </ul>
                 </div>
                 <div class="col-lg-2 mx-auto mb-3 mb-md-0">
-                    <img src="images/1.png" alt="" class="image-fluid w-100">
+                    <div class="d-none d-lg-block">
+                        <img src="images/1.png" alt="" class="image-fluid w-100">
+                    </div>
+                    <div class="d-lg-none">
+                        <img src="images/1.png" alt="" class="image-fluid w-50">
+                    </div>
                 </div>
             </div>
         </div>

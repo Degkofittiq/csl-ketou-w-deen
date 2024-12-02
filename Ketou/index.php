@@ -284,7 +284,7 @@
                         $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
                         ?>
                             <div class="card-item swiper-slide">
-                                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; padding-right:10px !important">
                                     <div class="row">
                                         <div class="col-6 mx-auto">
                                             <div class="position-relative">
@@ -300,11 +300,12 @@
                                             </div>
                                         </div>
                                         <div class="col-6 mx-auto">
-                                            <p class="fw-bold">
+                                            <p class="fw-bold pt-2">
                                                 <?= htmlspecialchars($event['name']) ?>
                                             </p>
-                                            <p class="mt-3">
-                                                <p style="font-weight: 800;"><?= htmlspecialchars($event['description']) ?>
+                                            <p class="mt-3 break">
+                                                <!-- <?= $event['description'] ?> -->
+                                                 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
                                             </p>
                                         </div>
                                     </div>
@@ -316,7 +317,7 @@
                 } else {
                     ?>
                         <div class="card-item swiper-slide">
-                            <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                            <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
                                 <div class="row">
                                     <div class="col-6 mx-auto">
                                         <div class="position-relative">
@@ -501,21 +502,25 @@
                     <a class="search-link" href="#" data-target="featured">Event spaces</a>
                   </li>
                   <li class="search-item">
-                    <a class="search-link" href="#" data-target="featured">Cultural hall</a>
+                    <a class="search-link" href="#" data-target="featured1">Cultural hall</a>
                   </li>
                 </ul>
               
                 <!-- Contenu dynamique pour chaque onglet -->
                 <div class="text-white search-content" id="destination">
-                  <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                  <p >aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
                 </div>
               
                 <div class="text-white search-content" id="business-trip" style="display: none;">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                <p>bbbbbbbbbbbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
                 </div>
               
                 <div class="text-white search-content" id="featured" style="display: none;">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                <p>ccccccccccccccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
+                </div>
+
+                <div class="text-white search-content" id="featured1" style="display: none;">
+                <p>dddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus.</p>
                 </div>
               </section>
         </div>

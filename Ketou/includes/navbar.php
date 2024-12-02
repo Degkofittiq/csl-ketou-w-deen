@@ -71,8 +71,8 @@
 <div class="d-none d-lg-block">
     <div class="container-lg">
         <div class="row">
-            <div class="col-2 mx-auto">
-                <img src="images/1.png" alt="" style="width: 100%;" class="image-fluid">
+            <div class="col-2 mx-auto align-self-center">
+                <img src="images/1.png" alt="" style="width: 70%;" class="image-fluid">
             </div>
             <div class="col-10 mx-auto" style="border-left: 1px solid #00000033;">
                 <div class="row py-2">

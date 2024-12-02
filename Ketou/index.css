@@ -311,3 +311,14 @@
       flex: 0 0 100%; /* 1 column */
   }
 }
+.tto{
+  position: absolute;
+  top: 71%;
+  transform: translateY(-50%);
+  left:0;
+  right: 20%;
+}
+.break{
+  word-wrap: break-word; 
+  word-break: break-word;
+}
