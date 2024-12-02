@@ -167,7 +167,7 @@
                                         <div class="relative">
                                             <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                             <div class="ppos d-none d-lg-block">
-                                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                                                <img src="image/<?= $activity['founder_section_subimage'] ?? "Group 8.png"  ?>" alt="" class="image-fluid" style="width: 90%;">
                                             </div>
                                         </div>
                                         <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
@@ -227,7 +227,7 @@
                                             <div class="row">
                                                 <div class="col-6 mx-auto">
                                                     <div class="position-relative">
-                                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                        <div><img src="image/<?= $bddContentImages['event_default_image']['image'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
                                                         <div class="tto">
                                                             <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
                                                                 <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
@@ -354,7 +354,7 @@
                     <div class="">
                         <div class="row p-5" style="background-color: #F2F2F2;">
                             <div class="col-3 mx-auto">
-                                <img src="image/Ellipse 2.png" alt="Person 1" class="img-fluid w-100">
+                                <img src="image/<?= $bddContentImages['highly_recommended_image_1']['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
                             </div>
                             <div class="col-9">
                                 <div class="d-flex">
@@ -377,7 +377,7 @@
                     <div class="">
                         <div class="row p-5" style="background-color: #F2F2F2;">
                             <div class="col-3 mx-auto">
-                                <img src="image/Ellipse 2.png" alt="Person 1" class="img-fluid w-100">
+                                <img src="image/<?= $bddContentImages['highly_recommended_image_2']['image'] ?? "highly_recommended_image_2.png" ?>" alt="Person 1" class="img-fluid w-100">
                             </div>
                             <div class="col-9">
                                 <div class="d-flex">
@@ -400,7 +400,7 @@
                     <div class="">
                         <div class="row p-5" style="background-color: #F2F2F2;">
                             <div class="col-3 mx-auto">
-                                <img src="image/Ellipse 2.png" alt="Person 1" class="img-fluid w-100">
+                                <img src="image/<?= $bddContentImages['highly_recommended_image_3']['image'] ?? "highly_recommended_image_3.png" ?>" alt="Person 1" class="img-fluid w-100">
                             </div>
                             <div class="col-9">
                                 <div class="d-flex">
@@ -454,15 +454,15 @@
                 </div>
               
                 <div class="text-white search-content" id="business-trip" style="display: none;">
-                <p><?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
+                <p><?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "bbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
                 </div>
               
                 <div class="text-white search-content" id="featured" style="display: none;">
-                <p><?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
+                <p><?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "ccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
                 </div>
 
                 <div class="text-white search-content" id="featured1" style="display: none;">
-                <p><?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
+                <p><?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "ddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
                 </div>
               </section>
         </div>
