@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
-    
+     
     <?php
         // Include navigation bar
         include('./includes/header.php') ;    
