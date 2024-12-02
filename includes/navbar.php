@@ -80,10 +80,10 @@
                     <div class="col-8 mx-auto">
                         <div class="d-flex justify-content-end">
                             <div class="me-3 pe-3" style="border-right: 1px solid #00000033;">
-                                <p><i class="bi bi-geo-alt-fill fs-3 mt-4 me-2"></i>CSL Kétou, Arojú Owò</p>
+                                <p><i class="bi bi-geo-alt-fill fs-3 mt-4 me-2"></i><?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?></p>
                             </div>
                             <div class="">
-                                <p><i class="bi bi-whatsapp fs-3 mt-4 me-2"></i>Call today 09 290 3820 </p>
+                                <p><i class="bi bi-whatsapp fs-3 mt-4 me-2"></i><?= $bddContentTexts['call_totay_text']['content_fr'] ?? "Call today" ?>: <?= $bddContentTexts['phone_content']['content_fr'] ?? "09 290 38200" ?></p>
                             </div>
                         </div>
                     </div>

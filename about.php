@@ -20,13 +20,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -79,7 +79,7 @@
                     <strong>
                         <h6><?= $bddContentTexts['our_founder']['content_fr'] ?? "Our Founder" ?></h6>
                     </strong>
-                    <p>
+                    <p style="text-align: justify;">
                         <?= 
                             $founder['description'] ?? "Jean ASSESSI est un entrepreneur passionné qui a fondé ce centre avec pour mission de créer une
                             communauté dynamique. Avec plus de 10 ans d'expérience dans le domaine, il est connu pour son
@@ -87,7 +87,7 @@
                         ?>
                     </p>
                     <br>
-                    <p><strong><?= $bddContentTexts['footer_third_menu_title']['content_fr'] ?? "Contact" ?>: </strong><?= $bddContentTexts['phone_content']['content_fr'] ?? "+229 90 00 00 00" ?> </p>
+                    <!-- <p><strong><?= $bddContentTexts['footer_third_menu_title']['content_fr'] ?? "Contact" ?>: </strong><?= $bddContentTexts['phone_content']['content_fr'] ?? "+229 90 00 00 00" ?> </p> -->
                 </div>
             </div>
         </div>

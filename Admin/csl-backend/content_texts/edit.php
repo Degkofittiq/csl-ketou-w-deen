@@ -72,7 +72,7 @@ if (isset($_GET['id'])) {
                             <form action="edit.php?id=<?php echo $content['id']; ?>" method="post" class="form my-2" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="name">Nom</label>
-                                    <input class="form-control my-2" type="text" name="name" id="name" value="<?php echo htmlspecialchars($content['name']); ?>" required>
+                                    <input class="form-control my-2"readonly type="text" name="name" id="name" value="<?php echo htmlspecialchars($content['name']); ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="content_fr">content_fr</label>

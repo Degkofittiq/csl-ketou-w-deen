@@ -167,7 +167,7 @@
                                         <div class="relative">
                                             <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
                                             <div class="ppos d-none d-lg-block">
-                                                <img src="image/<?= $activity['founder_section_subimage'] ?? "Group 8.png"  ?>" alt="" class="image-fluid" style="width: 90%;">
+                                                <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
                                             </div>
                                         </div>
                                         <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
@@ -305,7 +305,7 @@
                     </div>
                     <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
                         <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
-                        <p class="mt-3" style="font-size: 13px;">
+                        <p class="mt-3" style="font-size: 13px; text-align: justify;">
                             <?=  $founder['description'] ?>
                         </p>
                         <div class="mt-3">

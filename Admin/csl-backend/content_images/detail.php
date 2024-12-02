@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Nom</label>
-                                <input class="form-control my-2" type="text" name="name" id="name" value="<?php echo htmlspecialchars($aboutUs['name']); ?>" readonly>
+                                <input class="form-control my-2" readonly type="text" name="name" id="name" value="<?php echo htmlspecialchars($aboutUs['name']); ?>" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="image">Image actuelle</label><br>

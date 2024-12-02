@@ -19,13 +19,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -38,7 +38,7 @@
 
             <div class="pos">
                 <h1 class="text-white" style="font-weight: 900;">
-                What We Offer
+                <?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?>
                 </h1>
                 <p class="text-white">Explore a world of fitness, fun, and <br> community activities tailored for all ages.</p>
                 <div class="row mt-3">
@@ -62,112 +62,53 @@
     </section>
     <section class="my-5 container-lg">
         <div class="row">
-            <div class="col-lg-4 mx-auto mb-3">
-                <div class="relative">
-                    <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                    <div class="ppos d-none d-lg-block">
-                        <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
-                    </div>
-                </div>
-                <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                    <h2 class="mt-5 text-center fw-bold">Football</h2>
-                    <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
-                    <div class="mt-3">
-                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                            Learn More 
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-3">
-                <div class="relative">
-                    <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                    <div class="ppos d-none d-lg-block">
-                        <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
-                    </div>
-                </div>
-                <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                    <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
-                    <p class="mt-3 text-center">Stay active with our <br>
-                        vibrant classes</p>
-                    <div class="mt-3">
-                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                            Learn More 
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-3">
-                <div class="relative">
-                    <img src="image/5.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                    <div class="ppos d-none d-lg-block">
-                        <img src="image/Group 3.png" alt="" class="image-fluid" style="width: 90%;">
-                    </div>
-                </div>
-                <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                    <h2 class="mt-5 text-center fw-bold">Cultural Events</h2>
-                    <p class="mt-3 text-center">Celebrate tradition and unity</p>
-                    <div class="mt-5">
-                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                            Learn More 
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-lg-4 mx-auto mb-3">
-                <div class="relative">
-                    <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                    <div class="ppos d-none d-lg-block">
-                        <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
-                    </div>
-                </div>
-                <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                    <h2 class="mt-5 text-center fw-bold">Football</h2>
-                    <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
-                    <div class="mt-3">
-                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                            Learn More 
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-3">
-                <div class="relative">
-                    <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                    <div class="ppos d-none d-lg-block">
-                        <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
-                    </div>
-                </div>
-                <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                    <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
-                    <p class="mt-3 text-center">Stay active with our <br>
-                        vibrant classes</p>
-                    <div class="mt-3">
-                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                            Learn More 
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mx-auto mb-3">
-                <div class="relative">
-                    <img src="image/5.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                    <div class="ppos d-none d-lg-block">
-                        <img src="image/Group 3.png" alt="" class="image-fluid" style="width: 90%;">
-                    </div>
-                </div>
-                <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                    <h2 class="mt-5 text-center fw-bold">Cultural Events</h2>
-                    <p class="mt-3 text-center">Celebrate tradition and unity</p>
-                    <div class="mt-5">
-                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                            Learn More 
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <?php
+                $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+                $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                if (!empty($activities)) {
+                    foreach ($activities as $activity) {
+                        ?>
+                            <div class="col-lg-4 mx-auto mb-3">
+                                <div class="relative">
+                                    <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                    <div class="ppos d-none d-lg-block">
+                                        <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                                    </div>
+                                </div>
+                                <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                    <h2 class="mt-5 text-center fw-bold"><?= $activity['name'] ?? "Activities Name" ?></h2>
+                                    <p class="mt-3 text-center"><p class="mt-3 text-center"><?= $activity['description'] ?? "Description" ?></p></p>
+                                    <div class="mt-3">
+                                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                        <?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                    }
+                }else {
+                    ?>
+                        <div class="col-lg-4 mx-auto mb-3">
+                            <div class="relative">
+                                <img src="images/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                <div class="ppos d-none d-lg-block">
+                                    <img src="images/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                                </div>
+                            </div>
+                            <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                <h2 class="mt-5 text-center fw-bold">Football</h2>
+                                <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
+                                <div class="mt-3">
+                                    <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                        Learn More 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>                    
+                    <?php
+                }
+            ?>
         </div>
     </section>
     <?php

@@ -19,13 +19,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/2.png" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -38,21 +38,21 @@
 
             <div class="pos">
                 <h1 class="text-white" style="font-weight: 900;">
-                    Upcoming Events
+                    <?= $bddContentTexts['upcoming_events']['content_fr'] ?? "Upcoming Events" ?>
                 </h1>
-                <p class="text-white">Explore a world of fitness, fun, and <br> community activities tailored for all ages.</p>
+                <p class="text-white"><?= $bddContentTexts['explore_text']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
                 <div class="row mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
                         <div>
                             <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='index.php#section3'">
-                                Explore Activities <i class="bi bi-arrow-right-circle"></i>
+                            <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Decouvrez nos activites" ?><i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
                         <div>
                             <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='index.php#section4'">
-                            Become A Member <i class="bi bi-arrow-right-circle"></i>
+                            <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?> <i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </div>
                     </div>
