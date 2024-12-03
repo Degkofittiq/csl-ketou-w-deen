@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($imageExtension, $allowedExtensions)) {
             $_SESSION['error'] = "L'extension de l'image n'est pas autorisée.";
-            exit;
+            // exit;
         }
 
         // Créer un nom unique pour l'image (concatenation du name et du nom original)
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!is_dir($targetDirectory)) {
             if (!mkdir($targetDirectory, 0777, true)) {
                 $_SESSION['error'] =  "Erreur lors de la création du dossier d'images.";
-                exit;
+                // exit;
             }
         }
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Rediriger vers la liste des éléments
             header("Location: index.php");
-            exit;
+            // exit;
         } else {
              $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
         }

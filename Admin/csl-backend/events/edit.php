@@ -23,15 +23,15 @@ if (isset($_GET['id'])) {
 
             // Rediriger vers la page des détails après la mise à jour
             header("Location: edit.php?id=" . $id);
-            exit;
+            // exit;
         }
     } else {
          $_SESSION['error'] =  "L'élément demandé n'existe pas.";
-        exit;
+        // exit;
     }
 } else {
      $_SESSION['error'] =  "Aucun identifiant spécifié.";
-    exit;
+    // exit;
 }
 ?>
 

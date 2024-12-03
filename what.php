@@ -19,13 +19,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image_1']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -40,19 +40,20 @@
                 <h1 class="text-white" style="font-weight: 900;">
                 <?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?>
                 </h1>
-                <p class="text-white">Explore a world of fitness, fun, and <br> community activities tailored for all ages.</p>
+                <p class="text-white">
+                    <?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?>
                 <div class="row mt-3">
                     <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
                         <div>
                             <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='index.php#section3'">
-                                Explore Activities <i class="bi bi-arrow-right-circle"></i>
+                            <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Explore Activities" ?> <i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
                         <div>
                             <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='index.php#section4'">
-                            Become A Member <i class="bi bi-arrow-right-circle"></i>
+                            <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?><i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </div>
                     </div>
@@ -70,16 +71,18 @@
                         ?>
                             <div class="col-lg-4 mx-auto mb-3">
                                 <div class="relative">
-                                    <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                    <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 30vh !important;object-fit:cover">
                                     <div class="ppos d-none d-lg-block">
                                         <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
                                     </div>
                                 </div>
                                 <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                                    <h2 class="mt-5 text-center fw-bold"><?= $activity['name'] ?? "Activities Name" ?></h2>
-                                    <p class="mt-3 text-center"><p class="mt-3 text-center"><?= $activity['description'] ?? "Description" ?></p></p>
+                                    <h2 class="mt-5 text-center fw-bold"><?php echo $activity['name'] ? implode(' ', array_slice(explode(' ', $activity['name']), 0, 1)) . '' : "Activitie Name"; ?></h2>
+                                    <p class="mt-3 text-center"><p class="mt-3 text-center">
+                                        <?php echo $activity['description'] ? implode(' ', array_slice(explode(' ', $activity['description']), 0, 15)) . '...' : "Description"; ?>
+                                    </p></p>
                                     <div class="mt-3">
-                                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
+                                        <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;"  data-bs-toggle="modal" data-bs-target="#Modal-<?= $activity['id'] ?>">
                                         <?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?>
                                         </button>
                                     </div>
@@ -110,6 +113,30 @@
                 }
             ?>
         </div>
+        
+<?php
+
+$stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+$activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!empty($activities)) {
+    foreach ($activities as $activity) {
+?>
+    <div class="modal fade" id="Modal-<?= $activity['id'] ?>" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>
+                    <?php echo $activity['description']; ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+<?php
+    }
+}
+
+?>
     </section>
     <?php
         // Include navigation bar

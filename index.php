@@ -94,13 +94,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_2']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['image'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -165,17 +165,19 @@
                                 ?>
                                     <li class="card-item swiper-slide">
                                         <div class="relative">
-                                            <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 30vh !important;object-fit:cover">
                                             <div class="ppos d-none d-lg-block">
                                                 <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
                                             </div>
                                         </div>
                                         <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                                            <h2 class="mt-5 text-center fw-bold"><?= $activity['name'] ?? "Activities Name" ?></h2>
-                                            <p class="mt-3 text-center"><?= $activity['description'] ?? "Description" ?></p>
+                                            <h2 class="mt-5 text-center fw-bold"><?php echo $activity['name'] ? implode(' ', array_slice(explode(' ', $activity['name']), 0, 1)) . '' : "Activitie Name"; ?></h2>
+                                            <p class="mt-3 text-center">
+                                                <?php echo $activity['description'] ? implode(' ', array_slice(explode(' ', $activity['description']), 0, 6)) . '...' : "Description"; ?>
+                                            </p>
                                             <div class="mt-3">
-                                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;">
-                                                <?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?>
+                                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal-<?= $activity['id'] ?>">
+                                                    <?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?>
                                                 </button>
                                             </div>
                                         </div>
@@ -189,7 +191,29 @@
               <div class="swiper-pagination"></div>
             </div>
           </div>
+<?php
 
+$stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+$activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if (!empty($activities)) {
+    foreach ($activities as $activity) {
+?>
+    <div class="modal fade" id="Modal-<?= $activity['id'] ?>" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>
+                    <?php echo $activity['description']; ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+<?php
+    }
+}
+
+?>
     </section>
     <br><br>
     <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;">
@@ -227,7 +251,7 @@
                                             <div class="row">
                                                 <div class="col-6 mx-auto">
                                                     <div class="position-relative">
-                                                        <div><img src="image/<?= $bddContentImages['event_default_image']['image'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                        <div><img src="image/<?= $bddContentImages['event_default_image']['path'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
                                                         <div class="tto">
                                                             <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
                                                                 <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
@@ -301,7 +325,7 @@
                         foreach ($founders as $founder) {
                 ?>
                     <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
-                        <img src="image/<?=  $founder['image'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
+                        <img src="image/<?=  $founder['path'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
                     </div>
                     <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
                         <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
@@ -354,7 +378,7 @@
                     <div class="">
                         <div class="row p-5" style="background-color: #F2F2F2;">
                             <div class="col-3 mx-auto">
-                                <img src="image/<?= $bddContentImages['highly_recommended_image_1']['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
+                                <img src="image/<?= $bddContentImages['highly_recommended_image_1']['path'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
                             </div>
                             <div class="col-9">
                                 <div class="d-flex">
@@ -377,7 +401,7 @@
                     <div class="">
                         <div class="row p-5" style="background-color: #F2F2F2;">
                             <div class="col-3 mx-auto">
-                                <img src="image/<?= $bddContentImages['highly_recommended_image_2']['image'] ?? "highly_recommended_image_2.png" ?>" alt="Person 1" class="img-fluid w-100">
+                                <img src="image/<?= $bddContentImages['highly_recommended_image_2']['path'] ?? "highly_recommended_image_2.png" ?>" alt="Person 1" class="img-fluid w-100">
                             </div>
                             <div class="col-9">
                                 <div class="d-flex">
@@ -400,7 +424,7 @@
                     <div class="">
                         <div class="row p-5" style="background-color: #F2F2F2;">
                             <div class="col-3 mx-auto">
-                                <img src="image/<?= $bddContentImages['highly_recommended_image_3']['image'] ?? "highly_recommended_image_3.png" ?>" alt="Person 1" class="img-fluid w-100">
+                                <img src="image/<?= $bddContentImages['highly_recommended_image_3']['path'] ?? "highly_recommended_image_3.png" ?>" alt="Person 1" class="img-fluid w-100">
                             </div>
                             <div class="col-9">
                                 <div class="d-flex">

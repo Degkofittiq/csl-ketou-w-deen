@@ -37,8 +37,10 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        Bienvenue Admin
+                    <div class="card shadow mb-4 p-5">
+                        <center>
+                            Bienvenue Admin
+                        </center>
                     </div>
 
                 </div>

@@ -1,9 +1,10 @@
 <?php
 session_start();
     $host = 'localhost';
-    $dbname = 'csl-ketou';
-    $username = 'root';
-    $password = '';
+    $dbname = 'cslketou_data';
+    $username = 'cslketou_admin';
+    $password = 'Myketou@15';
+
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);

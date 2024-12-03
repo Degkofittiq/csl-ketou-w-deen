@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     // Vérifier si l'élément existe
     if (!$aboutUs) {
          $_SESSION['error'] =  "L'élément demandé n'existe pas.";
-        exit;
+        // exit;
     }
 
     // Suppression de l'image associée (si elle existe)
@@ -28,8 +28,8 @@ if (isset($_GET['id'])) {
 
     // Rediriger vers la page principale ou la liste des éléments
     header("Location: index.php"); // Rediriger vers la page de la liste (ou une autre page de votre choix)
-    exit;
+    // exit;
 } else {
      $_SESSION['error'] =  "Aucun identifiant spécifié.";
-    exit;
+    // exit;
 }

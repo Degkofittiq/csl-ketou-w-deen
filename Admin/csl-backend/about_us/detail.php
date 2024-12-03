@@ -13,11 +13,11 @@ if (isset($_GET['id'])) {
     // Vérifier si l'élément existe
     if (!$aboutUs) {
         $_SESSION['error'] =  "L'élément demandé n'existe pas.";
-        exit;
+        // exit;
     }
 } else {
     $_SESSION['error'] =  "Aucun identifiant spécifié.";
-    exit;
+    // exit;
 }
 ?>
 

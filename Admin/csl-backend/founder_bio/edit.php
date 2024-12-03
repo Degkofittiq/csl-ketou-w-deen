@@ -13,11 +13,11 @@ if (isset($_GET['id'])) {
     // Vérifier si l'élément existe
     if (!$aboutUs) {
          $_SESSION['error'] =  "L'élément demandé n'existe pas.";
-        exit;
+        // exit;
     }
 } else {
      $_SESSION['error'] =  "Aucun identifiant spécifié.";
-    exit;
+    // exit;
 }
 
 // Traitement du formulaire de modification
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($imageExtension, $allowedExtensions)) {
              $_SESSION['error'] =  "L'extension de l'image n'est pas autorisée.";
-            exit;
+            // exit;
         }
 
         // Créer un nom unique pour l'image
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } else {
              $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
-            exit;
+            // exit;
         }
     } else {
         // Si aucune nouvelle image n'est téléchargée, conserver l'ancienne
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Rediriger vers la page des détails après la mise à jour
     header("Location: detail.php?id=" . $id);
-    exit;
+    // exit;
 }
 ?>
 
@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control my-2" name="description" id="description" required><?php echo htmlspecialchars($aboutUs['description']); ?></textarea>
+                                    <textarea class="form-control my-2" name="description" rows="10"  id="description" required><?php echo htmlspecialchars($aboutUs['description']); ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="image">Image actuelle</label><br>
