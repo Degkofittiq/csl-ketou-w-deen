@@ -44,4 +44,44 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
+<style>
+  .text-container2 {
+      /*width: 300px;  Ajustez la largeur selon vos besoins */
+      /*white-space: nowrap;*/
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      /*border: 1px solid #ccc;*/
+      /*padding: 10px;*/
+      transition: all 0.3s ease;
+  }
+
+  .text-container2.expanded {
+      white-space: normal; /* Permet l'affichage complet */
+      overflow: visible; /* Supprime la troncature */
+      text-overflow: clip;
+  }
+  
+
+    .text-container3 p {
+        max-height: 280px;
+        overflow: hidden;
+        position: relative;
+    }
+    .text-container3 p::after {
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .text-container3 p.expanded {
+        max-height: none;
+    }
+    .text-container3 p.expanded::after {
+        display: none;
+    }
+
+</style>
+
+
 <!-- <?= $bddContentTexts['horaire_section_titre_jour']['content_fr'] ?? 'Jours'  ?> -->

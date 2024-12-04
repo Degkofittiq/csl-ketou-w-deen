@@ -172,3 +172,10 @@
         var toast = new bootstrap.Toast(toastEl);
         toast.show();
     </script>
+    
+    
+<script>
+  function toggleText(element) {
+    element.classList.toggle("expanded");
+  }
+</script>

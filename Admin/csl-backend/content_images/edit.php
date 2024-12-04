@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        // Créer un nom de fichier unique
+        // Créer un nom de fichier unique avec l'extension
         $newFileName = $uniqueId . '.' . $fileExtension;
         $destinationDir = realpath('../../../image/');
 
@@ -58,10 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $destinationPath = $destinationDir . '/' . $newFileName;
         if (move_uploaded_file($fileTmpPath, $destinationPath)) {
-            // Mettre à jour la base de données
+            // Déterminer le type MIME de manière fiable
+            $fileMimeType = mime_content_type($destinationPath);
+
+            // Mettre à jour la base de données avec le chemin complet et l'extension
             $query = "UPDATE content_image_management SET path = ?, type = ? WHERE id = ?";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$newFileName, $_FILES['image']['type'], $id]);
+            $stmt->execute([$newFileName, $fileMimeType, $id]);
             $_SESSION['message'] = "L'image a été mise à jour avec succès.";
         } else {
             $_SESSION['error'] = "Erreur lors du téléchargement de l'image.";
@@ -70,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['error'] = "Aucune image valide téléchargée.";
     }
 }
+
 ?>
 
 

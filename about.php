@@ -73,23 +73,15 @@
                     <img src="image/<?= $founder['image'] ?? '7.png' ?>" alt="" class="image-fluid w-100">
                 </div>
             </div>
-            <div class="col-lg-6 mx-auto mb-3 mb-md-0 align-self-center">
-                <div class="p-3">
-                    <h2><?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos de nous" ?></h2>
-                    <strong>
-                        <h6><?= $bddContentTexts['our_founder']['content_fr'] ?? "Our Founder" ?></h6>
-                    </strong>
-                    <p style="text-align: justify;">
-                        <?= 
-                            $founder['description'] ?? "Jean ASSESSI est un entrepreneur passionné qui a fondé ce centre avec pour mission de créer une
-                            communauté dynamique. Avec plus de 10 ans d'expérience dans le domaine, il est connu pour son
-                            engagement envers l'excellence.</p>" 
-                        ?>
-                    </p>
-                    <br>
-                    <!-- <p><strong><?= $bddContentTexts['footer_third_menu_title']['content_fr'] ?? "Contact" ?>: </strong><?= $bddContentTexts['phone_content']['content_fr'] ?? "+229 90 00 00 00" ?> </p> -->
-                </div>
-            </div>
+            <div class="col-lg-6 mx-auto mb-3 mb-md-0 align-self-center text-container3">
+    <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
+    <p class="mt-3" style="font-size: 13px; text-align: justify;">
+        <?= $founder['description'] ?>
+    </p>
+    <div class="mt-3 text-center">
+        <button class="btn btn-success toggle-button" style="width:100%">Voir plus</button>
+    </div>
+</div>
         </div>
     </section>
 
@@ -98,6 +90,21 @@
         include('./includes/footer.php') ;    
     ?>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const paragraph = document.querySelector('.text-container3 p');
+        const toggleButton = document.querySelector('.toggle-button');
+
+        toggleButton.addEventListener('click', function() {
+            paragraph.classList.toggle('expanded');
+            
+            toggleButton.textContent = paragraph.classList.contains('expanded') 
+                ? 'Réduire' 
+                : 'Voir plus';
+        });
+    });
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

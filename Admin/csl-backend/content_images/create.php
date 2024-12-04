@@ -2,23 +2,31 @@
 require '../../../config/database.php';
 
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['image']['tmp_name'];
+        $originalFileName = $_FILES['image']['name'];
         $fileName = $_POST['name'] . '_' . time();
         $fileType = $_FILES['image']['type'];
 
-        // Déplacer l'image dans le dossier ../../../image/
-        $destinationPath = $fileName;
+        // Extraire l'extension du fichier
+        $fileExtension = strtolower(pathinfo($originalFileName, PATHINFO_EXTENSION));
+
+        // Ajouter l'extension au nom du fichier final
+        $destinationPath = $fileName . '.' . $fileExtension;
+
         if (move_uploaded_file($fileTmpPath, '../../../image/' . $destinationPath)) {
             // Enregistrer le nom de l'image dans la base de données
             $query = "INSERT INTO content_image_management (name, path, type) VALUES (?, ?, ?)";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$fileName, $destinationPath, $fileType]);
-             $_SESSION['error'] =  "L'image a été téléchargée et enregistrée dans la base de données.";
+            $_SESSION['error'] = "L'image a été téléchargée et enregistrée dans la base de données.";
         } else {
-             $_SESSION['error'] =  "Erreur lors du téléchargement de l'image.";
+            $_SESSION['error'] = "Erreur lors du téléchargement de l'image.";
         }
+    } else {
+        $_SESSION['error'] = "Erreur lors de la soumission du formulaire ou aucune image sélectionnée.";
     }
 }
 ?>

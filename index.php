@@ -5,6 +5,33 @@
         // Include navigation bar
         include('./includes/head.php') ;    
     ?>  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <style>
+        .slider-wrapper .slider-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(20%);
+            background-image: url("image/<?= $bddContentImages['slider_container_1_1733235750']['path'] ?? "2.png" ?>");
+            background-size: cover;
+            background-position: center;
+        }
+        .slider-wrapper .slider-item:nth-child(2):before {
+            background-image: url("image/<?= $bddContentImages['slider_container_2_1733235770']['path'] ?? "8.png" ?>");
+        }
+        .slider-wrapper .slider-item:nth-child(3):before {
+            background-image: url("image/<?= $bddContentImages['slider_container_3_1733235865']['path'] ?? "2.png" ?>");
+        }
+        .slider-wrapper .slider-item:nth-child(4):before {
+            filter: grayscale(25%) brightness(80%);
+            background-image: url("image/<?= $bddContentImages['slider_container_4_1733235883']['path'] ?? "8.png" ?>");
+        }
+
+    </style>
 </head>
 <body>
         
@@ -246,62 +273,67 @@ if (!empty($activities)) {
                                 setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
                                 $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
                                 ?>
-                                    <div class="card-item swiper-slide">
-                                        <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; padding-right:10px !important">
-                                            <div class="row">
-                                                <div class="col-6 mx-auto">
-                                                    <div class="position-relative">
-                                                        <div><img src="image/<?= $bddContentImages['event_default_image']['path'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
-                                                        <div class="tto">
-                                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                                <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
-                                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                                    <h4 class="text-center text-white fw-bold"><?= (substr($month, 0, 3)) ?></h4>
-                                                                </div>
+                                <div class="card-item swiper-slide">
+                                    <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                        <div class="row">
+                                            <div class="col-12 mx-auto">
+                                                <div class="position-relative">
+                                                    <div><img src="image/<?= $bddContentImages['event_default_image']['path'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                    <div class="tto">
+                                                        <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                            <h2 class="text-center text-white fw-bold" style="font-size: 13px;"><?= $day ?></h2>
+                                                            <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                                <h4 class="text-center text-white fw-bold" style="font-size: 13px;"><?= (substr($month, 0, 3)) ?></h4>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6 mx-auto">
+                                            </div>
+                                            <div class="col-12 mx-auto mt-3 pb-5">
+                                                <div class="text-container text-container2" onclick="toggleText(this)">
                                                     <p class="fw-bold pt-2">
-                                                        <?= htmlspecialchars($event['name']) ?>
+                                                      <?php echo htmlspecialchars($event['name']) ? implode(' ', array_slice(explode(' ', htmlspecialchars($event['name'])), 0, 1)) . '...' : "Events Name"; ?>
                                                     </p>
-                                                    <p class="mt-3 break">
+                                                    <p class="text-content text-content">
                                                         <?= $event['description'] ?>
                                                     </p>
+                                                    <span class="show-more" style="margin-top:10px !important;"><i class="bi bi-arrow-right-circle fs-3"></i></span>
                                                 </div>
                                             </div>
-                                            <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
                                         </div>
+                                        <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
                                     </div>
+                                </div>
                                 <?php
                             }
                         } else {
                             ?>
                                 <div class="card-item swiper-slide">
-                                    <div class="p-1 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                    <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
                                         <div class="row">
-                                            <div class="col-6 mx-auto">
+                                            <div class="col-12 mx-auto">
                                                 <div class="position-relative">
                                                     <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
                                                     <div class="tto">
                                                         <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                            <h2 class="text-center text-white fw-bold">12</h2>
+                                                            <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
                                                             <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                                <h4 class="text-center text-white fw-bold">Dec 24</h4>
+                                                                <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 mx-auto">
-                                                <p class="fw-bold">Lorem ipsum n dolor sit</p>
-                                                <p class="mt-3">
-                                                    Quisque commodo felis diam, eu viverra ipsum varius
-                                                </p>
+                                            <div class="col-12 mx-auto mt-3 pb-5">
+                                                <div class="text-container">
+                                                    <p class="text-content">
+                                                        This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                                    </p>
+                                                    <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
+                                        <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
                                     </div>
                                 </div>
                             <?php
@@ -324,18 +356,19 @@ if (!empty($activities)) {
                     if (!empty($founders)) {
                         foreach ($founders as $founder) {
                 ?>
-                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
-                        <img src="image/<?=  $founder['path'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
-                    </div>
-                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
-                        <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
-                        <p class="mt-3" style="font-size: 13px; text-align: justify;">
-                            <?=  $founder['description'] ?>
-                        </p>
-                        <div class="mt-3">
-                            <button class="btn btn-white text-white py-2 px-4" style="background-color: #61BC45;"><?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?></button>
-                        </div>
-                    </div>
+
+<div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
+    <img src="image/<?= $founder['path'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
+</div>
+<div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
+    <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
+    <p class="mt-3" style="font-size: 13px; text-align: justify;">
+        <?= $founder['description'] ?>
+    </p>
+    <div class="mt-3 text-center">
+        <button class="btn btn-success toggle-button" style="width:100%">Voir plus</button>
+    </div>
+</div>
                 <?php
                     }
                 }
@@ -350,10 +383,10 @@ if (!empty($activities)) {
                 <h2 class="fw-bold text-white"><?= $bddContentTexts['join_community']['content_fr'] ?? "Join Our Community" ?></h2>
                 <form class="mt-3" action="" method="POST">
                     <div class="mb-3">
-                        <input name="name" type="text" class="form-control" placeholder="Name *" style="border-radius: 0;">
+                        <input name="name" type="text" class="form-control" placeholder="Nom *" style="border-radius: 0;">
                     </div>
                     <div class="mb-3">
-                        <input name="email" type="email" class="form-control" placeholder="Email Address *" style="border-radius: 0;">
+                        <input name="email" type="email" class="form-control" placeholder="Adresse Email *" style="border-radius: 0;">
                     </div>
                     <div class="mb-3">
                         <input name="phone" required pattern="^\+?[0-9]*$" placeholder="+229190000000" type="text" class="form-control" placeholder="Phone No.*" style="border-radius: 0;">
@@ -367,7 +400,7 @@ if (!empty($activities)) {
         </div>
     </section>
     <br><br>
-    <section class="container-lg" id="section3">
+    <section class="container-fluid" id="section3">
         <h2 class="fw-bold text-center mb-4"><?= $bddContentTexts['what_people_saying']['content_fr'] ?? "What People are Saying" ?></h2>
 
         <div class="swiper">
@@ -455,48 +488,55 @@ if (!empty($activities)) {
     </section>
     <br><br>
     <section class="container-fluid my-4" style="padding-left: 0px; padding-right: 0px;">
-        <div class="hero1">
-            <section class="search-section posi">
-                <ul class="nav search-tabs">
-                  <li class="search-item">
-                    <a class="search-link active" href="#" data-target="destination"><?= $bddContentTexts['first_pane_tittle_1']['content_fr'] ?? "Football fields" ?></a>
-                  </li>
-                  <li class="search-item">
-                    <a class="search-link" href="#" data-target="business-trip"><?= $bddContentTexts['first_pane_tittle_2']['content_fr'] ?? "Gym & dance studio" ?></a>
-                  </li>
-                  <li class="search-item">
-                    <a class="search-link" href="#" data-target="featured"><?= $bddContentTexts['first_pane_tittle_3']['content_fr'] ?? "Event spaces" ?></a>
-                  </li>
-                  <li class="search-item">
-                    <a class="search-link" href="#" data-target="featured1"><?= $bddContentTexts['first_pane_tittle_4']['content_fr'] ?? "Cultural hall" ?></a>
-                  </li>
-                </ul>
-              
-                <!-- Contenu dynamique pour chaque onglet -->
-                <div class="text-white search-content" id="destination">
-                  <p><?= $bddContentTexts['first_pane_content_1']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
-                </div>
-              
-                <div class="text-white search-content" id="business-trip" style="display: none;">
-                <p><?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "bbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
-                </div>
-              
-                <div class="text-white search-content" id="featured" style="display: none;">
-                <p><?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "ccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
-                </div>
-
-                <div class="text-white search-content" id="featured1" style="display: none;">
-                <p><?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "ddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?></p>
-                </div>
-              </section>
+        <div class="slider-container">
+        <!-- Slider List Items -->
+        <div class="slider-wrapper swiper-wrapper" style="margin:0px !important;">
+        <div class="slider-item swiper-slide">
+            <div class="slide-content">
+                <?= $bddContentTexts['first_pane_content_1']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>
+            </div>
         </div>
+        <div class="slider-item swiper-slide">
+            <div class="slide-content">
+                <?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "bbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
+            </div>
+        </div>
+        <div class="slider-item swiper-slide">
+            <div class="slide-content">
+                <?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "ccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
+            </div>
+        </div>
+        <div class="slider-item swiper-slide">
+            <div class="slide-content">
+                <?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "ddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
+            </div>
+        </div>
+        </div>
+
+        <!-- Slider Pagination -->
+        <div class="slider-controls">
+        <ul class="slider-pagination">
+            <div class="slider-indicator"></div>
+            <li class="slider-tab current"><?= $bddContentTexts['first_pane_tittle_1']['content_fr'] ?? "Football fields" ?></li>
+            <li class="slider-tab"><?= $bddContentTexts['first_pane_tittle_2']['content_fr'] ?? "Gym & dance studio" ?></li>
+            <li class="slider-tab"><?= $bddContentTexts['first_pane_tittle_3']['content_fr'] ?? "Event spaces" ?></li>
+            <li class="slider-tab"><?= $bddContentTexts['first_pane_tittle_4']['content_fr'] ?? "Cultural hall" ?></li>
+        </ul>
+        </div>
+
+        <!-- Slider Navigations (Prev/Next) -->
+        <div class="slider-navigations">
+        <button id="slide-prev" class="material-symbols-rounded">Droite</button>
+        <button id="slide-next" class="material-symbols-rounded">Gauche</button>
+        </div>
+    </div>
     </section>
     
     <?php
         // Include navigation bar
         include('./includes/footer.php') ;    
     ?>
-
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
@@ -588,6 +628,114 @@ if (!empty($activities)) {
       AOS.init();
     </script>
 
+<script>
+    const sliderControls = document.querySelector(".slider-controls");
+    const sliderTabs = sliderControls.querySelectorAll(".slider-tab");
+    const sliderIndicator = sliderControls.querySelector(".slider-indicator");
 
+    // Update the indicator
+    const updateIndicator = (tab, index) => {
+    document.querySelector(".slider-tab.current")?.classList.remove("current");
+    tab.classList.add("current");
+
+    sliderIndicator.style.transform = `translateX(${tab.offsetLeft - 20}px)`;
+    sliderIndicator.style.width = `${tab.getBoundingClientRect().width}px`;
+
+    // Calculate the scroll position and scroll smoothly
+    const scrollLeft = sliderTabs[index].offsetLeft - sliderControls.offsetWidth / 2 + sliderTabs[index].offsetWidth / 2;
+    sliderControls.scrollTo({ left: scrollLeft, behavior: "smooth" });
+    }
+
+    // Initialize swiper instance
+    const swiper = new Swiper(".slider-container", {
+    effect: "fade",
+    speed: 1300,
+    autoplay: { delay: 4000 },
+    navigation: {
+        prevEl: "#slide-prev",
+        nextEl: "#slide-next",
+    },
+    on: {
+        // Update indicator on slide change
+        slideChange: () => {
+        const currentTabIndex = [...sliderTabs].indexOf(sliderTabs[swiper.activeIndex]);
+        updateIndicator(sliderTabs[swiper.activeIndex], currentTabIndex);
+        },
+        reachEnd: () => swiper.autoplay.stop(),
+    },
+    });
+
+    // Update the slide on tab click
+    sliderTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+        swiper.slideTo(index);
+        updateIndicator(tab, index);
+    });
+    });
+
+    updateIndicator(sliderTabs[0], 0);
+    window.addEventListener("resize", () => updateIndicator(sliderTabs[swiper.activeIndex], 0));
+  </script>
+      <script>
+        document.querySelector('.show-more').addEventListener('click', function () {
+            const textContainer = this.closest('.text-container');
+            textContainer.classList.toggle('expanded');
+            if (textContainer.classList.contains('expanded')) {
+                this.textContent = '...'; // Réinitialise les points de suspension
+            } else {
+                this.textContent = '...'; // Affiche les points de suspension lorsque le texte est masqué
+            }
+        });
+    </script>
+    <script>
+        document.querySelector('.more').addEventListener('click', function () {
+            const textContainer = this.closest('.text-container');
+            textContainer.classList.toggle('expanded');
+            if (textContainer.classList.contains('expanded')) {
+                this.textContent = '...'; // Réinitialise les points de suspension
+            } else {
+                this.textContent = '...'; // Affiche les points de suspension lorsque le texte est masqué
+            }
+        });
+    </script>
+    <script>
+        document.querySelector('.more1').addEventListener('click', function () {
+            const textContainer = this.closest('.text-container');
+            textContainer.classList.toggle('expanded');
+            if (textContainer.classList.contains('expanded')) {
+                this.textContent = '...'; // Réinitialise les points de suspension
+            } else {
+                this.textContent = '...'; // Affiche les points de suspension lorsque le texte est masqué
+            }
+        });
+    </script>
+    <script>
+        document.querySelector('.more2').addEventListener('click', function () {
+            const textContainer = this.closest('.text-container');
+            textContainer.classList.toggle('expanded');
+            if (textContainer.classList.contains('expanded')) {
+                this.textContent = '...'; // Réinitialise les points de suspension
+            } else {
+                this.textContent = '...'; // Affiche les points de suspension lorsque le texte est masqué
+            }
+        });
+    </script>
+    
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const paragraph = document.querySelector('.text-container3 p');
+        const toggleButton = document.querySelector('.toggle-button');
+
+        toggleButton.addEventListener('click', function() {
+            paragraph.classList.toggle('expanded');
+            
+            toggleButton.textContent = paragraph.classList.contains('expanded') 
+                ? 'Réduire' 
+                : 'Voir plus';
+        });
+    });
+</script>
 </body>
 </html>
