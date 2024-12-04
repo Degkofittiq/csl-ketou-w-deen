@@ -121,13 +121,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -139,24 +139,24 @@
             </div>
 
             <div class="pos">
-                <p><strong style="color: #61BC45;"> <?= $bddContentTexts['welcome_text']['content_fr'] ?? "Welcome to CSL Arojú Owò" ?> </strong></p>
-                <h1 class="text-white" style="font-weight: 900;">
+                <p><strong style="color: #61BC45; font-size:2rem;"> <?= $bddContentTexts['welcome_text']['content_fr'] ?? "Welcome to CSL Arojú Owò" ?> </strong></p>
+                <h1 class="text-white" style="font-weight: 900; font-size:3.3rem;">
                 <?= $bddContentTexts['text_after_welcome']['content_fr'] ?? "The Heart of <br> Sports & Leisure!" ?> 
                     
                 </h1>
-                <p class="text-white"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
-                <div class="row mt-3">
-                    <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
+                <p class="text-white mt-3"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
+                <div class="row mt-4 divv">
+                    <div class="col-lg-6 mb-3 mx-auto">
                         <div>
-                            <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='#section3'">
+                            <button class="btn btn-ss p-3 w-100 text-white" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section3'">
                                 <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Explore Activities" ?>
                                 <i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
+                    <div class="col-lg-6 mb-3 mx-auto">
                         <div>
-                            <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='#section4'">
+                            <button class="btn btn-ss p-3 w-100 text-white" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section4'">
                             <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?>
                             <i class="bi bi-arrow-right-circle"></i>
                             </button>
@@ -167,15 +167,15 @@
         </div>
     </section>
     <br><br>
-    <section class="container-lg my-3" id="section3">
-        <div class="row">
-            <div class="col-12 col-md-4 mx-auto mb-3">
-                <h2 class="text-center fw-bold" style="text-transform: uppercase;"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
+    <section class="container-lg my-4" id="section3">
+        <div class="row py-4 px-2">
+            <div class="col-12 col-md-5 mx-auto mb-3 align-self-center">
+                <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: 3rem;"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-5"></div>
             <div class="col-12 col-md-2 mx-auto mb-3">
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-white px-3 text-white" style="background: #61BC45;" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
+                    <button class="btn btn-white p-3 fs-4 text-white" style="background: #61BC45;" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
                 </div>
             </div>
         </div>
@@ -256,6 +256,21 @@ if (!empty($activities)) {
                     </div>
                 </div>
             </div>
+
+            <div class="carousel-wrap">
+                <div class="owl-carousel">
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 1"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 2"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 3"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 4"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 5"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 6"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 7"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 8"></div>
+                <div class="item"><img src="http://placehold.it/150x150" alt="Image 9"></div>
+                </div>
+            </div>
+
             <div class="swiper mt-4">
                 <div class="slider-wrapper">
                   <div class="card-list swiper-wrapper">
@@ -736,6 +751,40 @@ if (!empty($activities)) {
                 : 'Voir plus';
         });
     });
+</script>
+
+
+ <!-- jQuery -->
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- OwlCarousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [
+        "<i class='bi bi-chevron-left fs-4'></i>",
+        "<i class='bi bi-chevron-right  fs-4'></i>"
+      ],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    });
+  });
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 *{
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -225,14 +225,98 @@
   .container-lg {
       max-width: 1440px; /* Augmente la largeur maximale sur très grands écrans */
   }
+  .nav-item .nav-link{
+    font-size: 2rem !important;
+  }
+  .ftd{
+    font-size: 1.8rem !important;
+  }
+  .divv{
+    width: 80% !important;
+  }
 }
-
+@media (min-width: 2700px) {
+  .divv{
+    width: 60% !important;
+  }
+}
+.nav-item .nav-link{
+  font-size: 1.3rem;
+}
+.ftd{
+  font-size: 1.3rem;
+}
 /*  */
 .pos{
   position: absolute;
   top: 40%;
   left: 10%;  
+  width: 40%;
 }
+
+@media (max-width: 1230px) {
+  .pos{
+    position: absolute;
+    top: 30%;
+    left: 10%;  
+    width: 50%;
+  }
+@media (min-width: 552px) {
+  .pos{
+    position: absolute;
+    top: 30%;
+    left: 10%;  
+    width: 100% !important;
+  }
+}
+/*  */
+.carousel-wrap {
+  margin: 90px auto;
+  padding: 0 5%;
+  width: 80%;
+  position: relative;
+}
+
+.owl-carousel .item img {
+  display: block;
+  margin: 0 auto;
+}
+
+.owl-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.owl-nav .owl-prev,
+.owl-nav .owl-next {
+  position: absolute;
+  color: #000;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.owl-nav .owl-prev {
+  left: 10px; /* Ajuster cette valeur pour déplacer à gauche */
+}
+
+.owl-nav .owl-next {
+  right: 10px; /* Ajuster cette valeur pour déplacer à droite */
+}
+
+/* Ajouter un effet de hover pour l'icon */
+.owl-nav .owl-prev:hover,
+.owl-nav .owl-next:hover {
+  transform: scale(1.2); /* Agrandissement à la survol */
+}
+
+/*  */
 
 /* Carousel Styling */
 .carousel {

@@ -80,10 +80,10 @@
                     <div class="col-8 mx-auto">
                         <div class="d-flex justify-content-end">
                             <div class="me-3 pe-3" style="border-right: 1px solid #00000033;">
-                                <p><i class="bi bi-geo-alt-fill fs-3 mt-4 me-2"></i><?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?></p>
+                                <p class="ftd"><i class="bi bi-geo-alt-fill mt-4 me-2"></i><?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?></p>
                             </div>
                             <div class="">
-                                <p><i class="bi bi-whatsapp fs-3 mt-4 me-2"></i><?= $bddContentTexts['call_totay_text']['content_fr'] ?? "Call today" ?>: <?= $bddContentTexts['phone_content']['content_fr'] ?? "09 290 38200" ?></p>
+                                <p class="ftd"><i class="bi bi-whatsapp mt-4 me-2"></i><?= $bddContentTexts['call_totay_text']['content_fr'] ?? "Call today" ?>: <?= $bddContentTexts['phone_content']['content_fr'] ?? "09 290 38200" ?></p>
                             </div>
                         </div>
                     </div>
@@ -91,29 +91,29 @@
                 <span class="d-block" style="border-bottom: 1px solid #00000033; margin-left: -.7rem;"></span>
                 <div class="py-3">
                     <div class="">
-                        <ul class="list-unstyled d-flex justify-content-end">
-                            <li class="nav-item mt-2">
-                                <a class="nav-link" style="font-weight: 700;" 
+                        <ul class="list-unstyled d-flex justify-content-between align-item-center ps-5">
+                            <li class="nav-item align-self-center">
+                                <a class="nav-link"
                                     href="index.php"><?= $bddContentTexts['nav_link_1']['content_fr'] ?? "Accueil" ?></a>
                             </li>
-                            <li class="nav-item mt-2 ms-3">
-                                <a class="nav-link" style="font-weight: 700;"
+                            <li class="nav-item align-self-center">
+                                <a class="nav-link"
                                     href="about.php"><?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos" ?></a>
                             </li>
-                            <li class="nav-item mt-2 ms-3">
-                                <a class="nav-link" style="font-weight: 700;" 
+                            <li class="nav-item align-self-center">
+                                <a class="nav-link"
                                     href="index.php#section3"><?= $bddContentTexts['nav_link_3']['content_fr'] ?? "Activities" ?></a>
                             </li>
-                            <li class="nav-item mt-2 ms-3">
-                                <a class="nav-link" style="font-weight: 700;" 
+                            <li class="nav-item align-self-center">
+                                <a class="nav-link"
                                     href="index.php#section4"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a>
                             </li>
-                            <li class="nav-item mt-2 ms-3">
-                                <a class="nav-link" style="font-weight: 700;" 
+                            <li class="nav-item align-self-center">
+                                <a class="nav-link" 
                                     href="index.php#section5"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a>
                             </li>
-                            <li class="nav-item mb-3 ms-3">
-                                <button class="btn btn-white px-3 text-white" style="background: #61BC45;" onclick="window.location.href='contact.php'"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Join Now" ?> <i class="bi bi-arrow-right-circle"></i></button>
+                            <li class="nav-item">
+                                <button class="btn btn-white p-3 text-white" style="background: #61BC45;" onclick="window.location.href='contact.php'"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Join Now" ?> <i class="bi bi-arrow-right-circle"></i></button>
                             </li>
                         </ul>
                     </div>
