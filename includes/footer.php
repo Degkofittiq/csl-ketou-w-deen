@@ -1,4 +1,3 @@
-
 <?php
 
     // Inclure le fichier PHPMailer
@@ -100,12 +99,12 @@
                 <div class="col-lg-2 mx-auto mb-3 mb-md-0">
                     <h5 class="fw-bold"><?= $bddContentTexts['contactez_nous_titre']['content_fr'] ?? "Contactez-nous" ?></h5>
                     <ul class="list-unstyled">
-                        <li><a href="" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_1']['content_fr'] ?? "Accueil" ?></a></li>
-                        <li><a href="" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos" ?></a></li>
-                        <li><a href="" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_3']['content_fr'] ?? "Activities" ?></a></li>
-                        <li><a href="" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a></li>
-                        <li><a href="" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Nous rejoindre" ?></a></li>
-                        <li><a href="" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a></li>
+                        <li><a href="index.php" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_1']['content_fr'] ?? "Accueil" ?></a></li>
+                        <li><a href="about.php" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos" ?></a></li>
+                        <li><a href="index.php#section3" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_3']['content_fr'] ?? "Activities" ?></a></li>
+                        <li><a href="index.php#section6" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a></li>
+                        <li><a href="contact.php" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Nous rejoindre" ?></a></li>
+                        <li><a href="index.php#upcommingEvent" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 mx-auto mb-3 mb-md-0">

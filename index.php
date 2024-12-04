@@ -244,7 +244,7 @@ if (!empty($activities)) {
 ?>
     </section>
     <br><br>
-    <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;">
+    <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;"id="upcommingEvent">
         <div class="container-lg">
             <div class="row mt-3">
                 <div class="col-12 col-md-4 mx-auto mb-3">

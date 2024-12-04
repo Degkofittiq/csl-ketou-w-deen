@@ -106,11 +106,11 @@
                             </li>
                             <li class="nav-item align-self-center">
                                 <a class="nav-link"
-                                    href="index.php#section4"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a>
+                                    href="index.php#section6"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a>
                             </li>
                             <li class="nav-item align-self-center">
                                 <a class="nav-link" 
-                                    href="index.php#section5"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a>
+                                    href="index.php#upcommingEvent"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a>
                             </li>
                             <li class="nav-item">
                                 <button class="btn btn-white p-3 text-white" style="background: #61BC45;" onclick="window.location.href='contact.php'"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Join Now" ?> <i class="bi bi-arrow-right-circle"></i></button>
@@ -143,11 +143,11 @@
                         <a class="nav-link" style="font-weight: 700;" href="index.php#section3"><?= $bddContentTexts['nav_link_3']['content_fr'] ?? "Activities" ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="font-weight: 700;" href="index.php#section4"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a>
+                        <a class="nav-link" style="font-weight: 700;" href="index.php#section6"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="font-weight: 700;" 
-                                href="index.php#section5"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a>
+                                href="index.php#upcommingEvent"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a>
                     </li>
                     <li class="nav-item">
                         <button class="btn px-3 text-white" style="background: #61BC45;" onclick="window.location.href='contact.php'">
