@@ -61,7 +61,7 @@
             </div>
         </div>
     </section>
-    <section class="my-5 container-lg">
+    <section class="my-5" style="margin:48px 150px !important; max-with: auto !important" >
         <div class="row">
             <?php
                 $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
@@ -69,7 +69,7 @@
                 if (!empty($activities)) {
                     foreach ($activities as $activity) {
                         ?>
-                            <div class="col-lg-4 mx-auto mb-3">
+                            <div class="col-lg-4 mx-auto mb-5">
                                 <div class="relative">
                                     <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 30vh !important;object-fit:cover">
                                     <div class="ppos d-none d-lg-block">
