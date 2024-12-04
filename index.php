@@ -294,7 +294,7 @@ if (!empty($activities)) {
                                         <div class="row">
                                             <div class="col-12 mx-auto">
                                                 <div class="position-relative">
-                                                    <div><img src="image/<?= $bddContentImages['event_default_image']['path'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
+                                                    <div><img src="image/<?= $event['image'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
                                                     <div class="tto">
                                                         <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
                                                             <h2 class="text-center text-white fw-bold" style="font-size: 13px;"><?= $day ?></h2>
@@ -372,19 +372,18 @@ if (!empty($activities)) {
                     if (!empty($founders)) {
                         foreach ($founders as $founder) {
                 ?>
-
-<div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
-    <img src="image/<?= $founder['path'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
-</div>
-<div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
-    <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
-    <p class="mt-3" style="font-size: 13px; text-align: justify;">
-        <?= $founder['description'] ?>
-    </p>
-    <div class="mt-3 text-center">
-        <button class="btn btn-success toggle-button" style="width:100%">Voir plus</button>
-    </div>
-</div>
+                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
+                        <img src="image/<?= $founder['path'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
+                    </div>
+                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
+                        <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
+                        <p class="mt-3" style="font-size: 13px; text-align: justify;">
+                            <?= $founder['description'] ?>
+                        </p>
+                        <div class="mt-3 text-center">
+                            <button class="btn btn-success toggle-button" style="width:100%">Voir plus</button>
+                        </div>
+                    </div>
                 <?php
                     }
                 }
@@ -423,75 +422,43 @@ if (!empty($activities)) {
             <div class="card-wrapper">
               <!-- Card slides container -->
               <ul class="card-list swiper-wrapper">
-                <li class="card-item swiper-slide ccsc">
-                    <div class="">
-                        <div class="row p-5" style="background-color: #F2F2F2;">
-                            <div class="col-3 mx-auto">
-                                <img src="image/<?= $bddContentImages['highly_recommended_image_1']['path'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
-                            </div>
-                            <div class="col-9">
-                                <div class="d-flex">
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                <?php
+                    $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
+                    $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($testimonials as $testimonial) {
+                        ?>
+
+                            <li class="card-item swiper-slide ccsc">
+                                <div class="">
+                                    <div class="row p-5" style="background-color: #F2F2F2;">
+                                        <div class="col-3 mx-auto">
+                                            <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="d-flex">
+                                                <?php 
+                                                    for ($i=0; $i <  $testimonial['note']  ; $i++) { 
+                                                        ?>
+                                                            <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                                        <?php
+                                                    } 
+                                                ?>
+
+                                            </div>
+                                            <p><strong><?= $testimonial['title']  ?? "Highly recommended!" ?></strong></p>
+                                            <p>
+                                                <?= $testimonial['message']  ?? "111Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
+                                            </p>
+                                            <p>-<?= $testimonial['name']  ?? "Alena Josksowinsigs!" ?></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p><strong><?= $bddContentTexts['highly_recommended']['content_fr'] ?? "Highly recommended!" ?></strong></p>
-                                <p>
-                                    <?= $bddContentTexts['highly_recommended_content_1']['content_fr'] ?? "111Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
-                                </p>
-                                <p>-<?= $bddContentTexts['highly_recommended_name_1']['content_fr'] ?? "Alena Josksowinsigs!" ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="card-item swiper-slide ccsc">
-                    <div class="">
-                        <div class="row p-5" style="background-color: #F2F2F2;">
-                            <div class="col-3 mx-auto">
-                                <img src="image/<?= $bddContentImages['highly_recommended_image_2']['path'] ?? "highly_recommended_image_2.png" ?>" alt="Person 1" class="img-fluid w-100">
-                            </div>
-                            <div class="col-9">
-                                <div class="d-flex">
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                </div>
-                                <p><strong><?= $bddContentTexts['highly_recommended_2']['content_fr'] ?? "Highly recommended!222" ?></strong></p>
-                                <p>
-                                <?= $bddContentTexts['highly_recommended_content_2']['content_fr'] ?? "333Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
-                                </p>
-                                <p>-<?= $bddContentTexts['highly_recommended_name_2']['content_fr'] ?? "Test Josksowinsigs!" ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="card-item swiper-slide ccsc">
-                    <div class="">
-                        <div class="row p-5" style="background-color: #F2F2F2;">
-                            <div class="col-3 mx-auto">
-                                <img src="image/<?= $bddContentImages['highly_recommended_image_3']['path'] ?? "highly_recommended_image_3.png" ?>" alt="Person 1" class="img-fluid w-100">
-                            </div>
-                            <div class="col-9">
-                                <div class="d-flex">
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                </div>
-                                <p><strong><?= $bddContentTexts['highly_recommended_3']['content_fr'] ?? "Highly recommended!333" ?></strong></p>
-                                <p>
-                                <?= $bddContentTexts['highly_recommended_content_3']['content_fr'] ?? "333Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
-                                </p>
-                                <p>-<?= $bddContentTexts['highly_recommended_name_3']['content_fr'] ?? "Test 3 Josksowinsigs!" ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                            </li>
+
+                        <?php  
+                        
+                    }
+                ?>
               </ul>
                <!-- Pagination -->
               <div class="swiper-pagination"></div>

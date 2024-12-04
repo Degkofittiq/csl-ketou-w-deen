@@ -1,5 +1,5 @@
 <?php
-session_start();  // Décommentez cette ligne pour démarrer la session
+// session_start();  // Décommentez cette ligne pour démarrer la session
 
 require('../config/database.php');
 

@@ -55,6 +55,12 @@
 </li>
 <!-- Nav Item - Charts -->
 <li class="nav-item">
+    <a class="nav-link" href="../testimonials/">
+        <i class="fas fa-chevron-right"></i>
+        <span>Temoignages</span></a>
+</li>
+<!-- Nav Item - Charts -->
+<li class="nav-item">
     <a class="nav-link" href="../events/">
         <i class="fas fa-chevron-right"></i>
         <span>Nos Evenements</span></a>
