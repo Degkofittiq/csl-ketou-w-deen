@@ -121,13 +121,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -147,7 +147,7 @@
                 <p class="text-white mt-3"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
                 <div class="row mt-4 divv">
                     <div class="col-lg-6 mb-3 mx-auto">
-                        <div>
+                        <div class="buuton">
                             <button class="btn btn-ss p-3 w-100 text-white" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section3'">
                                 <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Explore Activities" ?>
                                 <i class="bi bi-arrow-right-circle"></i>
@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 mb-3 mx-auto">
-                        <div>
+                        <div class="buuton">
                             <button class="btn btn-ss p-3 w-100 text-white" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section4'">
                             <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?>
                             <i class="bi bi-arrow-right-circle"></i>
@@ -170,12 +170,12 @@
     <section class="container-lg my-4" id="section3">
         <div class="row py-4 px-2">
             <div class="col-12 col-md-5 mx-auto mb-3 align-self-center">
-                <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: 3rem;"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
+                <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
             </div>
-            <div class="col-md-5"></div>
-            <div class="col-12 col-md-2 mx-auto mb-3">
+            <div class="col-md-4"></div>
+            <div class="col-12 col-md-3 mx-auto mb-3">
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-white p-3 fs-4 text-white" style="background: #61BC45;" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
+                    <button class="btn btn-white p-3 text-white" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
                 </div>
             </div>
         </div>
@@ -218,6 +218,7 @@
               <div class="swiper-pagination"></div>
             </div>
           </div>
+    </section>
 <?php
 
 $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");

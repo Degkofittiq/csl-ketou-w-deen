@@ -261,12 +261,36 @@
     left: 10%;  
     width: 50%;
   }
-@media (min-width: 552px) {
+}
+@media (max-width: 900px) {
   .pos{
     position: absolute;
-    top: 30%;
+    top: 15%;
     left: 10%;  
-    width: 100% !important;
+    width: 50%;
+  }
+  .pos p strong {
+    font-size: 1rem !important;
+  }
+  .pos h1{
+    font-size: 2rem !important;
+  }
+}
+@media (max-width: 592px) {
+  .pos{
+    position: absolute;
+    top: 10%;
+    left: 10%;  
+    width: 70% !important;
+  }
+  .pos p strong {
+    font-size: 1rem !important;
+  }
+  .pos h1{
+    font-size: 2rem !important;
+  }
+  .buuton{
+    white-space: none;
   }
 }
 /*  */
