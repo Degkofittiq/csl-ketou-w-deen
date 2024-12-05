@@ -313,7 +313,7 @@
 
                                 ?>
                                     <div class="unique-carousel-item">
-                                        <div class="py-5 px-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; height: 30vh;">
+                                        <div class="pb-5 pt-5 px-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; height: 35vh;">
                                             <div class="row">
                                                 <div class="col-5 mx-auto">
                                                     <div class="position-relative">
@@ -330,7 +330,7 @@
                                                 </div>
                                                 <div class="col-7 mx-auto mt-3 pb-5">
                                                 <div class="text-container text-container2" onclick="toggleText(this)">
-                                                    <p class="fw-bold pt-2">
+                                                    <p class="fw-bold pt-2" style="margin-bottom:5px !important;">
                                                       <?= $event['name'] ? $event['name'] : "Events Name"; ?>
                                                     </p>
                                                     <p class="text-content text-content">

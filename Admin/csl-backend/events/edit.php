@@ -18,12 +18,20 @@ if (isset($_GET['id'])) {
             $date = $_POST['date'];
             $description = $_POST['description'];
 
+    if (strlen($name) > 50) {
+        $_SESSION['success'] = "Le nom dépasse 50 caractères.";
+    }elseif (strlen($description) > 158) {
+        $_SESSION['success'] = "La description dépasse 160 caractères.";
+    }else{
+        
             $stmt = $pdo->prepare("UPDATE events SET name = ?, date = ?, description = ? WHERE id = ?");
             $stmt->execute([$name, $date, $description, $id]);
 
             // Rediriger vers la page des détails après la mise à jour
             header("Location: edit.php?id=" . $id);
             // exit;
+    
+    }
         }
     } else {
          $_SESSION['error'] =  "L'élément demandé n'existe pas.";

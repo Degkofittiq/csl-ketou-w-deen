@@ -8,10 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'];
     $description = $_POST['description'];
 
+    if (strlen($name) > 50) {
+        $_SESSION['success'] = "Le nom dépasse 50 caractères.";
+    }elseif (strlen($description) > 158) {
+        $_SESSION['success'] = "La description dépasse 160 caractères.";
+    }else{
+        
     $stmt = $pdo->prepare("INSERT INTO events (name, date, description) VALUES (?, ?, ?)");
     $stmt->execute([$name, $date, $description]);
 
     $_SESSION['error'] =  "Élément ajouté avec succès.";
+    
+    }
+
 }
 
 ?>
