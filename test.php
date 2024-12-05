@@ -474,22 +474,22 @@ if (!empty($activities)) {
         <div class="slider-wrapper swiper-wrapper" style="margin:0px !important;">
         <div class="slider-item swiper-slide">
             <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_1']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>
+                <?= $bddContentTexts['first_pane_content_1']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum." ?>
             </div>
         </div>
         <div class="slider-item swiper-slide">
             <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "bbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
+                <?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "bbbbbbbbbbbbbbLorem ipsum." ?>            
             </div>
         </div>
         <div class="slider-item swiper-slide">
             <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "ccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
+                <?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "ccccccccccccccccLorem ipsum." ?>            
             </div>
         </div>
         <div class="slider-item swiper-slide">
             <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "ddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
+                <?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "ddddddddddddddddddddddLorem ipsum." ?>            
             </div>
         </div>
         </div>

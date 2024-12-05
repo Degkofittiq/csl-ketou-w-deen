@@ -52,6 +52,22 @@
         border-bottom: 3px solid white; /* Bordure active sous le lien */
         font-weight: 800;
         }
+
+        .swiper-wrapper.personnalise {
+            display: flex;
+            overflow: hidden;
+            gap: 20px; /* Espacement entre les blocs */
+        }
+        .swiper-slide.personnalise  {
+            flex: 0 0 50%; /* Chaque bloc occupe 50% de l'espace */
+            box-sizing: border-box; /* Inclure padding et bordure dans la largeur */
+            transition: transform 0.3s ease-in-out; /* Pour les animations */
+        }
+        @media (max-width: 768px) {
+            .swiper-slide.personnalise  {
+                flex: 0 0 100%; /* 1 bloc visible sur petits écrans */
+            }
+        }
     </style>
 </head>
 <body>
@@ -203,92 +219,33 @@
             <!-- carousel3 -->
             <div class="custom-carousel-wrapper my-4">
                 <div class="custom-carousel-content">
-                    <div class="custom-carousel-item">
-                        <div class="relative">
-                            <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                            <div class="ppos d-none d-lg-block">
-                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
-                            </div>
-                        </div>
-                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            <h2 class="mt-5 text-center fw-bold">Football</h2>
-                            <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
-                            <div class="mt-3">
-                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
-                                    Learn More 
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-carousel-item">
-                        <div class="relative">
-                            <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                            <div class="ppos d-none d-lg-block">
-                                <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
-                            </div>
-                        </div>
-                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
-                            <p class="mt-3 text-center">Stay active with our <br>
-                                vibrant classes</p>
-                            <div class="mt-3">
-                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
-                                    Learn More 
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-carousel-item">
-                        <div class="relative">
-                            <img src="image/5.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                            <div class="ppos d-none d-lg-block">
-                                <img src="image/Group 3.png" alt="" class="image-fluid" style="width: 90%;">
-                            </div>
-                        </div>
-                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            <h2 class="mt-5 text-center fw-bold">Cultural Events</h2>
-                            <p class="mt-3 text-center">Celebrate tradition and unity</p>
-                            <div class="mt-5">
-                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
-                                    Learn More 
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-carousel-item">
-                        <div class="relative">
-                            <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                            <div class="ppos d-none d-lg-block">
-                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
-                            </div>
-                        </div>
-                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            <h2 class="mt-5 text-center fw-bold">Football</h2>
-                            <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
-                            <div class="mt-3">
-                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
-                                    Learn More 
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="custom-carousel-item">
-                        <div class="relative">
-                            <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                            <div class="ppos d-none d-lg-block">
-                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
-                            </div>
-                        </div>
-                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                            <h2 class="mt-5 text-center fw-bold">Football</h2>
-                            <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
-                            <div class="mt-3">
-                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
-                                    Learn More 
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+                        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        if (!empty($activities)) {
+                            foreach ($activities as $activity) {
+                                ?>
+                                    <div class="custom-carousel-item">
+                                        <div class="relative">
+                                            <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <div class="ppos d-none d-lg-block">
+                                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                                            </div>
+                                        </div>
+                                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                            <h2 class="mt-5 text-center fw-bold"><?= $activity['name'] ? $activity['name'] : "Activitie Name"; ?></h2>
+                                            <p class="mt-3 text-center"><?php echo $activity['description'] ? implode(' ', array_slice(explode(' ', $activity['description']), 0, 6)) . '...' : "Description"; ?></p>
+                                            <div class="mt-3">
+                                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal-<?= $activity['id'] ?>">
+                                                <?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php
+                            }
+                        }
+                    ?>
                 </div>
 
                 <div class="custom-navigation-buttons">
@@ -298,70 +255,29 @@
 
                 <div class="custom-pagination-container"></div>
             </div>
-
-
-        <div class="swiper">
-            <div class="card-wrapper">
-              <!-- Card slides container -->
-              <ul class="card-list swiper-wrapper">
-                    <?php
-                        $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
-                        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        if (!empty($activities)) {
-                            foreach ($activities as $activity) {
-                                ?>
-                                    <li class="card-item swiper-slide">
-                                        <div class="relative">
-                                            <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 30vh !important;object-fit:cover">
-                                            <div class="ppos d-none d-lg-block">
-                                                <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
-                                            </div>
-                                        </div>
-                                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                                            <h2 class="mt-5 text-center fw-bold"><?php echo $activity['name'] ? implode(' ', array_slice(explode(' ', $activity['name']), 0, 1)) . '' : "Activitie Name"; ?></h2>
-                                            <p class="mt-3 text-center">
-                                                <?php echo $activity['description'] ? implode(' ', array_slice(explode(' ', $activity['description']), 0, 6)) . '...' : "Description"; ?>
-                                            </p>
-                                            <div class="mt-3">
-                                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal-<?= $activity['id'] ?>">
-                                                    <?= $bddContentTexts['learn_more']['content_fr'] ?? "Learn More" ?>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                <?php
-                            }
-                        }
-                    ?>
-              </ul>
-               <!-- Pagination -->
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
     </section>
-<?php
-
-$stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
-$activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-if (!empty($activities)) {
-    foreach ($activities as $activity) {
-?>
-    <div class="modal fade" id="Modal-<?= $activity['id'] ?>" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <p>
-                    <?php echo $activity['description']; ?>
-                </p>
+    <?php
+        $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($activities)) {
+            foreach ($activities as $activity) {
+        ?>
+            <div class="modal fade" id="Modal-<?= $activity['id'] ?>" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>
+                            <?php echo $activity['description']; ?>
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    </div>
-<?php
-    }
-}
+            </div>
+        <?php
+            }
+        }
 
-?>
+    ?>
     </section>
     <br><br>
     <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;"id="upcommingEvent">
@@ -380,245 +296,6 @@ if (!empty($activities)) {
             <!-- carousel2 -->
             <div class="unique-carousel-container">
                 <div class="unique-carousel">
-                    <div class="unique-carousel-item">
-                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                            <div class="row">
-                                <div class="col-5 mx-auto">
-                                    <div class="position-relative">
-                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                        <div class="tto">
-                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-7 mx-auto mt-3 pb-5">
-                                    <div class="text-container">
-                                        <p class="text-content">
-                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                        </p>
-                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                        </div>
-                    </div>
-                    <div class="unique-carousel-item">
-                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                            <div class="row">
-                                <div class="col-5 mx-auto">
-                                    <div class="position-relative">
-                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                        <div class="tto">
-                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-7 mx-auto mt-3 pb-5">
-                                    <div class="text-container">
-                                        <p class="text-content">
-                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                        </p>
-                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                        </div>
-                    </div>
-                    <div class="unique-carousel-item">
-                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                            <div class="row">
-                                <div class="col-5 mx-auto">
-                                    <div class="position-relative">
-                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                        <div class="tto">
-                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-7 mx-auto mt-3 pb-5">
-                                    <div class="text-container">
-                                        <p class="text-content">
-                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                        </p>
-                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                        </div>
-                    </div>
-                    <div class="unique-carousel-item">
-                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                            <div class="row">
-                                <div class="col-5 mx-auto">
-                                    <div class="position-relative">
-                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                        <div class="tto">
-                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-7 mx-auto mt-3 pb-5">
-                                    <div class="text-container">
-                                        <p class="text-content">
-                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                        </p>
-                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="unique-carousel-item">
-                        <div class="unique-carousel-item">
-                            <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                                <div class="row">
-                                    <div class="col-5 mx-auto">
-                                        <div class="position-relative">
-                                            <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                            <div class="tto">
-                                                <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                    <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                    <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                        <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 mx-auto mt-3 pb-5">
-                                        <div class="text-container">
-                                            <p class="text-content">
-                                                This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                            </p>
-                                            <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="unique-carousel-item">
-                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                            <div class="row">
-                                <div class="col-5 mx-auto">
-                                    <div class="position-relative">
-                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                        <div class="tto">
-                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-7 mx-auto mt-3 pb-5">
-                                    <div class="text-container">
-                                        <p class="text-content">
-                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                        </p>
-                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                        </div>
-                    </div>
-                    <div class="unique-carousel-item">
-                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                            <div class="row">
-                                <div class="col-5 mx-auto">
-                                    <div class="position-relative">
-                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                        <div class="tto">
-                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-7 mx-auto mt-3 pb-5">
-                                    <div class="text-container">
-                                        <p class="text-content">
-                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                        </p>
-                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="unique-carousel-item">
-                        <div class="unique-carousel-item">
-                            <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                                <div class="row">
-                                    <div class="col-5 mx-auto">
-                                        <div class="position-relative">
-                                            <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
-                                            <div class="tto">
-                                                <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                    <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                    <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                        <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 mx-auto mt-3 pb-5">
-                                        <div class="text-container">
-                                            <p class="text-content">
-                                                This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                            </p>
-                                            <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="unique-carousel-buttons">
-                    <button class="unique-carousel-button unique-prev">&#8249;</button>
-                    <button class="unique-carousel-button unique-next">&#8250;</button>
-                </div>
-                <div class="unique-carousel-pagination" style="display: none;"></div>
-            </div>
-            
-
-
-            <div class="carousel-wrap">
-                <div class="owl-carousel">
                     <?php
                         $stmt = $pdo->query("SELECT * FROM events LIMIT 5");
                         $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -632,13 +309,50 @@ if (!empty($activities)) {
                                 $day = $date->format('j'); // Jour (ex: 13)
                                 setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
                                 $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
+                                $year = strftime('%y', $date->getTimestamp()); // Année en deux chiffres (ex: 24)
+
                                 ?>
-                                    <div class="item"><img src="image/<?= $event['image'] ?? "6.png" ?>" alt="Image 1"></div>
+                                    <div class="unique-carousel-item">
+                                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                            <div class="row">
+                                                <div class="col-5 mx-auto">
+                                                    <div class="position-relative">
+                                                        <div><img src="image/<?= $event['image'] ?? "6.png" ?>" alt="" class="img-fluid w-100 h-100"></div>
+                                                        <div class="tto">
+                                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;"><?= $day ?></h2>
+                                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;"><?= (substr($month, 0, 3)) ?> <?= (substr($year, 0, 3)) ?></h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-7 mx-auto mt-3 pb-5">
+                                                <div class="text-container text-container2" onclick="toggleText(this)">
+                                                    <p class="fw-bold pt-2">
+                                                      <?= $event['name'] ? $event['name'] : "Events Name"; ?>
+                                                    </p>
+                                                    <p class="text-content text-content">
+                                                        <?= $event['description'] ?>
+                                                    </p>
+                                                    <span class="show-more" style="margin-top:10px !important;"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php
                             }
                         }
                     ?>
                 </div>
+
+                <div class="unique-carousel-buttons">
+                    <button class="unique-carousel-button unique-prev">&#8249;</button>
+                    <button class="unique-carousel-button unique-next">&#8250;</button>
+                </div>
+                <div class="unique-carousel-pagination" style="display: none;"></div>
             </div>
         </div>
     </section>
@@ -696,46 +410,41 @@ if (!empty($activities)) {
     <br><br>
     <section class="container-fluid" id="section3">
         <h2 class="fw-bold text-center mb-4"><?= $bddContentTexts['what_people_saying']['content_fr'] ?? "What People are Saying" ?></h2>
-
-        
-
-        <div class="swiper personnalise" style="max-width:90%">
-            <div class="card-wrapper personnalise">
-                <ul class="card-list swiper-wrapper mb-4">
-                    <?php
-                    $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
-                    $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($testimonials as $testimonial) {
-                    ?>
-                        <li class="card-item swiper-slide personnalise ccsc mx-4">
-                            <div class="row p-5" style="background-color: #F2F2F2;">
-                                <div class="col-3 mx-auto">
-                                    <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
-                                </div>
-                                <div class="col-9">
-                                    <div class="d-flex">
-                                        <?php 
-                                        for ($i = 0; $i < $testimonial['note']; $i++) { ?>
-                                            <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                        <?php } ?>
+            <div class="swiper personnalise" style="max-width:90%">
+                <div class="card-wrapper personnalise">
+                    <ul class="card-list swiper-wrapper mb-4">
+                        <?php
+                        $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
+                        $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($testimonials as $testimonial) {
+                        ?>
+                            <li class="card-item swiper-slide personnalise ccsc mx-4">
+                                <div class="row p-5" style="background-color: #F2F2F2;">
+                                    <div class="col-3 mx-auto">
+                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
                                     </div>
-                                    <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
-                                    <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
-                                    <p>-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                                    <div class="col-9">
+                                        <div class="d-flex">
+                                            <?php 
+                                            for ($i = 0; $i < $testimonial['note']; $i++) { ?>
+                                                <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                            <?php } ?>
+                                        </div>
+                                        <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
+                                        <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
+                                        <p>-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    <?php } ?>
-                </ul>
-                <!-- Pagination spécifique -->
-                    <div class="swiper-pagination personnalise"></div>
-                <!-- Navigation spécifique -->
-                <!-- <div class="swiper-button-prev personnalise"></div>
-                <div class="swiper-button-next personnalise"></div> -->
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <!-- Pagination spécifique -->
+                        <div class="swiper-pagination personnalise"></div>
+                    <!-- Navigation spécifique -->
+                    <!-- <div class="swiper-button-prev personnalise"></div>
+                    <div class="swiper-button-next personnalise"></div> -->
+                </div>
             </div>
-        </div>
-
-
     </section>
     <br><br>
     <section class="container-fluid my-4" style="padding-left: 0px; padding-right: 0px;">
@@ -743,10 +452,10 @@ if (!empty($activities)) {
     <div class="container-fluid" style="padding: 0px;">
         <!-- Liste de liens -->
         <div class="xyz_links_section container">
-          <div class="xyz_link_element" data-item="item1">Football fields</div>
-          <div class="xyz_link_element" data-item="item2">Gym & dance studio</div>
-          <div class="xyz_link_element" data-item="item3">Event spaces</div>
-          <div class="xyz_link_element" data-item="item4">Cultural hall</div>
+          <div class="xyz_link_element" data-item="item1"><?= $bddContentTexts['first_pane_tittle_1']['content_fr'] ?? "Football fields" ?></div>
+          <div class="xyz_link_element" data-item="item2"><?= $bddContentTexts['first_pane_tittle_2']['content_fr'] ?? "Gym & dance studio" ?></div>
+          <div class="xyz_link_element" data-item="item3"><?= $bddContentTexts['first_pane_tittle_3']['content_fr'] ?? "Event spaces" ?></div>
+          <div class="xyz_link_element" data-item="item4"><?= $bddContentTexts['first_pane_tittle_4']['content_fr'] ?? "Cultural hall" ?></div>
         </div>
 
         <!-- Contenu associé au lien -->
@@ -984,20 +693,20 @@ if (!empty($activities)) {
         // Contenu à afficher pour chaque lien
         const xyz_contents = {
         item1: {
-            backgroundImage: 'url(./image/8.png)', // Image pour le premier lien
-            content: '<h2>Contenu pour le premier lien</h2><p>Ceci est un texte détaillé pour le premier lien. Vous pouvez inclure des éléments HTML ici comme des images ou des listes.</p>',
+            backgroundImage: 'url(./image/<?= $bddContentImages['slider_container_1_1733235750']['path'] ?? "2.png" ?>)', // Image pour le premier lien
+            content: '<p> <?= $bddContentTexts['first_pane_content_1']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum." ?> </p>',
         },
         item2: {
-            backgroundImage: 'url(./image/9.png)', // Image pour le deuxième lien
-            content: '<h2>Contenu pour le deuxième lien</h2><p>Le deuxième lien affiche un contenu unique, qui peut aussi inclure des images, des vidéos, ou d\'autres éléments.</p>',
+            backgroundImage: 'url(./image/<?= $bddContentImages['slider_container_2_1733235770']['path'] ?? "8.png" ?>)', // Image pour le deuxième lien
+            content: '<p> <?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "bbbbbbbbbbbbbbbbbLorem ipsum." ?> </p>',
         },
         item3: {
-            backgroundImage: 'url(./image/2.png)', // Image pour le troisième lien
-            content: '<h2>Contenu pour le troisième lien</h2><p>Voici le contenu associé au troisième lien. Vous pouvez y mettre tout ce que vous voulez, comme des tableaux ou des liens externes.</p>',
+            backgroundImage: 'url(./image/<?= $bddContentImages['slider_container_3_1733235865']['path'] ?? "6.png" ?>)', // Image pour le troisième lien
+            content: '<p> <?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "cccccccccccccccccLorem ipsum." ?> </p>',
         },
         item4: {
-            backgroundImage: 'url(./image/8.png)', // Image pour le troisième lien
-            content: '<h2>Contenu pour le quatrième lien</h2><p>Voici le contenu associé au troisième lien. Vous pouvez y mettre tout ce que vous voulez, comme des tableaux ou des liens externes.</p>',
+            backgroundImage: 'url(./image/<?= $bddContentImages['slider_container_4_1733235883']['path'] ?? "9.png" ?>)', // Image pour le troisième lien
+            content: '<p> <?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "dddddddddddddddddLorem ipsum." ?> </p>',
         },
         };
 
