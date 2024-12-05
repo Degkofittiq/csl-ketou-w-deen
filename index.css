@@ -91,6 +91,9 @@
     left: 10%;  
     width: 70% !important;
   }
+   .carousel-item img{
+    height: 60vh !important;
+  }
   .pos p strong {
     font-size: 1rem !important;
   }
@@ -120,7 +123,7 @@
   background-image: url('image/8.png');
   background-size: cover;
   background-position: center;
-  height: 60vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

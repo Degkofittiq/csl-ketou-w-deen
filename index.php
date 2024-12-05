@@ -366,7 +366,7 @@
                         foreach ($founders as $founder) {
                 ?>
                     <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
-                        <img src="image/<?= $founder['path'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
+                        <img src="image/<?= $founder['image'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
                     </div>
                     <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
                         <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
