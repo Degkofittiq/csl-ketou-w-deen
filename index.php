@@ -227,7 +227,7 @@
                                 ?>
                                     <div class="custom-carousel-item">
                                         <div class="relative">
-                                            <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                                            <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 30vh !important;object-fit:cover">
                                             <div class="ppos d-none d-lg-block">
                                                 <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
                                             </div>
@@ -313,7 +313,7 @@
 
                                 ?>
                                     <div class="unique-carousel-item">
-                                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                        <div class="py-5 px-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; height: 30vh;">
                                             <div class="row">
                                                 <div class="col-5 mx-auto">
                                                     <div class="position-relative">
