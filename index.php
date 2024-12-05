@@ -30,6 +30,24 @@
             filter: grayscale(25%) brightness(80%);
             background-image: url("image/<?= $bddContentImages['slider_container_4_1733235883']['path'] ?? "8.png" ?>");
         }
+        .swiper-wrapper.personnalise {
+            display: flex;
+            overflow: hidden;
+            gap: 20px; /* Espacement entre les blocs */
+        }
+
+        .swiper-slide.personnalise  {
+            flex: 0 0 50%; /* Chaque bloc occupe 50% de l'espace */
+            box-sizing: border-box; /* Inclure padding et bordure dans la largeur */
+            transition: transform 0.3s ease-in-out; /* Pour les animations */
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide.personnalise  {
+                flex: 0 0 100%; /* 1 bloc visible sur petits écrans */
+            }
+        }
+
 
     </style>
 </head>
@@ -260,21 +278,6 @@ if (!empty($activities)) {
 
             <div class="carousel-wrap">
                 <div class="owl-carousel">
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 1"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 2"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 3"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 4"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 5"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 6"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 7"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 8"></div>
-                <div class="item"><img src="http://placehold.it/150x150" alt="Image 9"></div>
-                </div>
-            </div>
-
-            <div class="swiper mt-4">
-                <div class="slider-wrapper">
-                  <div class="card-list swiper-wrapper">
                     <?php
                         $stmt = $pdo->query("SELECT * FROM events LIMIT 5");
                         $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -289,78 +292,13 @@ if (!empty($activities)) {
                                 setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
                                 $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
                                 ?>
-                                <div class="card-item swiper-slide">
-                                    <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                                        <div class="row">
-                                            <div class="col-12 mx-auto">
-                                                <div class="position-relative">
-                                                    <div><img src="image/<?= $event['image'] ?? "6.png" ?>" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
-                                                    <div class="tto">
-                                                        <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                            <h2 class="text-center text-white fw-bold" style="font-size: 13px;"><?= $day ?></h2>
-                                                            <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                                <h4 class="text-center text-white fw-bold" style="font-size: 13px;"><?= (substr($month, 0, 3)) ?></h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mx-auto mt-3 pb-5">
-                                                <div class="text-container text-container2" onclick="toggleText(this)">
-                                                    <p class="fw-bold pt-2">
-                                                      <?php echo htmlspecialchars($event['name']) ? implode(' ', array_slice(explode(' ', htmlspecialchars($event['name'])), 0, 1)) . '...' : "Events Name"; ?>
-                                                    </p>
-                                                    <p class="text-content text-content">
-                                                        <?= $event['description'] ?>
-                                                    </p>
-                                                    <span class="show-more" style="margin-top:10px !important;"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                                    </div>
-                                </div>
+                                    <div class="item"><img src="image/<?= $event['image'] ?? "6.png" ?>" alt="Image 1"></div>
                                 <?php
                             }
-                        } else {
-                            ?>
-                                <div class="card-item swiper-slide">
-                                    <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                                        <div class="row">
-                                            <div class="col-12 mx-auto">
-                                                <div class="position-relative">
-                                                    <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
-                                                    <div class="tto">
-                                                        <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                            <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
-                                                            <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                                <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mx-auto mt-3 pb-5">
-                                                <div class="text-container">
-                                                    <p class="text-content">
-                                                        This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
-                                                    </p>
-                                                    <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
-                                    </div>
-                                </div>
-                            <?php
                         }
                     ?>
-                  </div>
-                  <!-- <div class="swiper-pagination"></div> -->
-                  <div class="swiper-slide-button swiper-button-prev"></div>
-                  <div class="swiper-slide-button swiper-button-next"></div>
                 </div>
-              </div>
+            </div>
         </div>
     </section>
     <br><br>
@@ -417,56 +355,42 @@ if (!empty($activities)) {
     <br><br>
     <section class="container-fluid" id="section3">
         <h2 class="fw-bold text-center mb-4"><?= $bddContentTexts['what_people_saying']['content_fr'] ?? "What People are Saying" ?></h2>
+        <div class="swiper personnalise" style="max-width:90%">
+    <div class="card-wrapper personnalise">
+        <ul class="card-list swiper-wrapper mb-4">
+            <?php
+            $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
+            $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($testimonials as $testimonial) {
+            ?>
+                <li class="card-item swiper-slide personnalise ccsc mx-4">
+                    <div class="row p-5" style="background-color: #F2F2F2;">
+                        <div class="col-3 mx-auto">
+                            <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
+                        </div>
+                        <div class="col-9">
+                            <div class="d-flex">
+                                <?php 
+                                for ($i = 0; $i < $testimonial['note']; $i++) { ?>
+                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                <?php } ?>
+                            </div>
+                            <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
+                            <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
+                            <p>-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                        </div>
+                    </div>
+                </li>
+            <?php } ?>
+        </ul>
+        <!-- Pagination spécifique -->
+            <div class="swiper-pagination personnalise"></div>
+        <!-- Navigation spécifique -->
+        <!-- <div class="swiper-button-prev personnalise"></div>
+        <div class="swiper-button-next personnalise"></div> -->
+    </div>
+</div>
 
-        <div class="swiper">
-            <div class="card-wrapper">
-              <!-- Card slides container -->
-              <ul class="card-list swiper-wrapper">
-                <?php
-                    $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
-                    $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($testimonials as $testimonial) {
-                        ?>
-
-                            <li class="card-item swiper-slide ccsc">
-                                <div class="">
-                                    <div class="row p-5" style="background-color: #F2F2F2;">
-                                        <div class="col-3 mx-auto">
-                                            <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
-                                        </div>
-                                        <div class="col-9">
-                                            <div class="d-flex">
-                                                <?php 
-                                                    for ($i=0; $i <  $testimonial['note']  ; $i++) { 
-                                                        ?>
-                                                            <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                                        <?php
-                                                    } 
-                                                ?>
-
-                                            </div>
-                                            <p><strong><?= $testimonial['title']  ?? "Highly recommended!" ?></strong></p>
-                                            <p>
-                                                <?= $testimonial['message']  ?? "111Nam malesuada nibh eget mi pharetra condimentum. Nam a mauris posuere, interdum mi vitae, tristique enim. Donec porta leo eget elit hendrerit" ?>
-                                            </p>
-                                            <p>-<?= $testimonial['name']  ?? "Alena Josksowinsigs!" ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                        <?php  
-                        
-                    }
-                ?>
-              </ul>
-               <!-- Pagination -->
-              <div class="swiper-pagination"></div>
-              <!-- Navigation Buttons -->
-              <!-- <div class="swiper-slide-button swiper-button-prev"></div>
-              <div class="swiper-slide-button swiper-button-next"></div> -->
-            </div>
-          </div>
 
     </section>
     <br><br>
@@ -525,33 +449,92 @@ if (!empty($activities)) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        new Swiper('.card-wrapper', {
-        loop: true,
-        spaceBetween: 30,
-        // Pagination bullets
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: true
-        },
-        // Navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        // Responsive breakpoints
-        breakpoints: {
-            0: {
-                slidesPerView: 1
+        new Swiper('.card-wrapper.personnalise', {
+            slidesPerView: 2, // Affiche deux blocs à la fois
+            spaceBetween: 30, // Espacement entre les blocs
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination.personnalise', // Pagination spécifique
+                clickable: true,
+                dynamicBullets: true
             },
-            768: {
-                slidesPerView: 2
+            navigation: {
+                nextEl: '.swiper-button-next.personnalise', // Bouton suivant spécifique
+                prevEl: '.swiper-button-prev.personnalise' // Bouton précédent spécifique
             },
-            1024: {
-                slidesPerView: 3
+            breakpoints: {
+                0: {
+                    slidesPerView: 1 // 1 slide visible sur mobile
+                },
+                768: {
+                    slidesPerView: 2 // 2 slides visibles sur tablette
+                },
+                1024: {
+                    slidesPerView: 3 // 3 slides visibles sur grand écran
+                }
             }
-        }
-    });
+        });
+    </script>
+    <!--  -->
+      <script>
+        const swiper = new Swiper('.slider-wrapper.personnalise', {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 30,
+            // Pagination bullets
+            pagination: {
+                el: '.swiper-pagination.personnalise',
+                clickable: true,
+                dynamicBullets: true
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Responsive breakpoints
+            breakpoints: {
+                0: {
+                slidesPerView: 1
+                },
+                768: {
+                slidesPerView: 2
+                },
+                1024: {
+                slidesPerView: 3
+                }
+            }
+            });
+      </script>
+
+    <script>
+        new Swiper('.card-wrapper', {
+            loop: true,
+            spaceBetween: 30,
+            // Pagination bullets
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            // Responsive breakpoints
+            breakpoints: {
+                0: {
+                    slidesPerView: 1
+                },
+                768: {
+                    slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 3
+                }
+            }
+        });
     </script>
     <!--  -->
       <script>
