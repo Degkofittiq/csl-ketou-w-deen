@@ -69,7 +69,7 @@
                 if (!empty($activities)) {
                     foreach ($activities as $activity) {
                         ?>
-                            <div class="col-lg-4 mx-auto mb-5">
+                            <div class="col-lg-4  mb-5">
                                 <div class="relative">
                                     <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 30vh !important;object-fit:cover">
                                     <div class="ppos d-none d-lg-block">

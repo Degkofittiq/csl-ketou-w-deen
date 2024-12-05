@@ -76,7 +76,7 @@
                             setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
                             $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
                         ?>
-                            <div class="col-lg-4 mx-auto mb-4" style="height: 450px">
+                            <div class="col-lg-4  mb-4" style="height: 450px">
                                 <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
                                     <div class="row">
                                         <div class="col-6 mx-auto">
