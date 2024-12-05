@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Carousel</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .unique-carousel-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .unique-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .unique-carousel-item {
+            min-width: 33.3333%;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .unique-carousel-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .unique-carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .unique-carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .unique-carousel-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .unique-pagination-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .unique-pagination-dot.active {
+            background-color: #000;
+        }
+
+        @media (max-width: 992px) {
+            .unique-carousel-item {
+                min-width: 50%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .unique-carousel-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="unique-carousel-container">
+    <div class="unique-carousel">
+        <div class="unique-carousel-item"><img src="https://via.placeholder.com/400x300" alt="Item 1"></div>
+        <div class="unique-carousel-item"><img src="https://via.placeholder.com/400x300" alt="Item 2"></div>
+        <div class="unique-carousel-item"><img src="https://via.placeholder.com/400x300" alt="Item 3"></div>
+        <div class="unique-carousel-item"><img src="https://via.placeholder.com/400x300" alt="Item 4"></div>
+        <div class="unique-carousel-item"><img src="https://via.placeholder.com/400x300" alt="Item 5"></div>
+    </div>
+
+    <div class="unique-carousel-buttons">
+        <button class="unique-carousel-button unique-prev">&#8249;</button>
+        <button class="unique-carousel-button unique-next">&#8250;</button>
+    </div>
+
+</div>
+
+<script>
+    const carousel = document.querySelector('.unique-carousel');
+    const carouselItems = document.querySelectorAll('.unique-carousel-item');
+    const prevButton = document.querySelector('.unique-prev');
+    const nextButton = document.querySelector('.unique-next');
+    const paginationContainer = document.querySelector('.unique-carousel-pagination');
+
+    let currentIndex = 0;
+    const totalItems = carouselItems.length;
+    const visibleItems = window.innerWidth > 992 ? 3 : window.innerWidth > 600 ? 2 : 1;
+
+    function updateCarousel() {
+        const offset = -currentIndex * (100 / visibleItems);
+        carousel.style.transform = `translateX(${offset}%)`;
+        updatePagination();
+    }
+
+    function updatePagination() {
+        const dots = document.querySelectorAll('.unique-pagination-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function createPagination() {
+        for (let i = 0; i < totalItems; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('unique-pagination-dot');
+            if (i === currentIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel();
+            });
+            paginationContainer.appendChild(dot);
+        }
+    }
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    });
+
+    let autoScroll = setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    }, 3000);
+
+    carousel.addEventListener('mouseover', () => clearInterval(autoScroll));
+    carousel.addEventListener('mouseout', () => {
+        autoScroll = setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        }, 3000);
+    });
+
+    createPagination();
+    updateCarousel();
+
+    window.addEventListener('resize', () => {
+        clearInterval(autoScroll);
+        updateCarousel();
+    });
+</script>
+
+</body>
+</html>

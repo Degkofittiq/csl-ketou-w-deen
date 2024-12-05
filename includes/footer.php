@@ -64,13 +64,13 @@
         }
     }
 ?>
-<footer class="container-fluid p-3">
+<footer class="container-fluid py-3" style="padding: 0px;">
         <span class="my-4 d-flex" style="border-bottom: 4px solid #61BC45;"></span>
-        <div class="container-lg">
+        <div class="container-lg py-5">
             <div class="row">
-                <div class="col-lg-5 mx-auto mb-3 mb-md-0">
-                    <h5 class="fw-bold"><?= $bddContentTexts['footer_email_tittle']['content_fr'] ?? "Email Adress" ?></h5>
-                    <p><?= $bddContentTexts['footer_subscribe_tittle']['content_fr'] ?? "Stay Updated! Subscribe to our newsletter" ?></p>
+                <div class="col-lg-3 mx-auto mb-3 mb-md-0">
+                    <h5 class="fw-bold" style="font-size: clamp(17px, 6vw, 26px);"><?= $bddContentTexts['footer_email_tittle']['content_fr'] ?? "Email Adress" ?></h5>
+                    <p style="font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['footer_subscribe_tittle']['content_fr'] ?? "Stay Updated! Subscribe to our newsletter" ?></p>
                     <div class="d-flex flex-column">
                         <form action="" method="post">
                             <div class="">
@@ -88,23 +88,23 @@
                         <span><i class="bi bi-youtube fs-4 ms-3"></i></span>
                     </div>
                 </div>
-                <div class="col-lg-3 mx-auto mb-3 mb-md-0">
-                    <h5 class="fw-bold"><?= $bddContentTexts['footer_about_tittle']['content_fr'] ?? "About" ?></h5>
-                    <p style="white-space: nowrap;"><?= $bddContentTexts['phone_titre']['content_fr'] ?? "Phone" ?> : <?= $bddContentTexts['phone_content']['content_fr'] ?? "09 290 38200" ?>
+                <div class="col-lg-3 mx-auto mb-3 mb-md-0 px-4">
+                    <h5 class="fw-bold" style="font-size: clamp(17px, 6vw, 26px);"><?= $bddContentTexts['footer_about_tittle']['content_fr'] ?? "About" ?></h5>
+                    <p style="white-space: nowrap; font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['phone_titre']['content_fr'] ?? "Phone" ?> : <?= $bddContentTexts['phone_content']['content_fr'] ?? "09 290 38200" ?>
                         <br>
                         <?= $bddContentTexts['footer_email_titre']['content_fr'] ?? "Email" ?> : <?= $bddContentTexts['email_description']['content_fr'] ?? "enquiry@yourdomain.com" ?>
                     </p>
-                    <p class="mt-3"><?= $bddContentTexts['adresse_titre']['content_fr'] ?? "Adresse" ?> <br><?= $bddContentTexts['adresse_description']['content_fr'] ?? "CSL Kétou, Arojú Owò</p>adresse_description" ?>
+                    <p class="mt-3" style="font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['adresse_titre']['content_fr'] ?? "Adresse" ?> <br><?= $bddContentTexts['adresse_description']['content_fr'] ?? "CSL Kétou, Arojú Owò</p>adresse_description" ?>
                 </div>
                 <div class="col-lg-2 mx-auto mb-3 mb-md-0">
-                    <h5 class="fw-bold"><?= $bddContentTexts['contactez_nous_titre']['content_fr'] ?? "Contactez-nous" ?></h5>
+                    <h5 class="fw-bold" style="font-size: clamp(17px, 6vw, 26px);"><?= $bddContentTexts['contactez_nous_titre']['content_fr'] ?? "Contactez-nous" ?></h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.php" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_1']['content_fr'] ?? "Accueil" ?></a></li>
-                        <li><a href="about.php" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos" ?></a></li>
-                        <li><a href="index.php#section3" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_3']['content_fr'] ?? "Activities" ?></a></li>
-                        <li><a href="index.php#section6" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a></li>
-                        <li><a href="contact.php" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Nous rejoindre" ?></a></li>
-                        <li><a href="index.php#upcommingEvent" style="color: #484848; text-decoration: none;"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a></li>
+                        <li><a href="index.php" style="color: #484848; text-decoration: none; font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['nav_link_1']['content_fr'] ?? "Accueil" ?></a></li>
+                        <li><a href="about.php" style="color: #484848; text-decoration: none; font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos" ?></a></li>
+                        <li><a href="index.php#section3" style="color: #484848; text-decoration: none; font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['nav_link_3']['content_fr'] ?? "Activities" ?></a></li>
+                        <li><a href="index.php#section6" style="color: #484848; text-decoration: none; font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['nav_link_4']['content_fr'] ?? "Programmes" ?></a></li>
+                        <li><a href="contact.php" style="color: #484848; text-decoration: none; font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Nous rejoindre" ?></a></li>
+                        <li><a href="index.php#upcommingEvent" style="color: #484848; text-decoration: none; font-size: clamp(14px, 3.5vw, 18px);"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 mx-auto mb-3 mb-md-0">

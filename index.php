@@ -8,47 +8,50 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
     <style>
-        .slider-wrapper .slider-item::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            filter: grayscale(20%);
-            background-image: url("image/<?= $bddContentImages['slider_container_1_1733235750']['path'] ?? "2.png" ?>");
-            background-size: cover;
-            background-position: center;
-        }
-        .slider-wrapper .slider-item:nth-child(2):before {
-            background-image: url("image/<?= $bddContentImages['slider_container_2_1733235770']['path'] ?? "8.png" ?>");
-        }
-        .slider-wrapper .slider-item:nth-child(3):before {
-            background-image: url("image/<?= $bddContentImages['slider_container_3_1733235865']['path'] ?? "2.png" ?>");
-        }
-        .slider-wrapper .slider-item:nth-child(4):before {
-            filter: grayscale(25%) brightness(80%);
-            background-image: url("image/<?= $bddContentImages['slider_container_4_1733235883']['path'] ?? "8.png" ?>");
-        }
-        .swiper-wrapper.personnalise {
-            display: flex;
-            overflow: hidden;
-            gap: 20px; /* Espacement entre les blocs */
+        /* carousel4 image */
+        .xyz_custom_content {
+        background-image: url(./image/8.png); /* Image par défaut */
+        background-size: cover;
+        background-position: center;
+        color: white;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
         }
 
-        .swiper-slide.personnalise  {
-            flex: 0 0 50%; /* Chaque bloc occupe 50% de l'espace */
-            box-sizing: border-box; /* Inclure padding et bordure dans la largeur */
-            transition: transform 0.3s ease-in-out; /* Pour les animations */
+        .xyz_custom_text {
+        font-size: 20px;
+        text-align: justify;
         }
-
-        @media (max-width: 768px) {
-            .swiper-slide.personnalise  {
-                flex: 0 0 100%; /* 1 bloc visible sur petits écrans */
+        @media (max-width: 1000px) {
+            .xyz_link_element {
+                padding: 20px 10px !important;
             }
         }
+        /* Liste de liens - Fixée en haut et centrée */
+        .xyz_links_section {
+        display: flex;
+        justify-content: center; /* Centrer les éléments horizontalement */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); /* Centrer la liste de liens */
+        background-color: transparent;
+        z-index: 10;
+        }
 
+        .xyz_link_element {
+        padding: 20px 60px;
+        cursor: pointer;
+        color: white;
+        transition: border-bottom 0.3s ease;
+        border-bottom: 1px solid white;
+        }
 
+        .xyz_link_element.selected {
+        border-bottom: 3px solid white; /* Bordure active sous le lien */
+        font-weight: 800;
+        }
     </style>
 </head>
 <body>
@@ -139,13 +142,13 @@
             <!-- Carousel Items -->
             <div class="carousel-inner">
                 <div class="carousel-item active" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 1">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 1">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 2">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 2">
                 </div>
                 <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 100vh; object-fit: cover;" alt="Slide 3">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 3">
                 </div>
             </div>
         
@@ -158,15 +161,15 @@
 
             <div class="pos">
                 <p><strong style="color: #61BC45; font-size:2rem;"> <?= $bddContentTexts['welcome_text']['content_fr'] ?? "Welcome to CSL Arojú Owò" ?> </strong></p>
-                <h1 class="text-white" style="font-weight: 900; font-size:3.3rem;">
+                <h1 class="text-white" style="font-weight: 900;  font-size: clamp(20px, 10vw, 56px);">
                 <?= $bddContentTexts['text_after_welcome']['content_fr'] ?? "The Heart of <br> Sports & Leisure!" ?> 
                     
                 </h1>
-                <p class="text-white mt-3"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
+                <p class="text-white mt-3" style=" font-size: clamp(16px, 3vw, 18px);"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
                 <div class="row mt-4 divv">
                     <div class="col-lg-6 mb-3 mx-auto">
                         <div class="buuton">
-                            <button class="btn btn-ss p-3 w-100 text-white" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section3'">
+                            <button class="btn btn-ss p-3 w-100 text-white" style="background: #61BC45; text-transform: uppercase;  font-size: clamp(14px, 3vw, 14px);"  onclick="window.location.href='#section3'">
                                 <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Explore Activities" ?>
                                 <i class="bi bi-arrow-right-circle"></i>
                             </button>
@@ -188,7 +191,7 @@
     <section class="container-lg my-4" id="section3">
         <div class="row py-4 px-2">
             <div class="col-12 col-md-5 mx-auto mb-3 align-self-center">
-                <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
+                <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: clamp(20px, 6vw, 30px);"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
             </div>
             <div class="col-md-4"></div>
             <div class="col-12 col-md-3 mx-auto mb-3">
@@ -197,6 +200,105 @@
                 </div>
             </div>
         </div>
+            <!-- carousel3 -->
+            <div class="custom-carousel-wrapper my-4">
+                <div class="custom-carousel-content">
+                    <div class="custom-carousel-item">
+                        <div class="relative">
+                            <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="ppos d-none d-lg-block">
+                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                            </div>
+                        </div>
+                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <h2 class="mt-5 text-center fw-bold">Football</h2>
+                            <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
+                            <div class="mt-3">
+                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
+                                    Learn More 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-carousel-item">
+                        <div class="relative">
+                            <img src="image/4.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="ppos d-none d-lg-block">
+                                <img src="image/Group 2.png" alt="" class="image-fluid" style="width: 90%;">
+                            </div>
+                        </div>
+                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <h2 class="mt-5 text-center fw-bold">Dance & Fitness</h2>
+                            <p class="mt-3 text-center">Stay active with our <br>
+                                vibrant classes</p>
+                            <div class="mt-3">
+                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
+                                    Learn More 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-carousel-item">
+                        <div class="relative">
+                            <img src="image/5.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="ppos d-none d-lg-block">
+                                <img src="image/Group 3.png" alt="" class="image-fluid" style="width: 90%;">
+                            </div>
+                        </div>
+                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <h2 class="mt-5 text-center fw-bold">Cultural Events</h2>
+                            <p class="mt-3 text-center">Celebrate tradition and unity</p>
+                            <div class="mt-5">
+                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
+                                    Learn More 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-carousel-item">
+                        <div class="relative">
+                            <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="ppos d-none d-lg-block">
+                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                            </div>
+                        </div>
+                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <h2 class="mt-5 text-center fw-bold">Football</h2>
+                            <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
+                            <div class="mt-3">
+                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
+                                    Learn More 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-carousel-item">
+                        <div class="relative">
+                            <img src="image/3.png" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                            <div class="ppos d-none d-lg-block">
+                                <img src="image/Group 8.png" alt="" class="image-fluid" style="width: 90%;">
+                            </div>
+                        </div>
+                        <div class="p-2" style="background-color: #F2F2F2; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                            <h2 class="mt-5 text-center fw-bold">Football</h2>
+                            <p class="mt-3 text-center">Join our leagues and <br> tournaments</p>
+                            <div class="mt-3">
+                                <button class="btn btn-white w-100 py-2" style="background: #FFFFFF;" data-bs-toggle="modal" data-bs-target="#Modal">
+                                    Learn More 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-navigation-buttons">
+                    <button class="custom-navigation-button custom-prev" style="display: none;">&#8249;</button>
+                    <button class="custom-navigation-button custom-next" style="display: none;">&#8250;</button>
+                </div>
+
+                <div class="custom-pagination-container"></div>
+            </div>
+
 
         <div class="swiper">
             <div class="card-wrapper">
@@ -265,16 +367,255 @@ if (!empty($activities)) {
     <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;"id="upcommingEvent">
         <div class="container-lg">
             <div class="row mt-3">
-                <div class="col-12 col-md-4 mx-auto mb-3">
-                    <h2 class="text-center fw-bold" style="text-transform: uppercase; white-space: nowrap;"><?= $bddContentTexts['upcoming_events']['content_fr'] ?? "Upcoming Events" ?></h2>
+                <div class="col-12 col-md-6 mx-auto mb-3 align-self-center">
+                    <h2 class="text-center fw-bold" style="text-transform: uppercase;  font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['upcoming_events']['content_fr'] ?? "Upcoming Events" ?></h2>
                 </div>
-                <div class="col-md-6"></div>
-                <div class="col-12 col-md-2 mx-auto mb-3">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-md-3 mx-auto mb-3">
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-white px-3 text-white" style="background: #61BC45;" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
+                        <button class="btn btn-white p-3 text-white" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
                     </div>
                 </div>
             </div>
+            <!-- carousel2 -->
+            <div class="unique-carousel-container">
+                <div class="unique-carousel">
+                    <div class="unique-carousel-item">
+                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                            <div class="row">
+                                <div class="col-5 mx-auto">
+                                    <div class="position-relative">
+                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                        <div class="tto">
+                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7 mx-auto mt-3 pb-5">
+                                    <div class="text-container">
+                                        <p class="text-content">
+                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                        </p>
+                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
+                        </div>
+                    </div>
+                    <div class="unique-carousel-item">
+                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                            <div class="row">
+                                <div class="col-5 mx-auto">
+                                    <div class="position-relative">
+                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                        <div class="tto">
+                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7 mx-auto mt-3 pb-5">
+                                    <div class="text-container">
+                                        <p class="text-content">
+                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                        </p>
+                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
+                        </div>
+                    </div>
+                    <div class="unique-carousel-item">
+                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                            <div class="row">
+                                <div class="col-5 mx-auto">
+                                    <div class="position-relative">
+                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                        <div class="tto">
+                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7 mx-auto mt-3 pb-5">
+                                    <div class="text-container">
+                                        <p class="text-content">
+                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                        </p>
+                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
+                        </div>
+                    </div>
+                    <div class="unique-carousel-item">
+                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                            <div class="row">
+                                <div class="col-5 mx-auto">
+                                    <div class="position-relative">
+                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                        <div class="tto">
+                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7 mx-auto mt-3 pb-5">
+                                    <div class="text-container">
+                                        <p class="text-content">
+                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                        </p>
+                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unique-carousel-item">
+                        <div class="unique-carousel-item">
+                            <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                <div class="row">
+                                    <div class="col-5 mx-auto">
+                                        <div class="position-relative">
+                                            <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                            <div class="tto">
+                                                <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                    <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                    <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                        <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 mx-auto mt-3 pb-5">
+                                        <div class="text-container">
+                                            <p class="text-content">
+                                                This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                            </p>
+                                            <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unique-carousel-item">
+                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                            <div class="row">
+                                <div class="col-5 mx-auto">
+                                    <div class="position-relative">
+                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                        <div class="tto">
+                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7 mx-auto mt-3 pb-5">
+                                    <div class="text-container">
+                                        <p class="text-content">
+                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                        </p>
+                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
+                        </div>
+                    </div>
+                    <div class="unique-carousel-item">
+                        <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                            <div class="row">
+                                <div class="col-5 mx-auto">
+                                    <div class="position-relative">
+                                        <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                        <div class="tto">
+                                            <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                    <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-7 mx-auto mt-3 pb-5">
+                                    <div class="text-container">
+                                        <p class="text-content">
+                                            This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                        </p>
+                                        <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unique-carousel-item">
+                        <div class="unique-carousel-item">
+                            <div class="p-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
+                                <div class="row">
+                                    <div class="col-5 mx-auto">
+                                        <div class="position-relative">
+                                            <div><img src="image/6.png" alt="" class="img-fluid w-100" ></div>
+                                            <div class="tto">
+                                                <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                    <h2 class="text-center text-white fw-bold" style="font-size: 13px;">12</h2>
+                                                    <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                        <h4 class="text-center text-white fw-bold" style="font-size: 13px;">Dec 24</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-7 mx-auto mt-3 pb-5">
+                                        <div class="text-container">
+                                            <p class="text-content">
+                                                This is some very long text that will overflow and show ellipsis when the height is limited. You can click on the ellipsis to view the full content.
+                                            </p>
+                                            <span class="show-more"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="unique-carousel-buttons">
+                    <button class="unique-carousel-button unique-prev">&#8249;</button>
+                    <button class="unique-carousel-button unique-next">&#8250;</button>
+                </div>
+                <div class="unique-carousel-pagination" style="display: none;"></div>
+            </div>
+            
+
 
             <div class="carousel-wrap">
                 <div class="owl-carousel">
@@ -333,19 +674,19 @@ if (!empty($activities)) {
         <div class="hero">
             <div class="p-md-5">
                <div class="p-5" style="background-color: #000000; border-radius: 10px;">
-                <h2 class="fw-bold text-white"><?= $bddContentTexts['join_community']['content_fr'] ?? "Join Our Community" ?></h2>
+                <h2 class="fw-bold text-white" style=" font-size: clamp(20px, 8vw, 36px);"><?= $bddContentTexts['join_community']['content_fr'] ?? "Join Our Community" ?></h2>
                 <form class="mt-3" action="" method="POST">
                     <div class="mb-3">
-                        <input name="name" type="text" class="form-control" placeholder="Nom *" style="border-radius: 0;">
+                        <input name="name" type="text" class="form-control py-3" placeholder="Nom *" style="border-radius: 0;">
                     </div>
                     <div class="mb-3">
-                        <input name="email" type="email" class="form-control" placeholder="Adresse Email *" style="border-radius: 0;">
+                        <input name="email" type="email" class="form-control py-3" placeholder="Adresse Email *" style="border-radius: 0;">
                     </div>
                     <div class="mb-3">
-                        <input name="phone" required pattern="^\+?[0-9]*$" placeholder="+229190000000" type="text" class="form-control" placeholder="Phone No.*" style="border-radius: 0;">
+                        <input name="phone" required pattern="^\+?[0-9]*$" placeholder="+229190000000" type="text" class="form-control py-3" placeholder="Phone No.*" style="border-radius: 0;">
                     </div>
                     <div class="">
-                        <button name="btn_contact" class="btn btn-white w-100 text-white" style="background: #61BC45; border-radius: 0;"><?= $bddContentTexts['join_now']['content_fr'] ?? "Join Now" ?><i class="bi bi-arrow-right-circle"></i></button>
+                        <button name="btn_contact" class="btn btn-white w-100 text-white py-3" style="background: #61BC45; border-radius: 0;  font-size: clamp(20px, 8vw, 26px);"><?= $bddContentTexts['join_now']['content_fr'] ?? "Join Now" ?><i class="bi bi-arrow-right-circle"></i></button>
                     </div>
                 </form>
                </div>
@@ -355,88 +696,68 @@ if (!empty($activities)) {
     <br><br>
     <section class="container-fluid" id="section3">
         <h2 class="fw-bold text-center mb-4"><?= $bddContentTexts['what_people_saying']['content_fr'] ?? "What People are Saying" ?></h2>
+
+        
+
         <div class="swiper personnalise" style="max-width:90%">
-    <div class="card-wrapper personnalise">
-        <ul class="card-list swiper-wrapper mb-4">
-            <?php
-            $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
-            $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($testimonials as $testimonial) {
-            ?>
-                <li class="card-item swiper-slide personnalise ccsc mx-4">
-                    <div class="row p-5" style="background-color: #F2F2F2;">
-                        <div class="col-3 mx-auto">
-                            <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
-                        </div>
-                        <div class="col-9">
-                            <div class="d-flex">
-                                <?php 
-                                for ($i = 0; $i < $testimonial['note']; $i++) { ?>
-                                    <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                <?php } ?>
+            <div class="card-wrapper personnalise">
+                <ul class="card-list swiper-wrapper mb-4">
+                    <?php
+                    $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
+                    $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($testimonials as $testimonial) {
+                    ?>
+                        <li class="card-item swiper-slide personnalise ccsc mx-4">
+                            <div class="row p-5" style="background-color: #F2F2F2;">
+                                <div class="col-3 mx-auto">
+                                    <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
+                                </div>
+                                <div class="col-9">
+                                    <div class="d-flex">
+                                        <?php 
+                                        for ($i = 0; $i < $testimonial['note']; $i++) { ?>
+                                            <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                        <?php } ?>
+                                    </div>
+                                    <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
+                                    <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
+                                    <p>-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                                </div>
                             </div>
-                            <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
-                            <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
-                            <p>-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
-                        </div>
-                    </div>
-                </li>
-            <?php } ?>
-        </ul>
-        <!-- Pagination spécifique -->
-            <div class="swiper-pagination personnalise"></div>
-        <!-- Navigation spécifique -->
-        <!-- <div class="swiper-button-prev personnalise"></div>
-        <div class="swiper-button-next personnalise"></div> -->
-    </div>
-</div>
+                        </li>
+                    <?php } ?>
+                </ul>
+                <!-- Pagination spécifique -->
+                    <div class="swiper-pagination personnalise"></div>
+                <!-- Navigation spécifique -->
+                <!-- <div class="swiper-button-prev personnalise"></div>
+                <div class="swiper-button-next personnalise"></div> -->
+            </div>
+        </div>
 
 
     </section>
     <br><br>
     <section class="container-fluid my-4" style="padding-left: 0px; padding-right: 0px;">
-        <div class="slider-container">
-        <!-- Slider List Items -->
-        <div class="slider-wrapper swiper-wrapper" style="margin:0px !important;">
-        <div class="slider-item swiper-slide">
-            <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_1']['content_fr'] ?? "aaaaaaaaaaaaaaaaaLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>
-            </div>
-        </div>
-        <div class="slider-item swiper-slide">
-            <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_2']['content_fr'] ?? "bbbbbbbbbbbbbbLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
-            </div>
-        </div>
-        <div class="slider-item swiper-slide">
-            <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_3']['content_fr'] ?? "ccccccccccccccccLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
-            </div>
-        </div>
-        <div class="slider-item swiper-slide">
-            <div class="slide-content">
-                <?= $bddContentTexts['first_pane_content_4']['content_fr'] ?? "ddddddddddddddddddddddLorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, unde totam ut consequatur odio voluptatibus iusto earum fugiat labore delectus." ?>            
-            </div>
-        </div>
+
+    <div class="container-fluid" style="padding: 0px;">
+        <!-- Liste de liens -->
+        <div class="xyz_links_section container">
+          <div class="xyz_link_element" data-item="item1">Football fields</div>
+          <div class="xyz_link_element" data-item="item2">Gym & dance studio</div>
+          <div class="xyz_link_element" data-item="item3">Event spaces</div>
+          <div class="xyz_link_element" data-item="item4">Cultural hall</div>
         </div>
 
-        <!-- Slider Pagination -->
-        <div class="slider-controls">
-        <ul class="slider-pagination">
-            <div class="slider-indicator"></div>
-            <li class="slider-tab current"><?= $bddContentTexts['first_pane_tittle_1']['content_fr'] ?? "Football fields" ?></li>
-            <li class="slider-tab"><?= $bddContentTexts['first_pane_tittle_2']['content_fr'] ?? "Gym & dance studio" ?></li>
-            <li class="slider-tab"><?= $bddContentTexts['first_pane_tittle_3']['content_fr'] ?? "Event spaces" ?></li>
-            <li class="slider-tab"><?= $bddContentTexts['first_pane_tittle_4']['content_fr'] ?? "Cultural hall" ?></li>
-        </ul>
-        </div>
-
-        <!-- Slider Navigations (Prev/Next) -->
-        <div class="slider-navigations">
-        <button id="slide-prev" class="material-symbols-rounded">Droite</button>
-        <button id="slide-next" class="material-symbols-rounded">Gauche</button>
+        <!-- Contenu associé au lien -->
+        <div class="xyz_custom_content" id="xyz_custom_content">
+          <div class="xyz_custom_text container">
+            Sélectionne un lien pour voir le contenu.
+          </div>
         </div>
     </div>
+
+        
     </section>
     
     <?php
@@ -448,201 +769,15 @@ if (!empty($activities)) {
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        new Swiper('.card-wrapper.personnalise', {
-            slidesPerView: 2, // Affiche deux blocs à la fois
-            spaceBetween: 30, // Espacement entre les blocs
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination.personnalise', // Pagination spécifique
-                clickable: true,
-                dynamicBullets: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next.personnalise', // Bouton suivant spécifique
-                prevEl: '.swiper-button-prev.personnalise' // Bouton précédent spécifique
-            },
-            breakpoints: {
-                0: {
-                    slidesPerView: 1 // 1 slide visible sur mobile
-                },
-                768: {
-                    slidesPerView: 2 // 2 slides visibles sur tablette
-                },
-                1024: {
-                    slidesPerView: 3 // 3 slides visibles sur grand écran
-                }
-            }
-        });
-    </script>
-    <!--  -->
-      <script>
-        const swiper = new Swiper('.slider-wrapper.personnalise', {
-            loop: true,
-            grabCursor: true,
-            spaceBetween: 30,
-            // Pagination bullets
-            pagination: {
-                el: '.swiper-pagination.personnalise',
-                clickable: true,
-                dynamicBullets: true
-            },
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Responsive breakpoints
-            breakpoints: {
-                0: {
-                slidesPerView: 1
-                },
-                768: {
-                slidesPerView: 2
-                },
-                1024: {
-                slidesPerView: 3
-                }
-            }
-            });
-      </script>
 
-    <script>
-        new Swiper('.card-wrapper', {
-            loop: true,
-            spaceBetween: 30,
-            // Pagination bullets
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true
-            },
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Responsive breakpoints
-            breakpoints: {
-                0: {
-                    slidesPerView: 1
-                },
-                768: {
-                    slidesPerView: 2
-                },
-                1024: {
-                    slidesPerView: 3
-                }
-            }
-        });
-    </script>
-    <!--  -->
-      <script>
-        const swiper = new Swiper('.slider-wrapper', {
-            loop: true,
-            grabCursor: true,
-            spaceBetween: 30,
-            // Pagination bullets
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true
-            },
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Responsive breakpoints
-            breakpoints: {
-                0: {
-                slidesPerView: 1
-                },
-                768: {
-                slidesPerView: 2
-                },
-                1024: {
-                slidesPerView: 3
-                }
-            }
-            });
-      </script>
-
-    <script>
-        document.querySelectorAll('.search-link').forEach(link => {
-          link.addEventListener('click', function(event) {
-            event.preventDefault();
-      
-            // Retirer la classe active de tous les liens
-            document.querySelectorAll('.search-link').forEach(l => l.classList.remove('active'));
-      
-            // Ajouter la classe active au lien cliqué
-            this.classList.add('active');
-      
-            // Masquer tous les contenus
-            document.querySelectorAll('.search-content').forEach(content => content.style.display = 'none');
-      
-            // Afficher le contenu correspondant à l'onglet cliqué
-            const targetId = this.getAttribute('data-target');
-            document.getElementById(targetId).style.display = 'block';
-          });
-        });
-    </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
     </script>
 
-<script>
-    const sliderControls = document.querySelector(".slider-controls");
-    const sliderTabs = sliderControls.querySelectorAll(".slider-tab");
-    const sliderIndicator = sliderControls.querySelector(".slider-indicator");
 
-    // Update the indicator
-    const updateIndicator = (tab, index) => {
-    document.querySelector(".slider-tab.current")?.classList.remove("current");
-    tab.classList.add("current");
-
-    sliderIndicator.style.transform = `translateX(${tab.offsetLeft - 20}px)`;
-    sliderIndicator.style.width = `${tab.getBoundingClientRect().width}px`;
-
-    // Calculate the scroll position and scroll smoothly
-    const scrollLeft = sliderTabs[index].offsetLeft - sliderControls.offsetWidth / 2 + sliderTabs[index].offsetWidth / 2;
-    sliderControls.scrollTo({ left: scrollLeft, behavior: "smooth" });
-    }
-
-    // Initialize swiper instance
-    const swiper = new Swiper(".slider-container", {
-    effect: "fade",
-    speed: 1300,
-    autoplay: { delay: 4000 },
-    navigation: {
-        prevEl: "#slide-prev",
-        nextEl: "#slide-next",
-    },
-    on: {
-        // Update indicator on slide change
-        slideChange: () => {
-        const currentTabIndex = [...sliderTabs].indexOf(sliderTabs[swiper.activeIndex]);
-        updateIndicator(sliderTabs[swiper.activeIndex], currentTabIndex);
-        },
-        reachEnd: () => swiper.autoplay.stop(),
-    },
-    });
-
-    // Update the slide on tab click
-    sliderTabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => {
-        swiper.slideTo(index);
-        updateIndicator(tab, index);
-    });
-    });
-
-    updateIndicator(sliderTabs[0], 0);
-    window.addEventListener("resize", () => updateIndicator(sliderTabs[swiper.activeIndex], 0));
-  </script>
-      <script>
+    <script>
         document.querySelector('.show-more').addEventListener('click', function () {
             const textContainer = this.closest('.text-container');
             textContainer.classList.toggle('expanded');
@@ -686,56 +821,213 @@ if (!empty($activities)) {
             }
         });
     </script>
-    
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paragraph = document.querySelector('.text-container3 p');
+            const toggleButton = document.querySelector('.toggle-button');
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const paragraph = document.querySelector('.text-container3 p');
-        const toggleButton = document.querySelector('.toggle-button');
-
-        toggleButton.addEventListener('click', function() {
-            paragraph.classList.toggle('expanded');
-            
-            toggleButton.textContent = paragraph.classList.contains('expanded') 
-                ? 'Réduire' 
-                : 'Voir plus';
+            toggleButton.addEventListener('click', function() {
+                paragraph.classList.toggle('expanded');
+                
+                toggleButton.textContent = paragraph.classList.contains('expanded') 
+                    ? 'Réduire' 
+                    : 'Voir plus';
+            });
         });
-    });
-</script>
+    </script>
 
+    <!-- carousel2 -->
+    <script>
+        const carousel = document.querySelector('.unique-carousel');
+        const carouselItems = document.querySelectorAll('.unique-carousel-item');
+        const prevButton = document.querySelector('.unique-prev');
+        const nextButton = document.querySelector('.unique-next');
+        const paginationContainer = document.querySelector('.unique-carousel-pagination');
 
- <!-- jQuery -->
- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        let currentIndex = 0;
+        const totalItems = carouselItems.length;
+        const visibleItems = window.innerWidth > 992 ? 3 : window.innerWidth > 600 ? 2 : 1;
 
-<!-- OwlCarousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-<script>
-  $(document).ready(function () {
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      navText: [
-        "<i class='bi bi-chevron-left fs-4'></i>",
-        "<i class='bi bi-chevron-right  fs-4'></i>"
-      ],
-      autoplay: true,
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 2
-        },
-        1000: {
-          items: 3
+        function updateCarousel() {
+            const offset = -currentIndex * (100 / visibleItems);
+            carousel.style.transform = `translateX(${offset}%)`;
+            updatePagination();
         }
-      }
-    });
-  });
-</script>
+
+        function updatePagination() {
+            const dots = document.querySelectorAll('.unique-pagination-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function createPagination() {
+            for (let i = 0; i < totalItems; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('unique-pagination-dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                });
+                paginationContainer.appendChild(dot);
+            }
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        });
+
+        let autoScroll = setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        }, 3000);
+
+        carousel.addEventListener('mouseover', () => clearInterval(autoScroll));
+        carousel.addEventListener('mouseout', () => {
+            autoScroll = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }, 3000);
+        });
+
+        createPagination();
+        updateCarousel();
+
+        window.addEventListener('resize', () => {
+            clearInterval(autoScroll);
+            updateCarousel();
+        });
+    </script>
+
+    <!-- carousel3 -->
+    <script>
+        const carouselWrapper = document.querySelector('.custom-carousel-content');
+        const carouselItemsList = document.querySelectorAll('.custom-carousel-item');
+        const prevArrowButton = document.querySelector('.custom-prev');
+        const nextArrowButton = document.querySelector('.custom-next');
+        const paginationWrapper = document.querySelector('.custom-pagination-container');
+
+        let currentCarouselIndex = 0;
+        const totalCarouselItems = carouselItemsList.length;
+        let visibleCarouselItems = window.innerWidth > 992 ? 3 : window.innerWidth > 600 ? 2 : 1;
+
+        function updateCarouselDisplay() {
+            const offsetPercentage = -currentCarouselIndex * (100 / visibleCarouselItems);
+            carouselWrapper.style.transform = `translateX(${offsetPercentage}%)`;
+            updatePaginationDisplay();
+        }
+
+        function updatePaginationDisplay() {
+            const paginationDots = document.querySelectorAll('.custom-pagination-dot');
+            paginationDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentCarouselIndex);
+            });
+        }
+
+        function generatePagination() {
+            paginationWrapper.innerHTML = ''; // Clear any existing dots
+            for (let i = 0; i < totalCarouselItems; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('custom-pagination-dot');
+                if (i === currentCarouselIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentCarouselIndex = i;
+                    updateCarouselDisplay();
+                });
+                paginationWrapper.appendChild(dot);
+            }
+        }
+
+        prevArrowButton.addEventListener('click', () => {
+            currentCarouselIndex = (currentCarouselIndex - 1 + totalCarouselItems) % totalCarouselItems;
+            updateCarouselDisplay();
+        });
+
+        nextArrowButton.addEventListener('click', () => {
+            currentCarouselIndex = (currentCarouselIndex + 1) % totalCarouselItems;
+            updateCarouselDisplay();
+        });
+
+        let carouselAutoScroll = setInterval(() => {
+            currentCarouselIndex = (currentCarouselIndex + 1) % totalCarouselItems;
+            updateCarouselDisplay();
+        }, 3000);
+
+        carouselWrapper.addEventListener('mouseover', () => clearInterval(carouselAutoScroll));
+        carouselWrapper.addEventListener('mouseout', () => {
+            carouselAutoScroll = setInterval(() => {
+                currentCarouselIndex = (currentCarouselIndex + 1) % totalCarouselItems;
+                updateCarouselDisplay();
+            }, 3000);
+        });
+
+        generatePagination();
+        updateCarouselDisplay();
+
+        window.addEventListener('resize', () => {
+            visibleCarouselItems = window.innerWidth > 992 ? 3 : window.innerWidth > 600 ? 2 : 1;
+            clearInterval(carouselAutoScroll);
+            updateCarouselDisplay();
+        });
+    </script>
+
+    <!-- carousel4 image -->
+    <script>
+        // Contenu à afficher pour chaque lien
+        const xyz_contents = {
+        item1: {
+            backgroundImage: 'url(./image/8.png)', // Image pour le premier lien
+            content: '<h2>Contenu pour le premier lien</h2><p>Ceci est un texte détaillé pour le premier lien. Vous pouvez inclure des éléments HTML ici comme des images ou des listes.</p>',
+        },
+        item2: {
+            backgroundImage: 'url(./image/9.png)', // Image pour le deuxième lien
+            content: '<h2>Contenu pour le deuxième lien</h2><p>Le deuxième lien affiche un contenu unique, qui peut aussi inclure des images, des vidéos, ou d\'autres éléments.</p>',
+        },
+        item3: {
+            backgroundImage: 'url(./image/2.png)', // Image pour le troisième lien
+            content: '<h2>Contenu pour le troisième lien</h2><p>Voici le contenu associé au troisième lien. Vous pouvez y mettre tout ce que vous voulez, comme des tableaux ou des liens externes.</p>',
+        },
+        item4: {
+            backgroundImage: 'url(./image/8.png)', // Image pour le troisième lien
+            content: '<h2>Contenu pour le quatrième lien</h2><p>Voici le contenu associé au troisième lien. Vous pouvez y mettre tout ce que vous voulez, comme des tableaux ou des liens externes.</p>',
+        },
+        };
+
+        // Récupération des éléments de la page
+        const xyz_link_elements = document.querySelectorAll('.xyz_link_element');
+        const xyz_content_div = document.getElementById('xyz_custom_content');
+
+        // Définir l'image de fond et le contenu du premier lien au chargement de la page
+        xyz_content_div.style.backgroundImage = xyz_contents.item1.backgroundImage;
+        xyz_content_div.querySelector('.xyz_custom_text').innerHTML = xyz_contents.item1.content;
+
+        // Ajouter un événement de clic à chaque lien
+        xyz_link_elements.forEach(linkElement => {
+        linkElement.addEventListener('click', () => {
+            // Retirer la classe "selected" de tous les liens
+            xyz_link_elements.forEach(item => item.classList.remove('selected'));
+
+            // Ajouter la classe "selected" au lien cliqué
+            linkElement.classList.add('selected');
+
+            // Récupérer la clé du lien cliqué
+            const linkKey = linkElement.getAttribute('data-item');
+
+            // Changer le fond et le contenu en fonction du lien cliqué
+            const content = xyz_contents[linkKey];
+            xyz_content_div.style.backgroundImage = content.backgroundImage;
+            xyz_content_div.querySelector('.xyz_custom_text').innerHTML = content.content; // Utilisation de innerHTML pour insérer du contenu HTML
+        });
+        });
+
+    </script>
 </body>
 </html>
