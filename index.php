@@ -29,6 +29,11 @@
                 padding: 20px 10px !important;
             }
         }
+        @media (max-width: 500px) {
+            .xyz_custom_text {
+                font-size: 16px;
+            }
+        }
         /* Liste de liens - Fixée en haut et centrée */
         .xyz_links_section {
         display: flex;
@@ -365,16 +370,16 @@
                     if (!empty($founders)) {
                         foreach ($founders as $founder) {
                 ?>
-                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto">
+                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
                         <img src="image/<?= $founder['image'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
                     </div>
                     <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
                         <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
-                        <p class="mt-3" style="font-size: 13px; text-align: justify;">
+                        <p class="mt-3" style="font-size: 16px; text-align: justify;">
                             <?= $founder['description'] ?>
                         </p>
-                        <div class="mt-3 text-center">
-                            <button class="btn btn-success toggle-button" style="width:100%">Voir plus</button>
+                        <div class="mt-3">
+                            <button class="btn btn-succ toggle-button text-white px-4 py-2" style="background-color: #61BC45;">Voir plus</button>
                         </div>
                     </div>
                 <?php

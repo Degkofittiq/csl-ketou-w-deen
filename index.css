@@ -104,6 +104,26 @@
     white-space: none;
   }
 }
+@media (max-width: 430px) {
+  .pos{
+    position: absolute;
+    top: 10%;
+    left: 10%;  
+    width: 70% !important;
+  }
+   .carousel-item img{
+    height: 80vh !important;
+  }
+  .pos p strong {
+    font-size: 1rem !important;
+  }
+  .pos h1{
+    font-size: 2rem !important;
+  }
+  .buuton{
+    white-space: none;
+  }
+}
 
 .relative{
   position: relative;
