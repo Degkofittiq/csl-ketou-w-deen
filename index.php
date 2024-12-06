@@ -7,6 +7,7 @@
     ?>  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
+    <title>Accueil</title>
     <style>
         /* carousel4 image */
         .xyz_custom_content {
@@ -50,7 +51,8 @@
         cursor: pointer;
         color: white;
         transition: border-bottom 0.3s ease;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid white;        
+        text-transform: uppercase;
         }
 
         .xyz_link_element.selected {
@@ -73,6 +75,18 @@
                 flex: 0 0 100%; /* 1 bloc visible sur petits écrans */
             }
         }
+
+
+        .her {
+            background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            }
     </style>
 </head>
 <body>
@@ -159,21 +173,48 @@
         ?>
     </section>
     <section class="container-fluid" id="section1" style="padding-left: 0px; padding-right: 0px;">
-        <div id="customCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
-            <!-- Carousel Items -->
-            <div class="carousel-inner">
-                <div class="carousel-item active" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 1">
-                </div>
-                <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 2">
-                </div>
-                <div class="carousel-item" style="padding: 0px;">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 70vh; object-fit: cover;" alt="Slide 3">
+        <div class="her position-relative">
+            <div class="pos">
+                    <p><strong style="color: #61BC45; font-size:2rem;"> <?= $bddContentTexts['welcome_text']['content_fr'] ?? "Welcome to CSL Arojú Owò" ?> </strong></p>
+                    <h1 class="text-white" style="font-weight: 900;  font-size: clamp(20px, 10vw, 56px); text-transform:uppercase;">
+                    <?= $bddContentTexts['text_after_welcome']['content_fr'] ?? "The Heart of <br> Sports & Leisure!" ?> 
+                        
+                    </h1>
+                    <p class="text-white mt-3" style=" font-size: clamp(16px, 3vw, 18px); max-width:90%"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
+                    <div class="row mt-4 divv">
+                        <div class="col-lg-6 mb-3 mx-auto">
+                            <div class="buuton">
+                                <button class="btn btn-ss py-3 px-5 text-white fw-bold" style="background: #61BC45; text-transform: uppercase;  font-size:16px;"  onclick="window.location.href='#section3'">
+                                    <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Explore Activities" ?>
+                                    <i class="bi bi-arrow-right-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3 mx-auto">
+                            <div class="buuton">
+                                <button class="btn btn-ss py-3 px-5 text-white fw-bold" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section4'">
+                                <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?>
+                                <i class="bi bi-arrow-right-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        
-            <!-- Navigation Buttons -->
+        <div id="customCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
+            
+            <!-- <div class="carousel-inner">
+                <div class="carousel-item active" style="padding: 0px;">
+                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="object-fit: cover;" alt="Slide 1">
+                </div>
+                <div class="carousel-item" style="padding: 0px;">
+                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="object-fit: cover;" alt="Slide 2">
+                </div>
+                <div class="carousel-item" style="padding: 0px;">
+                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="object-fit: cover;" alt="Slide 3">
+                </div>
+            </div>
+ 
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active custom-indicator" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1" class="custom-indicator" aria-label="Slide 2"></button>
@@ -206,18 +247,18 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     <br><br>
     <section class="container-lg my-4" id="section3">
         <div class="row py-4 px-2">
             <div class="col-12 col-md-5 mx-auto mb-3 align-self-center">
-                <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: clamp(20px, 6vw, 30px);"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
+                <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
             </div>
             <div class="col-md-4"></div>
             <div class="col-12 col-md-3 mx-auto mb-3">
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-white p-3 text-white" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
+                    <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
                 </div>
             </div>
         </div>
@@ -294,7 +335,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-12 col-md-3 mx-auto mb-3">
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-white p-3 text-white" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
+                        <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
                     </div>
                 </div>
             </div>
@@ -334,15 +375,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-7 mx-auto mt-3 pb-5">
-                                                <div class="text-container text-container2" onclick="toggleText(this)">
-                                                    <p class="fw-bold pt-2" style="margin-bottom:5px !important;">
-                                                      <?= $event['name'] ? $event['name'] : "Events Name"; ?>
-                                                    </p>
-                                                    <p class="text-content text-content">
-                                                        <?= $event['description'] ?>
-                                                    </p>
-                                                    <span class="show-more" style="margin-top:10px !important;"><i class="bi bi-arrow-right-circle fs-3"></i></span>
-                                                </div>
+                                                    <div class="text-container text-container2" onclick="toggleText(this)">
+                                                        <p class="fw-bold pt-2" style="margin-bottom:5px !important;">
+                                                        <?= $event['name'] ? $event['name'] : "Events Name"; ?>
+                                                        </p>
+                                                        <p class="text-content text-content">
+                                                            <?= $event['description'] ?>
+                                                        </p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-end">
+                                                        <span class=" mt-4"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -426,7 +469,7 @@
                             <li class="card-item swiper-slide personnalise ccsc mx-4">
                                 <div class="row p-5" style="background-color: #F2F2F2;">
                                     <div class="col-3 mx-auto">
-                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100">
+                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100" style="border-radius: 50% !important;">
                                     </div>
                                     <div class="col-9">
                                         <div class="d-flex">
@@ -437,7 +480,7 @@
                                         </div>
                                         <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
                                         <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
-                                        <p>-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                                        <p class="fw-bold">-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
                                     </div>
                                 </div>
                             </li>

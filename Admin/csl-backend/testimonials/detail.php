@@ -14,12 +14,12 @@ if (isset($_GET['id'])) {
     if (!$testimonial) {
         $_SESSION['error'] = "Le testimonial demandé n'existe pas.";
         header("Location: index.php");
-        exit;
+        // exit;
     }
 } else {
     $_SESSION['error'] = "Aucun identifiant spécifié.";
     header("Location: index.php");
-    exit;
+    // exit;
 }
 ?>
 

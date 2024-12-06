@@ -23,7 +23,7 @@
     font-size: 1.2rem !important;
   }
   .ftd{
-    font-size: 1.3rem !important;
+    font-size: 1rem !important;
   }
   .divv{
     width: 80% !important;
@@ -33,15 +33,15 @@
   .divv{
     width: 70% !important;
   }
+  /* .carousel-item img{
+    height: 60vh !important;
+  } */
+}
+/* @media (min-width: 2000px) {
   .carousel-item img{
     height: 60vh !important;
   }
-}
-@media (min-width: 2000px) {
-  .carousel-item img{
-    height: 60vh !important;
-  }
-}
+} */
 .nav-item .nav-link{
   font-size: 1rem;
 }
@@ -53,7 +53,7 @@
   position: absolute;
   top: 30%;
   left: 10%;  
-  width: 40%;
+  width: 30%;
 }
 
 @media (max-width: 1230px) {
@@ -63,9 +63,6 @@
     left: 10%;  
     width: 50%;
   }
-  .carousel-item img{
-    height: 50vh !important;
-  }
 }
 @media (max-width: 900px) {
   .pos{
@@ -74,9 +71,9 @@
     left: 10%;  
     width: 50%;
   }
-  .carousel-item img{
+  /* .carousel-item img{
     height: 50vh !important;
-  }
+  } */
   .pos p strong {
     font-size: 1rem !important;
   }
@@ -365,7 +362,7 @@
 
 .custom-pagination-container {
   position: absolute;
-  bottom: -3px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

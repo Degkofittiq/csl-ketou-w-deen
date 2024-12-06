@@ -15,12 +15,12 @@ if (isset($_GET['id'])) {
         if (!$testimonial) {
             $_SESSION['error'] = "Le testimonial demandé n'existe pas.";
             header("Location: index.php");
-            exit;
+            // exit;
         }
     }
 } else {
     $_SESSION['error'] = "Aucun identifiant spécifié.";
-    // exit;
+    // // exit;
 }
 
 // Traitement du formulaire de modification
@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $message = $_POST['message'];
     $note = $_POST['note'];
+    $title = $_POST['title'];
 
     // Vérifier si un fichier a été téléchargé
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -41,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($imageExtension, $allowedExtensions)) {
             $_SESSION['error'] = "L'extension de l'image n'est pas autorisée.";
-            // exit;
+            // // exit;
         }
 
         // Créer un nom unique pour l'image
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } else {
             $_SESSION['error'] = "Erreur lors du téléchargement de l'image.";
-            // exit;
+            // // exit;
         }
     } else {
         // Si aucune nouvelle image n'est téléchargée, conserver l'ancienne
@@ -67,12 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Mettre à jour les données dans la base de données
-    $stmt = $pdo->prepare("UPDATE testimonials SET name = ?, message = ?, note = ?, image = ? WHERE id = ?");
-    $stmt->execute([$name, $message, $note, $imageName, $id]);
+    $stmt = $pdo->prepare("UPDATE testimonials SET name = ?, title = ?, message = ?, note = ?, image = ? WHERE id = ?");
+    $stmt->execute([$name, $title, $message, $note, $imageName, $id]);
 
     // Rediriger vers la page des détails après la mise à jour
     header("Location: detail.php?id=" . $id);
-    exit;
+    // exit;
 }
 ?>
 
@@ -116,8 +117,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <input class="form-control my-2" type="text" name="name" id="name" value="<?php echo htmlspecialchars($testimonial['name']); ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="message">message</label>
+                                    <label for="t">t</label>
+                                    <input class="form-control my-2" type="text" name="title" placeholder="Titre" required>
                                     <textarea class="form-control my-2" name="message" id="message" required><?php echo htmlspecialchars($testimonial['message']); ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <textarea class="form-control my-2" name="title" id="title" required><?php echo htmlspecialchars($testimonial['title']); ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="note">Évaluation</label>

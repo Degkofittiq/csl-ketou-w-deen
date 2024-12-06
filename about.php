@@ -5,6 +5,7 @@
         // Include navigation bar
         include('./includes/head.php') ;    
     ?>    
+    <title>A propos</title>
 </head>
 <body>
     

@@ -75,15 +75,15 @@
                 <img src="image/1.png" alt="" style="width: 70%;" class="image-fluid">
             </div>
             <div class="col-10 mx-auto" style="border-left: 1px solid #00000033;">
-                <div class="row py-2">
+                <div class="row pt-3">
                     <div class="col-4"></div>
                     <div class="col-8 mx-auto">
                         <div class="d-flex justify-content-end">
                             <div class="me-3 pe-3" style="border-right: 1px solid #00000033;">
-                                <p class="ftd"><i class="bi bi-geo-alt-fill mt-4 me-2"></i><?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?></p>
+                                <p class="ftd"><i class="bi bi-geo-alt-fill mt-4 me-2" style="font-size: 14px !important;"></i><?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?></p>
                             </div>
                             <div class="">
-                                <p class="ftd"><i class="bi bi-whatsapp mt-4 me-2"></i><?= $bddContentTexts['call_totay_text']['content_fr'] ?? "Call today" ?>: <?= $bddContentTexts['phone_content']['content_fr'] ?? "09 290 38200" ?></p>
+                                <p class="ftd"><i class="bi bi-telephone circle-icon me-2" style=""></i><?= $bddContentTexts['call_totay_text']['content_fr'] ?? "Call today" ?>: <?= $bddContentTexts['phone_content']['content_fr'] ?? "09 290 38200" ?></p>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                     href="index.php#upcommingEvent"><?= $bddContentTexts['nav_link_6']['content_fr'] ?? "Events" ?></a>
                             </li>
                             <li class="nav-item">
-                                <button class="btn btn-white p-3 text-white" style="background: #61BC45;" onclick="window.location.href='contact.php'"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Join Now" ?> <i class="bi bi-arrow-right-circle"></i></button>
+                                <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45;" onclick="window.location.href='contact.php'"><?= $bddContentTexts['nav_link_5']['content_fr'] ?? "Join Now" ?> <i class="bi bi-arrow-right-circle"></i></button>
                             </li>
                         </ul>
                     </div>

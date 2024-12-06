@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     if (!$testimonial) {
         $_SESSION['error'] = "Le testimonial demandé n'existe pas.";
         header("Location: index.php");
-        exit;
+        // exit;
     }
 
     // Suppression de l'image associée (si elle existe)
@@ -23,7 +23,7 @@ if (isset($_GET['id'])) {
         if (!unlink($imagePath)) {
             $_SESSION['error'] = "Impossible de supprimer l'image associée.";
             header("Location: index.php");
-            exit;
+            // exit;
         }
     }
 
@@ -34,9 +34,9 @@ if (isset($_GET['id'])) {
     // Rediriger vers la page principale ou la liste des testimonials
     $_SESSION['success'] = "Le testimonial a été supprimé avec succès.";
     header("Location: index.php");
-    exit;
+    // exit;
 } else {
     $_SESSION['error'] = "Aucun identifiant spécifié.";
     header("Location: index.php");
-    exit;
+    // exit;
 }

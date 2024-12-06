@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($note < 1 || $note > 5) {
         $_SESSION['error'] = "La note doit être un entier entre 1 et 5.";
         header("Location: create.php");
-        exit;
+        // exit;
     }
 
     // Vérifier si un fichier a été téléchargé
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!in_array($imageExtension, $allowedExtensions)) {
             $_SESSION['error'] = "L'extension de l'image n'est pas autorisée.";
             header("Location: create.php");
-            exit;
+            // exit;
         }
 
         // Créer un nom unique pour l'image
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!mkdir($targetDirectory, 0777, true)) {
                 $_SESSION['error'] = "Erreur lors de la création du dossier d'images.";
                 header("Location: create.php");
-                exit;
+                // exit;
             }
         }
 
@@ -53,11 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Redirection
             header("Location: index.php");
-            exit;
+            // exit;
         } else {
             $_SESSION['error'] = "Erreur lors du téléchargement de l'image.";
             header("Location: create.php");
-            exit;
+            // exit;
         }
     } else {
         $_SESSION['error'] = "Aucun fichier image téléchargé ou erreur lors du téléchargement.";

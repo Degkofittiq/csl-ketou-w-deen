@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<title>HomePage</title>
+<link rel="shortcut icon" href="image/image 1.ico" type="image/x-icon">
 <link rel="stylesheet" href="./index.css?v=1.0.0">
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -49,8 +49,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+<!-- Lien CDN de Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
 
 <style>
+    .circle-icon {
+        background-color: black; /* Fond noir */
+        color: white;             /* Icône en blanc */
+        border-radius: 50%;       /* Pour faire un cercle */
+        width: 22px;            /* Espacement autour de l'icône */
+        height: 22px;
+        font-size: 14px;          /* Taille de l'icône */
+        display: inline-block;    /* Pour qu'il se comporte comme une icône */
+        text-align: center;
+    }
+
+
+
   .text-container2 {
       /*width: 300px;  Ajustez la largeur selon vos besoins */
       /*white-space: nowrap;*/

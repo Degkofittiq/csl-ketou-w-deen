@@ -78,6 +78,7 @@
         // Include navigation bar
         include('./includes/head.php') ;    
     ?>    
+    <title>Contact Nous</title>
 </head>
 <body>    
     <section class="container-fluid">

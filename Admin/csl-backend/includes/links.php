@@ -5,7 +5,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>CSL Admin</title>
+    <link rel="icon" href="../../../image/image 1.ico" type="image/x-icon">
 
     <!-- Custom fonts for this template -->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -18,3 +19,9 @@
 
     <!-- Custom styles for this page -->
     <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    
+<style>
+    *{
+        font-size: clamp(17px, 8vw, 26px);
+    }
+</style>
