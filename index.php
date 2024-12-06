@@ -500,7 +500,7 @@
                             <li class="card-item swiper-slide personnalise ccsc mx-4">
                                 <div class="row p-5" style="background-color: #F2F2F2;">
                                     <div class="col-3 mx-auto">
-                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid" style="border-radius: 50% !important; height:150px; width:150px;">
+                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid" style="border-radius: 50% !important; height:100px; width:100px;">
                                     </div>
                                     <div class="col-9">
                                         <div class="d-flex">
