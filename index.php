@@ -86,7 +86,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            }
+        }
     </style>
 </head>
 <body>
@@ -200,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
         <div id="customCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
             
             <!-- <div class="carousel-inner">
@@ -252,18 +252,18 @@
     <br><br>
     <section class="container-lg my-4" id="section3">
         <div class="row py-4 px-2">
-            <div class="col-12 col-md-5 mx-auto mb-3 align-self-center">
+            <div class="col-12 col-md-3 mx-auto mb-3 align-self-center">
                 <h2 class="text-center fw-bold" style="text-transform: uppercase; font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['what_we_offer']['content_fr'] ?? "What We Offer" ?></h2>
             </div>
-            <div class="col-md-4"></div>
-            <div class="col-12 col-md-3 mx-auto mb-3">
+            <div class="col-md-7"></div>
+            <div class="col-12 col-md-2 mx-auto mb-3">
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
                 </div>
             </div>
         </div>
             <!-- carousel3 -->
-            <div class="custom-carousel-wrapper my-4">
+            <div class="custom-carousel-wrapper my-4" style="padding-bottom: 30px;">
                 <div class="custom-carousel-content">
                     <?php
                         $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
@@ -299,7 +299,7 @@
                     <button class="custom-navigation-button custom-next" style="display: none;">&#8250;</button>
                 </div>
 
-                <div class="custom-pagination-container"></div>
+                <div class="custom-pagination-container mt-5"></div>
             </div>
     </section>
     <?php
@@ -329,11 +329,11 @@
     <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;"id="upcommingEvent">
         <div class="container-lg">
             <div class="row mt-3">
-                <div class="col-12 col-md-6 mx-auto mb-3 align-self-center">
+                <div class="col-12 col-md-4 mx-auto mb-3 align-self-center">
                     <h2 class="text-center fw-bold" style="text-transform: uppercase;  font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['upcoming_events']['content_fr'] ?? "Upcoming Events" ?></h2>
                 </div>
-                <div class="col-md-3"></div>
-                <div class="col-12 col-md-3 mx-auto mb-3">
+                <div class="col-md-6"></div>
+                <div class="col-12 col-md-2 mx-auto mb-3">
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
                     </div>
@@ -359,7 +359,7 @@
 
                                 ?>
                                     <div class="unique-carousel-item">
-                                        <div class="pb-5 pt-5 px-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; height: 35vh;">
+                                        <div class="pb-5 pt-5 px-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; height: 30vh;">
                                             <div class="row">
                                                 <div class="col-5 mx-auto">
                                                     <div class="position-relative">
@@ -469,7 +469,7 @@
                             <li class="card-item swiper-slide personnalise ccsc mx-4">
                                 <div class="row p-5" style="background-color: #F2F2F2;">
                                     <div class="col-3 mx-auto">
-                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100" style="border-radius: 50% !important;">
+                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100" style="border-radius: 50% !important; height:80px; width:80px;">
                                     </div>
                                     <div class="col-9">
                                         <div class="d-flex">
@@ -502,7 +502,7 @@
         <div class="xyz_links_section container">
           <div class="xyz_link_element" data-item="item1"><?= $bddContentTexts['first_pane_tittle_1']['content_fr'] ?? "Football fields" ?></div>
           <div class="xyz_link_element" data-item="item2"><?= $bddContentTexts['first_pane_tittle_2']['content_fr'] ?? "Gym & dance studio" ?></div>
-          <div class="xyz_link_element" data-item="item3"><?= $bddContentTexts['first_pane_tittle_3']['content_fr'] ?? "Event spaces" ?></div>
+          <!-- <div class="xyz_link_element" data-item="item3"><?= $bddContentTexts['first_pane_tittle_3']['content_fr'] ?? "Event spaces" ?></div> -->
           <div class="xyz_link_element" data-item="item4"><?= $bddContentTexts['first_pane_tittle_4']['content_fr'] ?? "Cultural hall" ?></div>
         </div>
 
@@ -642,6 +642,8 @@
             updateCarousel();
         });
 
+        // Commenté l'auto-scroll
+        /*
         let autoScroll = setInterval(() => {
             currentIndex = (currentIndex + 1) % totalItems;
             updateCarousel();
@@ -654,15 +656,16 @@
                 updateCarousel();
             }, 3000);
         });
+        */
 
         createPagination();
         updateCarousel();
 
         window.addEventListener('resize', () => {
-            clearInterval(autoScroll);
             updateCarousel();
         });
     </script>
+
 
     <!-- carousel3 -->
     <script>

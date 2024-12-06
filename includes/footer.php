@@ -119,7 +119,9 @@
         </div>
         <div class="position-relative">
             <span class="d-block my-4" style="border-top: 1px solid #000000; "></span>
-            <p class="text-center py-3">© Copyright 2024 <?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?> All Rights Reserved  | Terms of use  | Privacy Policy</p>
+            <p class="text-center py-3">
+            <?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?> Benin © 2024 | Développé par ITTIQ | Propulsé par Webtinz.
+<!-- © Copyright 2024 <?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?> All Rights Reserved  | Terms of use  | Privacy Policy</p> -->
             <div class="pot">
                 <a href=""><img src="image/chatbot.png" alt=""></a>
             </div>

@@ -6,6 +6,18 @@
         include('./includes/head.php') ;    
     ?>    
     <title>A propos</title>
+    <style>
+        .her {
+            background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     
@@ -17,49 +29,33 @@
     </section>
     
     <section class="container-fluid" id="section1" style="padding-left: 0px; padding-right: 0px;">
-        <div id="customCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
-            <!-- Carousel Items -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="image/<?= $bddContentImages['home_banner_image_2']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="image/<?= $bddContentImages['home_banner_image_3']['path'] ?? "2.png" ?>" class="d-block w-100" style="height: 60vh; object-fit: cover;" alt="Slide 3">
-                </div>
-            </div>
-        
-            <!-- Navigation Buttons -->
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active custom-indicator" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1" class="custom-indicator" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="2" class="custom-indicator" aria-label="Slide 3"></button>
-            </div>
-
+        <div class="her position-relative">
             <div class="pos">
-                <h1 class="text-white" style="font-weight: 900;">
-                    <?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos de nous" ?>
-                </h1>
-                <p class="text-white"><?= $bddContentTexts['explore_text']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
-                <div class="row mt-3">
-                    <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
-                        <div>
-                            <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='index.php#section3'">
-                            <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Decouvrez nos activites" ?> <i class="bi bi-arrow-right-circle"></i>
-                            </button>
+                    <p><strong style="color: #61BC45; font-size:2rem;"> <?= $bddContentTexts['welcome_text']['content_fr'] ?? "Welcome to CSL Arojú Owò" ?> </strong></p>
+                    <h1 class="text-white" style="font-weight: 900;  font-size: clamp(20px, 10vw, 56px); text-transform:uppercase;">
+                    <?= $bddContentTexts['text_after_welcome']['content_fr'] ?? "The Heart of <br> Sports & Leisure!" ?> 
+                        
+                    </h1>
+                    <p class="text-white mt-3" style=" font-size: clamp(16px, 3vw, 18px); max-width:90%"><?= $bddContentTexts['second_text_after_welcome']['content_fr'] ?? "Explore a world of fitness, fun, and <br> community activities tailored for all ages." ?></p>
+                    <div class="row mt-4 divv">
+                        <div class="col-lg-6 mb-3 mx-auto">
+                            <div class="buuton">
+                                <button class="btn btn-ss py-3 px-5 text-white fw-bold" style="background: #61BC45; text-transform: uppercase;  font-size:16px;"  onclick="window.location.href='#section3'">
+                                    <?= $bddContentTexts['titre_section_activites']['content_fr'] ?? "Explore Activities" ?>
+                                    <i class="bi bi-arrow-right-circle"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 mb-3 mb-md-0 mx-auto">
-                        <div>
-                            <button class="btn px-3 text-white" style="background: #61BC45; text-transform: uppercase; white-space: nowrap;"  onclick="window.location.href='index.php#section4'">
-                            <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?><i class="bi bi-arrow-right-circle"></i>
-                            </button>
+                        <div class="col-lg-6 mb-3 mx-auto">
+                            <div class="buuton">
+                                <button class="btn btn-ss py-3 px-5 text-white fw-bold" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section4'">
+                                <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?>
+                                <i class="bi bi-arrow-right-circle"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -79,8 +75,8 @@
     <p class="mt-3" style="font-size: 13px; text-align: justify;">
         <?= $founder['description'] ?>
     </p>
-    <div class="mt-3 text-center">
-        <button class="btn btn-success toggle-button" style="width:100%">Voir plus</button>
+    <div class="mt-3">
+        <button class="btn btn-succ toggle-button text-white px-4 py-2" style="background-color: #61BC45;">Voir plus</button>
     </div>
 </div>
         </div>
