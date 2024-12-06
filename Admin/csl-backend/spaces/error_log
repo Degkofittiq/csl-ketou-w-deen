@@ -1,0 +1,5 @@
+[05-Dec-2024 17:40:37 UTC] PHP Warning:  Undefined array key "username" in /home/cslketou/public_html/Admin/csl-backend/includes/navbar.php on line 40
+[05-Dec-2024 17:40:53 UTC] PHP Warning:  Undefined array key "username" in /home/cslketou/public_html/Admin/csl-backend/includes/navbar.php on line 40
+[05-Dec-2024 17:41:07 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:16) in /home/cslketou/public_html/Admin/csl-backend/spaces/edit.php on line 70
+[05-Dec-2024 17:41:20 UTC] PHP Warning:  Undefined array key "username" in /home/cslketou/public_html/Admin/csl-backend/includes/navbar.php on line 40
+[05-Dec-2024 17:41:25 UTC] PHP Warning:  Undefined array key "username" in /home/cslketou/public_html/Admin/csl-backend/includes/navbar.php on line 40
