@@ -447,7 +447,7 @@
     <img src="image/<?= htmlspecialchars($founder['image'] ?? "7.png", ENT_QUOTES, 'UTF-8') ?>" alt="Image du fondateur" class="w-100 img-fluid">
 </div>
 <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
-    <h2 class="fw-bold"><?= strip_tags($bddContentTexts['about_founder']['content_fr'] ?? "About Founder", '<b><i><p>') ?></h2>
+    <h2 class="fw-bold"><?= strip_tags($bddContentTexts['about_founder']['content_fr'] ?? "About Founder", '<b><i><p><br>') ?></h2>
     <p class="mt-3" style="font-size: 16px; text-align: justify;">
         <?= strip_tags($founder['description'], '<b><i><p>') ?>
     </p>
