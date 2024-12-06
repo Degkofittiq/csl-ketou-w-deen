@@ -232,7 +232,7 @@
     min-width: 33.3333%;
     box-sizing: border-box;
     padding: 10px;
-    margin: 0 40px;
+    /* margin: 0 40px; */
 }
 
 /* Modification des boutons de navigation pour les placer à gauche et à droite */
