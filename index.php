@@ -221,7 +221,7 @@
                         </div>
                         <div class="col-lg-6 mb-3 mx-auto">
                             <div class="buuton">
-                                <button class="btn btn-ss py-3 px-5 text-white fw-bold" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section4'">
+                                <button class="btn btn-ss py-3 px-4 text-white fw-bold" style="background: #61BC45; text-transform: uppercase;"  onclick="window.location.href='#section4'">
                                 <?= $bddContentTexts['become_member']['content_fr'] ?? "Become A Member" ?>
                                 <i class="bi bi-arrow-right-circle"></i>
                                 </button>
@@ -287,7 +287,7 @@
             <div class="col-md-7"></div>
             <div class="col-12 col-md-2 mx-auto mb-3">
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
+                    <button class="btn btn-white px-5  py-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
                 </div>
             </div>
         </div>
@@ -359,13 +359,13 @@
     <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;"id="upcommingEvent">
         <div class="container-lg position-relative">
             <div class="row mt-3">
-                <div class="col-12 col-md-4 col-lg-5 mx-auto mb-3 align-self-center">
+                <div class="col-12 col-md-4 col-lg-4 mx-auto mb-3 align-self-center">
                     <h2 class="text-center fw-bold" style="text-transform: uppercase;  font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['upcoming_events']['content_fr'] ?? "Upcoming Events" ?></h2>
                 </div>
-                <div class="col-md-6 col-lg-4"></div>
-                <div class="col-12 col-md-2 col-lg-3 mx-auto mb-3">
+                <div class="col-md-6 col-lg-6"></div>
+                <div class="col-12 col-md-2 col-lg-2 mx-auto mb-3">
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
+                        <button class="btn btn-white px-5  py-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
                     </div>
                 </div>
             </div>
@@ -487,43 +487,46 @@
         </div>
     </section>
     <br><br>
+    
     <section class="container-fluid" id="section3">
         <h2 class="fw-bold text-center mb-4"><?= $bddContentTexts['what_people_saying']['content_fr'] ?? "What People are Saying" ?></h2>
-            <div class="swiper personnalise" style="max-width:90%">
-                <div class="card-wrapper personnalise">
-                    <ul class="card-list swiper-wrapper mb-4">
-                        <?php
-                        $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
-                        $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
-                        foreach ($testimonials as $testimonial) {
-                        ?>
-                            <li class="card-item swiper-slide personnalise ccsc mx-4">
-                                <div class="row p-5" style="background-color: #F2F2F2;">
-                                    <div class="col-3 mx-auto">
-                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid" style="border-radius: 50% !important; height:100px; width:100px;">
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="d-flex">
-                                            <?php 
-                                            for ($i = 0; $i < $testimonial['note']; $i++) { ?>
-                                                <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
-                                            <?php } ?>
-                                        </div>
-                                        <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
-                                        <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
-                                        <p class="fw-bold">-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
-                                    </div>
+        <div class="akaa-carousel-wrapper" style="margin: bottom 30px !important;">
+            <div class="akaa-carousel-inner" >
+                <!-- <div class="akaa-carousel-item"><img src="images/8.png" alt="Item 1"></div> -->
+                <?php
+                $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
+                $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($testimonials as $testimonial) {
+                ?>
+                    <li class="akaa-carousel-item custom-carousel-item card-item ccsc mx-4" style="list-style: none">
+                        <div class="row p-5" style="background-color: #F2F2F2;">
+                            <div class="col-12 col-md-3 mx-auto">
+                                <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid" style="border-radius: 50% !important; height:100px; width:100px; object-fit:cover;">
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <div class="d-flex">
+                                    <?php 
+                                    for ($i = 0; $i < $testimonial['note']; $i++) { ?>
+                                        <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
+                                    <?php } ?>
                                 </div>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                    <!-- Pagination spécifique -->
-                        <div class="swiper-pagination personnalise"></div>
-                    <!-- Navigation spécifique -->
-                    <!-- <div class="swiper-button-prev personnalise"></div>
-                    <div class="swiper-button-next personnalise"></div> -->
-                </div>
+                                <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
+                                <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
+                                <p class="fw-bold">-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                            </div>
+                        </div>
+                    </li>
+                <?php } ?>
             </div>
+
+            <div class="akaa-navigation-buttons">
+                <button class="akaa-navigation-button akaa-prev" style="display:none !important;">&#8249;</button>
+                <button class="akaa-navigation-button akaa-next" style="display:none !important;">&#8250;</button>
+            </div>
+            <div class="h-25" style="min-height:20px !important"></div>
+            <div class="akaa-pagination-container mt-4"></div>
+        </div>
+
     </section>
     <br><br>
     <section class="container-fluid my-4" style="padding-left: 0px; padding-right: 0px;">
@@ -821,6 +824,82 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         });
 
-    </script>
+    </script><script>
+    const akaaCarousel = document.querySelector('.akaa-carousel-inner');
+    const akaaCarouselItems = document.querySelectorAll('.akaa-carousel-item');
+    const akaaPrevButton = document.querySelector('.akaa-prev');
+    const akaaNextButton = document.querySelector('.akaa-next');
+    const akaaPaginationContainer = document.querySelector('.akaa-pagination-container');
+
+    let akaaCurrentIndex = 0;
+    const akaaTotalItems = akaaCarouselItems.length;
+    let akaaVisibleItems = window.innerWidth > 992 ? 2 : 1; // Affiche 2 éléments en grand écran et 1 en petit écran
+
+    function updateAkaaCarousel() {
+        const offset = -akaaCurrentIndex * (100 / akaaVisibleItems);
+        akaaCarousel.style.transform = `translateX(${offset}%)`;
+        updateAkaaPagination();
+    }
+
+    function updateAkaaPagination() {
+        const akaaDots = document.querySelectorAll('.akaa-pagination-dot');
+        akaaDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === akaaCurrentIndex);
+        });
+    }
+
+    function createAkaaPagination() {
+        const akaaNumberOfPages = Math.ceil(akaaTotalItems / akaaVisibleItems);
+        akaaPaginationContainer.innerHTML = ''; // Nettoie les anciens dots
+
+        for (let i = 0; i < akaaNumberOfPages; i++) {
+            const akaaDot = document.createElement('div');
+            akaaDot.classList.add('akaa-pagination-dot');
+            if (i === akaaCurrentIndex) akaaDot.classList.add('active');
+            akaaDot.addEventListener('click', () => {
+                akaaCurrentIndex = i;
+                updateAkaaCarousel();
+            });
+            akaaPaginationContainer.appendChild(akaaDot);
+        }
+    }
+
+    akaaPrevButton.addEventListener('click', () => {
+        akaaCurrentIndex = (akaaCurrentIndex - 1 + Math.ceil(akaaTotalItems / akaaVisibleItems)) % Math.ceil(akaaTotalItems / akaaVisibleItems);
+        updateAkaaCarousel();
+    });
+
+    akaaNextButton.addEventListener('click', () => {
+        akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
+        updateAkaaCarousel();
+    });
+
+    let akaaAutoScroll = setInterval(() => {
+        akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
+        updateAkaaCarousel();
+    }, 3000);
+
+    akaaCarousel.addEventListener('mouseover', () => {
+        clearInterval(akaaAutoScroll);
+    });
+
+    akaaCarousel.addEventListener('mouseout', () => {
+        akaaAutoScroll = setInterval(() => {
+            akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
+            updateAkaaCarousel();
+        }, 3000);
+    });
+
+    createAkaaPagination();
+    updateAkaaCarousel();
+
+    window.addEventListener('resize', () => {
+        akaaVisibleItems = window.innerWidth > 992 ? 2 : 1;
+        createAkaaPagination();
+        updateAkaaCarousel();
+    });
+</script>
+
+
 </body>
 </html>

@@ -112,7 +112,7 @@
                         <img src="image/1.png" alt="" class="image-fluid w-100">
                     </div>
                     <div class="d-lg-none">
-                        <img src="image/1.png" alt="" class="image-fluid w-50">
+                        <img src="image/1.png" alt="" class="image-fluid" style="width: 30%;">
                     </div>
                 </div>
             </div>

@@ -25,13 +25,10 @@
   .ftd{
     font-size: 1rem !important;
   }
-  .divv{
-    width: 80% !important;
-  }
 }
 @media (min-width: 2700px) {
   .divv{
-    width: 70% !important;
+    width: 100% !important;
   }
   /* .carousel-item img{
     height: 60vh !important;
@@ -395,4 +392,79 @@
       min-width: 100%;
   }
 }
+/* Testimonial */
 
+.akaa-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.akaa-carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.akaa-carousel-item {
+  min-width: 50%; /* 2 éléments visibles sur grand écran */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.akaa-carousel-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.akaa-pagination-container {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.akaa-pagination-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.akaa-pagination-dot.active {
+  background-color: #61BC45;
+}
+
+.akaa-navigation-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.akaa-navigation-button {
+  background-color: #61BC45;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+@media (max-width: 992px) {
+  .akaa-carousel-item {
+      min-width: 100%; /* 1 élément visible sur petit écran */
+  }
+}
