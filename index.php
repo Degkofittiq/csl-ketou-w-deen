@@ -287,7 +287,7 @@
             <div class="col-md-7"></div>
             <div class="col-12 col-md-2 mx-auto mb-3">
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-white px-5  py-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
+                    <button class="btn btn-white px-4  py-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='what.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?>   <i class="bi bi-arrow-right-circle"></i></button>
                 </div>
             </div>
         </div>
@@ -365,7 +365,7 @@
                 <div class="col-md-6 col-lg-6"></div>
                 <div class="col-12 col-md-2 col-lg-2 mx-auto mb-3">
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-white px-5  py-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
+                        <button class="btn btn-white px-4  py-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
                     </div>
                 </div>
             </div>
