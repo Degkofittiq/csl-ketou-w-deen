@@ -72,35 +72,40 @@
                             $day = $date->format('j'); // Jour (ex: 13)
                             setlocale(LC_TIME, 'fr_FR.UTF-8'); // Activer la locale française
                             $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
+                            $year = strftime('%y', $date->getTimestamp()); // Année en deux chiffres (ex: 24)
                         ?>
-                            <div class="col-lg-4  mb-4" style="height: 450px">
-                                <div class="p-3 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px;">
-                                    <div class="row">
-                                        <div class="col-6 mx-auto">
-                                            <div class="position-relative">
-                                                <div><img src="image/6.png" alt="" class="img-fluid w-100" style="height: 25vh;"></div>
-                                                <div class="tto">
-                                                    <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
-                                                        <h2 class="text-center text-white fw-bold"><?= $day ?></h2>
-                                                        <div class="w-100 p-2" style="background-color: #69CC4B;">
-                                                            <h4 class="text-center text-white fw-bold"><?= (substr($month, 0, 3)) ?></h4>
-                                                        </div>
+                        <div class="col-12 col-md-6 col-lg-4  mb-2">
+                            <div class="pb-5 pt-5 px-2 bg-white" style=" border: 1px solid #4A4A4A; border-radius: 10px; height: 80%;">
+                                <div class="row">
+                                    <div class="col-5 mx-auto">
+                                        <div class="position-relative">
+                                            <div><img src="image/<?= $event['image'] ?? "6.png" ?>" alt="" class="img-fluid w-100 h-100"></div>
+                                            <div class="tto">
+                                                <div class="p-2 d-flex justify-content-center align-item-center flex-column" style="background-color: #484848;">
+                                                    <h2 class="text-center text-white fw-bold" style="font-size: 13px;"><?= $day ?></h2>
+                                                    <div class="w-100 p-2" style="background-color: #69CC4B;">
+                                                        <h4 class="text-center text-white fw-bold" style="font-size: 13px;"><?= (substr($month, 0, 3)) ?> <?= (substr($year, 0, 3)) ?></h4>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6 mx-auto">
-                                            <p class="fw-bold pt-2">
-                                                <?= htmlspecialchars($event['name']) ?>
+                                    </div>
+                                    <div class="col-7 mx-auto pb-5" style="margin-top:-10px;">
+                                        <div class="text-container text-container2" onclick="toggleText(this)">
+                                            <p class="fw-bold pt-2" style="margin-bottom:5px !important;">
+                                            <?= $event['name'] ? $event['name'] : "Events Name"; ?>
                                             </p>
-                                            <p class="mt-3 break">
+                                            <p class="text-content text-content">
                                                 <?= $event['description'] ?>
                                             </p>
                                         </div>
+                                        <div class="d-flex justify-content-end">
+                                            <span class=" mt-3"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                        </div>
                                     </div>
-                                    <p class="text-end me-4"><i class="bi bi-arrow-right-circle fs-3"></i></p>
                                 </div>
                             </div>
+                        </div>
                         <?php
                     }
                 }

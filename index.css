@@ -241,7 +241,7 @@
 /* Modification des boutons de navigation pour les placer à gauche et à droite */
 .unique-carousel-buttons {
     position: absolute;
-    top: 40%;
+    top: 50% !important;
     width: 100%;
     transform: translateY(-50%);
     z-index: 10000;
@@ -249,7 +249,7 @@
 
 .unique-prev {
     position: absolute;
-    left: 0px;
+    left: -2% !important;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
@@ -265,7 +265,7 @@
 
 .unique-next {
     position: absolute;
-    right: 0px;
+    right: -3% !important;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;

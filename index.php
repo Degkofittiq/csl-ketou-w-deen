@@ -87,6 +87,35 @@
             justify-content: center;
             align-items: center;
         }
+
+        @media (max-width: 1500px) {
+            .text-container3 p {
+                max-height: 80vh;
+                overflow: hidden;
+                position: relative;
+            }
+        }
+        @media (min-width: 1500px) {
+            .text-container3 p {
+                max-height: 60vh;
+                overflow: hidden;
+                position: relative;
+            }
+        }
+
+.text-container3 p::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.text-container3 p.expanded {
+    max-height: none;
+}
+.text-container3 p.expanded::after {
+    display: none;
+}
+
     </style>
 </head>
 <body>
@@ -326,14 +355,15 @@
     ?>
     </section>
     <br><br>
+
     <section class="container-fluid p-4 mb-5" style="background-color: #F2F2F2;"id="upcommingEvent">
-        <div class="container-lg">
+        <div class="container-lg position-relative">
             <div class="row mt-3">
-                <div class="col-12 col-md-4 mx-auto mb-3 align-self-center">
+                <div class="col-12 col-md-4 col-lg-5 mx-auto mb-3 align-self-center">
                     <h2 class="text-center fw-bold" style="text-transform: uppercase;  font-size: clamp(20px, 6vw, 36px);"><?= $bddContentTexts['upcoming_events']['content_fr'] ?? "Upcoming Events" ?></h2>
                 </div>
-                <div class="col-md-6"></div>
-                <div class="col-12 col-md-2 mx-auto mb-3">
+                <div class="col-md-6 col-lg-4"></div>
+                <div class="col-12 col-md-2 col-lg-3 mx-auto mb-3">
                     <div class="d-flex justify-content-center">
                         <button class="btn btn-white p-3 text-white fw-bold" style="background: #61BC45; font-size: clamp(16px, 3vw, 18px);" onclick="window.location.href='event.php'"><?= $bddContentTexts['view_all']['content_fr'] ?? "View all" ?> <i class="bi bi-arrow-right-circle"></i></button>
                     </div>
@@ -359,7 +389,7 @@
 
                                 ?>
                                     <div class="unique-carousel-item">
-                                        <div class="pb-5 pt-5 px-2 bg-white" style="border: 1px solid #4A4A4A; border-radius: 10px; height: 30vh;">
+                                        <div class="pb-5 pt-5 px-2 bg-white" style=" border: 1px solid #4A4A4A; border-radius: 10px; height: 80%;">
                                             <div class="row">
                                                 <div class="col-5 mx-auto">
                                                     <div class="position-relative">
@@ -374,7 +404,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-7 mx-auto mt-3 pb-5">
+                                                <div class="col-7 mx-auto pb-5" style="margin-top:-10px;">
                                                     <div class="text-container text-container2" onclick="toggleText(this)">
                                                         <p class="fw-bold pt-2" style="margin-bottom:5px !important;">
                                                         <?= $event['name'] ? $event['name'] : "Events Name"; ?>
@@ -384,7 +414,7 @@
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-end">
-                                                        <span class=" mt-4"><i class="bi bi-arrow-right-circle fs-3"></i></span>
+                                                        <span class=" mt-3"><i class="bi bi-arrow-right-circle fs-3"></i></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -395,13 +425,13 @@
                         }
                     ?>
                 </div>
-
-                <div class="unique-carousel-buttons">
-                    <button class="unique-carousel-button unique-prev">&#8249;</button>
-                    <button class="unique-carousel-button unique-next">&#8250;</button>
-                </div>
-                <div class="unique-carousel-pagination" style="display: none;"></div>
             </div>
+            
+                            <div class="unique-carousel-buttons">
+                                <button class="unique-carousel-button unique-prev">&#8249;</button>
+                                <button class="unique-carousel-button unique-next">&#8250;</button>
+                            </div>
+                            <div class="unique-carousel-pagination" style="display: none;"></div>
         </div>
     </section>
     <br><br>
@@ -413,18 +443,19 @@
                     if (!empty($founders)) {
                         foreach ($founders as $founder) {
                 ?>
-                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
-                        <img src="image/<?= $founder['image'] ?? "7.png" ?>" alt="" class="w-100 image-fluid">
-                    </div>
-                    <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
-                        <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
-                        <p class="mt-3" style="font-size: 16px; text-align: justify;">
-                            <?= $founder['description'] ?>
-                        </p>
-                        <div class="mt-3">
-                            <button class="btn btn-succ toggle-button text-white px-4 py-2" style="background-color: #61BC45;">Voir plus</button>
-                        </div>
-                    </div>
+  <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
+    <img src="image/<?= htmlspecialchars($founder['image'] ?? "7.png", ENT_QUOTES, 'UTF-8') ?>" alt="Image du fondateur" class="w-100 img-fluid">
+</div>
+<div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
+    <h2 class="fw-bold"><?= strip_tags($bddContentTexts['about_founder']['content_fr'] ?? "About Founder", '<b><i><p>') ?></h2>
+    <p class="mt-3" style="font-size: 16px; text-align: justify;">
+        <?= strip_tags($founder['description'], '<b><i><p>') ?>
+    </p>
+    <div class="mt-3">
+        <button class="btn btn-succ toggle-button text-white px-4 py-2" style="background-color: #61BC45;" aria-expanded="false">Voir plus</button>
+    </div>
+</div>
+
                 <?php
                     }
                 }
@@ -469,7 +500,7 @@
                             <li class="card-item swiper-slide personnalise ccsc mx-4">
                                 <div class="row p-5" style="background-color: #F2F2F2;">
                                     <div class="col-3 mx-auto">
-                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid w-100" style="border-radius: 50% !important; height:80px; width:80px;">
+                                        <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid" style="border-radius: 50% !important; height:150px; width:150px;">
                                     </div>
                                     <div class="col-9">
                                         <div class="d-flex">
@@ -580,18 +611,20 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const paragraph = document.querySelector('.text-container3 p');
-            const toggleButton = document.querySelector('.toggle-button');
+document.addEventListener('DOMContentLoaded', function() {
+    const paragraph = document.querySelector('.text-container3 p');
+    const toggleButton = document.querySelector('.toggle-button');
 
-            toggleButton.addEventListener('click', function() {
-                paragraph.classList.toggle('expanded');
-                
-                toggleButton.textContent = paragraph.classList.contains('expanded') 
-                    ? 'Réduire' 
-                    : 'Voir plus';
-            });
+    if (paragraph && toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            paragraph.classList.toggle('expanded');
+            const isExpanded = paragraph.classList.contains('expanded');
+            toggleButton.textContent = isExpanded ? 'Réduire' : 'Voir plus';
+            toggleButton.setAttribute('aria-expanded', isExpanded);
         });
+    }
+});
+
     </script>
 
     <!-- carousel2 -->
