@@ -11,11 +11,19 @@
             background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
             background-size: cover;
             background-position: center;
-            height: 70vh;
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+        @media (max-width: 1250px) {
+            .her {
+                height: 40vh;
+            }
+            .her .pos{
+                margin-top: 4rem;
+            }
         }
     </style>
 </head>
