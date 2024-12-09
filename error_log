@@ -4361,3 +4361,12 @@
 [09-Dec-2024 13:49:48 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 388
 [09-Dec-2024 13:49:48 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 387
 [09-Dec-2024 13:49:48 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 388
+[09-Dec-2024 13:55:51 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/cslketou/public_html/config/database.php on line 2
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 387
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 388
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 387
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 388
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 387
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 388
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 387
+[09-Dec-2024 13:55:51 UTC] PHP Deprecated:  Function strftime() is deprecated in /home/cslketou/public_html/index.php on line 388
