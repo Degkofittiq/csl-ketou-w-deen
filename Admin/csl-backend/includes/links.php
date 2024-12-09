@@ -22,6 +22,6 @@
     
 <style>
     *{
-        font-size: clamp(17px, 8vw, 26px);
+        font-size: clamp(17px, 5vw, 20px);
     }
 </style>

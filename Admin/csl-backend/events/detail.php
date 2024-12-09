@@ -8,16 +8,14 @@ if (isset($_GET['id'])) {
     // Récupérer les détails de l'élément depuis la base de données
     $stmt = $pdo->prepare("SELECT * FROM events WHERE id = ?");
     $stmt->execute([$id]);
-    $aboutUs = $stmt->fetch();
+    $event = $stmt->fetch();
 
     // Vérifier si l'élément existe
-    if (!$aboutUs) {
-         $_SESSION['error'] =  "L'élément demandé n'existe pas.";
-        // exit;
+    if (!$event) {
+        $_SESSION['error'] = "L'élément demandé n'existe pas.";
     }
 } else {
-     $_SESSION['error'] =  "Aucun identifiant spécifié.";
-    // exit;
+    $_SESSION['error'] = "Aucun identifiant spécifié.";
 }
 ?>
 
@@ -57,16 +55,22 @@ if (isset($_GET['id'])) {
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Nom</label>
-                                <input class="form-control my-2" type="text" name="name" id="name" value="<?php echo htmlspecialchars($aboutUs['name']); ?>" readonly>
+                                <input class="form-control my-2" type="text" name="name" id="name" value="<?php echo htmlspecialchars($event['name']); ?>" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="date">date</label>
-                                <textarea class="form-control my-2" name="date" id="date" readonly><?php echo htmlspecialchars($aboutUs['date']); ?></textarea>
+                                <label for="date">Date</label>
+                                <textarea class="form-control my-2" name="date" id="date" readonly><?php echo htmlspecialchars($event['date']); ?></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="description">description</label>
-                                <textarea class="form-control my-2" name="description" id="description" readonly><?php echo htmlspecialchars($aboutUs['description']); ?></textarea>
+                                <label for="description">Description</label>
+                                <textarea class="form-control my-2" name="description" id="description" readonly><?php echo htmlspecialchars($event['description']); ?></textarea>
                             </div>
+                            <?php if (!empty($event['image'])): ?>
+                                <div class="form-group">
+                                    <label for="image">Image</label><br>
+                                    <img src="../../../image/<?php echo htmlspecialchars($event['image']); ?>" alt="Event Image" class="img-fluid my-2" style="max-height: 300px;">
+                                </div>
+                            <?php endif; ?>
                             <a href="index.php" class="btn btn-primary mt-3">Retour à la liste</a>
                         </div>
                     </div>

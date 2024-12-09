@@ -53,6 +53,7 @@ $aboutUs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <th>#</th>
                                             <th>Noms</th>
                                             <th>Dates</th>
+                                            <th>Images</th>
                                             <th>Descriptions</th>
                                             <th>Actions</th>
                                         </tr>
@@ -64,6 +65,18 @@ $aboutUs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <td><?= htmlspecialchars($item['name']) ?></td>
                                                 <td><?= (new DateTime($item['date']))->format('d/m/Y') ?></td>
                                                 <td><?= htmlspecialchars($item['description']) ?></td>
+                                                <td>
+                                                    <?php if (!empty($item['image'])): ?>
+                                                        <!-- Affichage de l'image -->
+                                                        <img src="../../../image/<?= htmlspecialchars($item['image']) ?>" 
+                                                            alt="Image de l'événement" 
+                                                            class="img-thumbnail" 
+                                                            style="max-height: 100px; max-width: 100px;">
+                                                    <?php else: ?>
+                                                        <!-- Si aucune image n'est disponible -->
+                                                        <span>Aucune image</span>
+                                                    <?php endif; ?>
+                                                </td>
                                                 <td>
                                                     <a href="detail.php?id=<?= $item['id'] ?>">Détails</a> |
                                                     <a href="edit.php?id=<?= $item['id'] ?>">Modifier</a> |
