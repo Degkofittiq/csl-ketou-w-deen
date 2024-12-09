@@ -11,7 +11,7 @@
             background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
             background-size: cover;
             background-position: center;
-            height: 50vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
