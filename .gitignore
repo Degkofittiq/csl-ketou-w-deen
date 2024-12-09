@@ -1,0 +1,5 @@
+# Exclure le dossier image
+image/
+
+# Exclure le fichier database.php dans le dossier config
+config/database.php

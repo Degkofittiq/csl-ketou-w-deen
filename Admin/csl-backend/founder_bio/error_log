@@ -38,3 +38,5 @@
 [06-Dec-2024 09:18:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:16) in /home/cslketou/public_html/Admin/csl-backend/founder_bio/edit.php on line 70
 [06-Dec-2024 09:21:13 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:16) in /home/cslketou/public_html/Admin/csl-backend/founder_bio/edit.php on line 70
 [06-Dec-2024 09:24:51 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:16) in /home/cslketou/public_html/Admin/csl-backend/founder_bio/edit.php on line 70
+[09-Dec-2024 11:35:23 UTC] PHP Warning:  Undefined array key "username" in /home/cslketou/public_html/Admin/csl-backend/includes/navbar.php on line 40
+[09-Dec-2024 11:35:48 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:25) in /home/cslketou/public_html/Admin/csl-backend/founder_bio/edit.php on line 70
