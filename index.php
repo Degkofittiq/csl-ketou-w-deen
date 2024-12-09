@@ -300,7 +300,7 @@
                         if (!empty($activities)) {
                             foreach ($activities as $activity) {
                                 ?>
-                                    <div class="custom-carousel-item">
+                                    <div class="custom-carousel-item firstCarousel">
                                         <div class="relative">
                                             <img src="image/<?= $activity['image'] ?? "3.png" ?>" alt="" class="image-fluid w-100" style="border-top-left-radius: 10px; border-top-right-radius: 10px; height: 30vh !important;object-fit:cover">
                                             <div class="ppos d-none d-lg-block">
@@ -706,7 +706,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- carousel3 -->
     <script>
         const carouselWrapper = document.querySelector('.custom-carousel-content');
-        const carouselItemsList = document.querySelectorAll('.custom-carousel-item');
+        const carouselItemsList = document.querySelectorAll('.custom-carousel-item.firstCarousel');
         const prevArrowButton = document.querySelector('.custom-prev');
         const nextArrowButton = document.querySelector('.custom-next');
         const paginationWrapper = document.querySelector('.custom-pagination-container');
