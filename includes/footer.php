@@ -120,7 +120,7 @@
         <div class="position-relative">
             <span class="d-block my-4" style="border-top: 1px solid #000000; "></span>
             <p class="text-center py-3">
-            <?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?> Benin © 2024 | Développé par ITTIQ | Propulsé par Webtinz.
+            <?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?> Benin © 2024 | Développé par <a href="https://ittiq.net/" target="_blank" style="color:black!important">ITTIQ</a> | Propulsé par <a href="https://webtinz.com/" target="_blank" style="color:black!important">Webtinz</a>.
 <!-- © Copyright 2024 <?= $bddContentTexts['site_name']['content_fr'] ?? "CSL Arojú Owò " ?> All Rights Reserved  | Terms of use  | Privacy Policy</p> -->
             <div class="pot">
                 <a href=""><img src="image/chatbot.png" alt=""></a>

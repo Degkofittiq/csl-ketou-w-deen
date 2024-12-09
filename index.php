@@ -452,7 +452,7 @@
         <?=  strip_tags($founder['description'], '<b><i><p><br>'); ?>
     </p>
     <div class="mt-3">
-        <button class="btn btn-succ toggle-button text-white px-4 py-2" style="background-color: #61BC45;" aria-expanded="false">Voir plus</button>
+        <button class="btn btn-succ toggle-button text-white px-4 py-3 fw-bold" style="background-color: #61BC45;" aria-expanded="false">Voir plus</button>
     </div>
 </div>
 
@@ -498,8 +498,8 @@
                 $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($testimonials as $testimonial) {
                 ?>
-                    <li class="akaa-carousel-item custom-carousel-item card-item ccsc mx-4" style="list-style: none">
-                        <div class="row p-5" style="background-color: #F2F2F2;">
+                    <li class="akaa-carousel-item custom-carousel-item ccsc mx-1 col-6" style="list-style: none">
+                        <div class="row p-5" style="background-color: #F2F2F2; height: 100% !important;min-height: 100% !important;">
                             <div class="col-12 col-md-3 mx-auto">
                                 <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid" style="border-radius: 50% !important; height:100px; width:100px; object-fit:cover;">
                             </div>
