@@ -81,7 +81,7 @@
     <?=  strip_tags($founder['description'], '<b><i><p><br>'); ?>
     </p>
     <div class="mt-3">
-        <button class="btn btn-succ toggle-button text-white px-4 py-2" style="background-color: #61BC45;">Voir plus</button>
+        <button class="btn btn-succ toggle-button text-white fw-bold py-4" style="background-color: #61BC45;padding-right: 5rem !important; padding-left: 5rem !important;">Voir plus</button>
     </div>
 </div>
         </div>

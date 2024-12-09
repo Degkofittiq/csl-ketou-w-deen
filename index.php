@@ -452,7 +452,7 @@
         <?=  strip_tags($founder['description'], '<b><i><p><br>'); ?>
     </p>
     <div class="mt-3">
-        <button class="btn btn-succ toggle-button text-white px-4 py-3 fw-bold" style="background-color: #61BC45;" aria-expanded="false">Voir plus</button>
+        <button class="btn btn-succ toggle-button text-white px-4 py-3 fw-bold" style="background-color: #61BC45; padding-right: 5rem !important; padding-left: 5rem !important;" aria-expanded="false">Voir plus</button>
     </div>
 </div>
 
