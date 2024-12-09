@@ -11,11 +11,19 @@
             background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
             background-size: cover;
             background-position: center;
-            height: 70vh;
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+        @media (max-width: 1250px) {
+            .her {
+                height: 40vh;
+            }
+            .her .pos{
+                margin-top: 4rem;
+            }
         }
     </style>
 </head>
@@ -74,7 +82,7 @@
                             $month = strftime('%B', $date->getTimestamp()); // Mois en français (ex: avril)
                             $year = strftime('%y', $date->getTimestamp()); // Année en deux chiffres (ex: 24)
                         ?>
-                        <div class="col-12 col-md-6 col-lg-4  mb-2">
+                        <div class="col-12 col-md-6 col-lg-4">
                             <div class="pb-5 pt-5 px-2 bg-white" style=" border: 1px solid #4A4A4A; border-radius: 10px; height: 80%;">
                                 <div class="row">
                                     <div class="col-5 mx-auto">
