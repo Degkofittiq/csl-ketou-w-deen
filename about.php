@@ -77,7 +77,7 @@
             </div>
             <div class="col-lg-6 mx-auto mb-3 mb-md-0 align-self-center text-container3">
     <h2 class="fw-bold"><?= $bddContentTexts['about_founder']['content_fr'] ?? "About Founder" ?></h2>
-    <p class="mt-3" style="font-size: 13px; text-align: justify;">
+    <p class="mt-3" style="font-size: 13px;">
     <?=  strip_tags($founder['description'], '<b><i><p><br>'); ?>
     </p>
     <div class="mt-3">

@@ -448,7 +448,7 @@
 </div>
 <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
     <h2 class="fw-bold"><?= strip_tags($bddContentTexts['about_founder']['content_fr'] ?? "About Founder", '<b><i><p><br>') ?></h2>
-    <p class="mt-3" style="font-size: 16px; text-align: justify;">
+    <p class="mt-3" style="font-size: 16px;">
         <?=  strip_tags($founder['description'], '<b><i><p><br>'); ?>
     </p>
     <div class="mt-3">

@@ -69,7 +69,7 @@
     <section class="my-5 container-lg">
         <div class="row">
             <?php
-                $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+                $stmt = $pdo->query("SELECT * FROM activities");
                 $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 if (!empty($activities)) {
                     foreach ($activities as $activity) {
@@ -121,7 +121,7 @@
         
 <?php
 
-$stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+$stmt = $pdo->query("SELECT * FROM activities");
 $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (!empty($activities)) {
     foreach ($activities as $activity) {
