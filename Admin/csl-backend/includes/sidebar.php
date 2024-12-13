@@ -30,17 +30,17 @@
         <span>Biographie du fondateur</span></a>
 </li>
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-    <a class="nav-link" href="../hourlies/">
-        <i class="fas fa-chevron-right"></i>
-        <span>Horaires</span></a>
-</li>
+<!--<li class="nav-item">-->
+<!--    <a class="nav-link" href="../hourlies/">-->
+<!--        <i class="fas fa-chevron-right"></i>-->
+<!--        <span>Horaires</span></a>-->
+<!--</li>-->
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-    <a class="nav-link" href="../about_us/">
-        <i class="fas fa-chevron-right"></i>
-        <span>A propos de nous</span></a>
-</li>
+<!--<li class="nav-item">-->
+<!--    <a class="nav-link" href="../about_us/">-->
+<!--        <i class="fas fa-chevron-right"></i>-->
+<!--        <span>A propos de nous</span></a>-->
+<!--</li>-->
 <!-- Nav Item - Charts -->
 <li class="nav-item">
     <a class="nav-link" href="../activities/">
@@ -64,25 +64,24 @@
     <a class="nav-link" href="../events/">
         <i class="fas fa-chevron-right"></i>
         <span>Nos Evenements</span></a>
-</li>
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-    <a class="nav-link" href="../event_reservations/">
-        <i class="fas fa-chevron-right"></i>
-        <span>Reservations/Evenement</span></a>
-</li>
+<!--<li class="nav-item">-->
+<!--    <a class="nav-link" href="../event_reservations/">-->
+<!--        <i class="fas fa-chevron-right"></i>-->
+<!--        <span>Reservations/Evenement</span></a>-->
+<!--</li>-->
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-    <a class="nav-link" href="../spaces/">
-        <i class="fas fa-chevron-right"></i>
-        <span>Nos Espaces</span></a>
-</li>
+<!--<li class="nav-item">-->
+<!--    <a class="nav-link" href="../spaces/">-->
+<!--        <i class="fas fa-chevron-right"></i>-->
+<!--        <span>Nos Espaces</span></a>-->
+<!--</li>-->
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-    <a class="nav-link" href="../space_locations/">
-        <i class="fas fa-chevron-right"></i>
-        <span>Demande de locations</span></a>
-</li>
+<!--<li class="nav-item">-->
+<!--    <a class="nav-link" href="../space_locations/">-->
+<!--        <i class="fas fa-chevron-right"></i>-->
+<!--        <span>Demande de locations</span></a>-->
+<!--</li>-->
 <!-- Nav Item - Charts -->
 <li class="nav-item">
     <a class="nav-link" href="../content_texts/">

@@ -46,3 +46,5 @@
 [09-Dec-2024 12:10:31 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:25) in /home/cslketou/public_html/Admin/login.php on line 35
 [09-Dec-2024 13:13:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:25) in /home/cslketou/public_html/Admin/login.php on line 35
 [10-Dec-2024 15:36:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:25) in /home/cslketou/public_html/Admin/login.php on line 35
+[10-Dec-2024 15:49:07 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:25) in /home/cslketou/public_html/Admin/login.php on line 35
+[10-Dec-2024 15:54:36 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cslketou/public_html/config/database.php:25) in /home/cslketou/public_html/Admin/login.php on line 35
