@@ -9,6 +9,167 @@
 
     <title>Accueil</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        .csl_wrapper {
+            max-width: 1100px;
+            width: 100%;
+            position: relative;
+        }
+        .csl_wrapper .fa-solid {
+            top: 50%;
+            height: 50px;
+            width: 50px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            text-align: center;
+            line-height: 50px;
+            /* background: red; */
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+            transform: translateY(-50%);
+            transition: transform 0.1s linear;
+        }
+        .csl_wrapper i:active {
+            transform: translateY(-50%) scale(0.85);
+        }
+        .csl_wrapper i:first-child {
+            left: -22px;
+        }
+        .csl_wrapper i:last-child {
+            right: -22px;
+        }
+        .csl_wrapper .csl_carousel {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: calc((100% / 2) - 0px);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 16px;
+            border-radius: 8px;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+        .csl_carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .csl_carousel.no-transition {
+            scroll-behavior: auto;
+        }
+        .csl_carousel.dragging {
+            scroll-snap-type: none;
+            scroll-behavior: auto;
+        }
+        .csl_carousel.dragging .card_csl_carousel {
+            cursor: grab;
+            user-select: none;
+        }
+        /* .csl_carousel :where(.card_csl_carousel, .img) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+        .csl_carouselibal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transform: translateY(-50%);
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .csl_carousel .card_csl_carousel {
+            scroll-snap-align: start;
+            /* height: 342px; */
+            list-style: none;
+            /* background: black; */
+            cursor: pointer;
+            padding-bottom: 15px;
+            flex-direction: column;
+            border-radius: 8px;
+        }
+        /* .csl_carousel .card_csl_carousel .img {
+            background: #8B53FF;
+            height: 148px;
+            width: 148px;
+            border-radius: 50%;
+        } */
+        /* .card_csl_carousel .img img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+        } */
+        .csl_carousel .card_csl_carousel h2 {
+            font-weight: 500;
+            font-size: 1.56rem;
+            margin: 30px 0 5px;
+        }
+        .csl_carousel .card_csl_carousel span {
+            color: #6A6D78;
+            font-size: 1.31rem;
+        }
+        
+        @media screen and (max-width: 900px) {
+            .csl_wrapper .csl_carousel {
+                grid-auto-columns: calc((100% / 2) - 9px);
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            .csl_wrapper .csl_carousel {
+                grid-auto-columns: 100%;
+                margin: auto;
+                width: 100%;
+            }
+        }
+
+        .dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dots .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background: transparent;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dots .dot.active {
+            background: transparent;
+        }
+        
+        .dots .selection_dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dots .selection_dot.active {
+            background: green;
+        }
+        .dots .selection_dot:hover {
+            background: green;
+        }
+
+        .csl_carouselibal a :hover{
+            background-color: transparent;
+            color: white;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+        
+        .csl_carouselibal a{
+            text-decoration: none;
+        }
         /* carousel4 image */
         .xyz_custom_content {
         background-image: url(./image/8.png); /* Image par défaut */
@@ -331,28 +492,28 @@
                 <div class="custom-pagination-container mt-5"></div>
             </div>
     </section>
-    <?php
-        $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
-        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        if (!empty($activities)) {
-            foreach ($activities as $activity) {
-        ?>
-            <div class="modal fade" id="Modal-<?= $activity['id'] ?>" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <p>
-                            <?php echo $activity['description']; ?>
-                        </p>
+        <?php
+            $stmt = $pdo->query("SELECT * FROM activities LIMIT 5");
+            $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (!empty($activities)) {
+                foreach ($activities as $activity) {
+            ?>
+                <div class="modal fade" id="Modal-<?= $activity['id'] ?>" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>
+                                <?php echo $activity['description']; ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            </div>
-        <?php
+                </div>
+            <?php
+                }
             }
-        }
 
-    ?>
+        ?>
     </section>
     <br><br>
 
@@ -427,11 +588,11 @@
                 </div>
             </div>
             
-                            <div class="unique-carousel-buttons">
-                                <button class="unique-carousel-button unique-prev">&#8249;</button>
-                                <button class="unique-carousel-button unique-next">&#8250;</button>
-                            </div>
-                            <div class="unique-carousel-pagination" style="display: none;"></div>
+            <div class="unique-carousel-buttons">
+                <button class="unique-carousel-button unique-prev">&#8249;</button>
+                <button class="unique-carousel-button unique-next">&#8250;</button>
+            </div>
+            <div class="unique-carousel-pagination" style="display: none;"></div>
         </div>
     </section>
     <br><br>
@@ -443,18 +604,18 @@
                     if (!empty($founders)) {
                         foreach ($founders as $founder) {
                 ?>
-  <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
-    <img src="image/<?= htmlspecialchars($founder['image'] ?? "7.png", ENT_QUOTES, 'UTF-8') ?>" alt="Image du fondateur" class="w-100 img-fluid">
-</div>
-<div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
-    <h2 class="fw-bold"><?= strip_tags($bddContentTexts['about_founder']['content_fr'] ?? "About Founder", '<b><i><p><br>') ?></h2>
-    <p class="mt-3" style="font-size: 16px;">
-        <?=  strip_tags($founder['description'], '<b><i><p><br>'); ?>
-    </p>
-    <div class="mt-3">
-        <button class="btn btn-succ toggle-button text-white px-4 py-3 fw-bold" style="background-color: #61BC45; padding-right: 5rem !important; padding-left: 5rem !important;" aria-expanded="false">Voir plus</button>
-    </div>
-</div>
+            <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center">
+                <img src="image/<?= htmlspecialchars($founder['image'] ?? "7.png", ENT_QUOTES, 'UTF-8') ?>" alt="Image du fondateur" class="w-100 img-fluid">
+            </div>
+            <div class="col-12 col-md-6 mb-4 mb-md-0 mx-auto align-self-center text-container3">
+                <h2 class="fw-bold"><?= strip_tags($bddContentTexts['about_founder']['content_fr'] ?? "About Founder", '<b><i><p><br>') ?></h2>
+                <p class="mt-3" style="font-size: 16px;">
+                    <?=  strip_tags($founder['description'], '<b><i><p><br>'); ?>
+                </p>
+                <div class="mt-3">
+                    <button class="btn btn-succ toggle-button text-white px-4 py-3 fw-bold" style="background-color: #61BC45; padding-right: 5rem !important; padding-left: 5rem !important;" aria-expanded="false">Voir plus</button>
+                </div>
+            </div>
 
                 <?php
                     }
@@ -487,19 +648,16 @@
         </div>
     </section>
     <br><br>
-    
-    <section class="container-fluid" id="section3">
-        <h2 class="fw-bold text-center mb-4"><?= $bddContentTexts['what_people_saying']['content_fr'] ?? "What People are Saying" ?></h2>
-        <div class="akaa-carousel-wrapper" style="margin: bottom 30px !important;">
-            <div class="akaa-carousel-inner" >
-                <!-- <div class="akaa-carousel-item"><img src="images/8.png" alt="Item 1"></div> -->
+
+    <div class="csl_wrapper" style="display:block !important; width:100%; margin: auto;">
+    <ul class="csl_carousel"  style="width:100%; margin: auto;">
                 <?php
                 $stmtTestimonials = $pdo->query("SELECT * FROM testimonials");
                 $testimonials = $stmtTestimonials->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($testimonials as $testimonial) {
                 ?>
-                    <li class="akaa-carousel-item custom-carousel-item ccsc mx-1 col-6" style="list-style: none">
-                        <div class="row p-5" style="background-color: #F2F2F2; height: 100% !important;min-height: 100% !important;">
+                    <li class="card_csl_carousel mx-2 w-100 " style="list-style: none;margin:20px; background:#F2F2F2">
+                        <div class="row p-5">
                             <div class="col-12 col-md-3 mx-auto">
                                 <img src="image/<?= $testimonial['image'] ?? "highly_recommended_image_1.png" ?>" alt="Person 1" class="img-fluid" style="border-radius: 50% !important; height:100px; width:100px; object-fit:cover;">
                             </div>
@@ -510,24 +668,28 @@
                                         <span><i class="bi bi-star-fill fs-4" style="color: #464646;"></i></span>
                                     <?php } ?>
                                 </div>
-                                <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
-                                <p><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
-                                <p class="fw-bold">-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                                <div class="text-container" onclick="toggleText(this)">
+                                    <p><strong><?= $testimonial['title'] ?? "Highly recommended!" ?></strong></p>
+                                    <p class="text-content expanded"><?= $testimonial['message'] ?? "111Nam malesuada nibh eget mi pharetra condimentum." ?></p>
+                                    <div class="mb-3 text-end" style="margin-top: -1rem;">
+                                        <span class="fw-bold fs-3 show-more" style="cursor: pointer;">...</span>
+                                    </div>
+                                    <p class="fw-bold mt-4">-<?= $testimonial['name'] ?? "Alena Josksowinsigs!" ?></p>
+                                </div>
                             </div>
                         </div>
                     </li>
                 <?php } ?>
-            </div>
-
-            <div class="akaa-navigation-buttons">
-                <button class="akaa-navigation-button akaa-prev" style="display:none !important;">&#8249;</button>
-                <button class="akaa-navigation-button akaa-next" style="display:none !important;">&#8250;</button>
-            </div>
-            <div class="h-25" style="min-height:20px !important"></div>
-            <div class="akaa-pagination-container mt-4"></div>
-        </div>
-
-    </section>
+    </ul>
+    <div class="dots">
+        <center>
+            
+                <i id="left" class="fa-solid selection_dot"></i>
+                
+                <i id="right" class="fa-solid selection_dot"></i>
+        </center>
+    </div> 
+    </div>
     <br><br>
     <section class="container-fluid my-4" style="padding-left: 0px; padding-right: 0px;">
 
@@ -555,6 +717,139 @@
         // Include navigation bar
         include('./includes/footer.php') ;    
     ?>
+    
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const csl_wrapper = document.querySelector(".csl_wrapper");
+        const csl_carousel = document.querySelector(".csl_carousel");
+        const firstCard_csl_carouselWidth = csl_carousel.querySelector(".card_csl_carousel").offsetWidth;
+        const arrowBtns = document.querySelectorAll(".csl_wrapper i");
+        const csl_carouselChildrens = [...csl_carousel.children];
+        const dotsContainer = document.querySelector(".dots");
+
+        let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+
+        // Get the number of card_csl_carousels that can fit in the csl_carousel at once
+        let card_csl_carouselPerView = Math.round(csl_carousel.offsetWidth / firstCard_csl_carouselWidth);
+
+        // Insert copies of the last few card_csl_carousels to beginning of csl_carousel for infinite scrolling
+        csl_carouselChildrens.slice(-card_csl_carouselPerView).reverse().forEach(card_csl_carousel => {
+            csl_carousel.insertAdjacentHTML("afterbegin", card_csl_carousel.outerHTML);
+        });
+
+        // Insert copies of the first few card_csl_carousels to end of csl_carousel for infinite scrolling
+        csl_carouselChildrens.slice(0, card_csl_carouselPerView).forEach(card_csl_carousel => {
+            csl_carousel.insertAdjacentHTML("beforeend", card_csl_carousel.outerHTML);
+        });
+
+        // Scroll the csl_carousel at appropriate position to hide first few duplicate card_csl_carousels on Firefox
+        csl_carousel.classList.add("no-transition");
+        csl_carousel.scrollLeft = csl_carousel.offsetWidth;
+        csl_carousel.classList.remove("no-transition");
+
+        // Create dots
+        for (let i = 0; i < csl_carouselChildrens.length; i++) {
+            if (i >= card_csl_carouselPerView && i < csl_carouselChildrens.length - card_csl_carouselPerView) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === card_csl_carouselPerView) dot.classList.add('active');
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        const dots = document.querySelectorAll(".dot");
+
+        const updateDots = () => {
+            const scrollLeft = csl_carousel.scrollLeft;
+            const currentIndex = (Math.round(scrollLeft / firstCard_csl_carouselWidth) - card_csl_carouselPerView) % dots.length;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[(currentIndex + dots.length) % dots.length].classList.add('active');
+        };
+
+        // Add event listeners for the arrow buttons to scroll the csl_carousel left and right
+        arrowBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                csl_carousel.scrollLeft += btn.id == "left" ? -firstCard_csl_carouselWidth : firstCard_csl_carouselWidth;
+                updateDots();
+            });
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                csl_carousel.scrollLeft = (index + card_csl_carouselPerView) * firstCard_csl_carouselWidth;
+                updateDots();
+            });
+        });
+
+        const dragStart = (e) => {
+            isDragging = true;
+            csl_carousel.classList.add("dragging");
+            startX = e.pageX;
+            startScrollLeft = csl_carousel.scrollLeft;
+        };
+
+        const dragging = (e) => {
+            if (!isDragging) return;
+            csl_carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+        };
+
+        const dragStop = () => {
+            isDragging = false;
+            csl_carousel.classList.remove("dragging");
+            updateDots();
+        };
+
+        const infiniteScroll = () => {
+            if (csl_carousel.scrollLeft === 0) {
+                csl_carousel.classList.add("no-transition");
+                csl_carousel.scrollLeft = csl_carousel.scrollWidth - (2 * csl_carousel.offsetWidth);
+                csl_carousel.classList.remove("no-transition");
+            } else if (Math.ceil(csl_carousel.scrollLeft) === csl_carousel.scrollWidth - csl_carousel.offsetWidth) {
+                csl_carousel.classList.add("no-transition");
+                csl_carousel.scrollLeft = csl_carousel.offsetWidth;
+                csl_carousel.classList.remove("no-transition");
+            }
+
+            clearTimeout(timeoutId);
+            if (!csl_wrapper.matches(":hover")) autoPlay();
+        };
+
+        const autoPlay = () => {
+            if (window.innerWidth < 800 || !isAutoPlay) return;
+            timeoutId = setTimeout(() => {
+                csl_carousel.scrollLeft += firstCard_csl_carouselWidth;
+                updateDots();
+            }, 2500);
+        };
+        autoPlay();
+
+        csl_carousel.addEventListener("mousedown", dragStart);
+        csl_carousel.addEventListener("mousemove", dragging);
+        document.addEventListener("mouseup", dragStop);
+        csl_carousel.addEventListener("scroll", infiniteScroll);
+        csl_wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+        csl_wrapper.addEventListener("mouseleave", autoPlay);
+    });
+</script>
+  <script>
+    // Récupérer la balise <a>
+    const link1 = document.getElementById('myLink1');
+
+    // Ajouter un écouteur d'événement "click"
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Annule l'action par défaut
+      alert("Lien désactivé !");
+    });
+
+    // Récupérer la balise <a>
+    const link2 = document.getElementById('myLink2');
+
+    // Ajouter un écouteur d'événement "click"
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Annule l'action par défaut
+      alert("Lien désactivé !");
+    });
+  </script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -568,7 +863,7 @@
     </script>
 
 
-    <script>
+    <!-- <script>
         document.querySelector('.show-more').addEventListener('click', function () {
             const textContainer = this.closest('.text-container');
             textContainer.classList.toggle('expanded');
@@ -578,7 +873,7 @@
                 this.textContent = '...'; // Affiche les points de suspension lorsque le texte est masqué
             }
         });
-    </script>
+    </script> -->
     <script>
         document.querySelector('.more').addEventListener('click', function () {
             const textContainer = this.closest('.text-container');
@@ -614,20 +909,19 @@
     </script>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const paragraph = document.querySelector('.text-container3 p');
-    const toggleButton = document.querySelector('.toggle-button');
+        document.addEventListener('DOMContentLoaded', function() {
+            const paragraph = document.querySelector('.text-container3 p');
+            const toggleButton = document.querySelector('.toggle-button');
 
-    if (paragraph && toggleButton) {
-        toggleButton.addEventListener('click', function() {
-            paragraph.classList.toggle('expanded');
-            const isExpanded = paragraph.classList.contains('expanded');
-            toggleButton.textContent = isExpanded ? 'Réduire' : 'Voir plus';
-            toggleButton.setAttribute('aria-expanded', isExpanded);
+            if (paragraph && toggleButton) {
+                toggleButton.addEventListener('click', function() {
+                    paragraph.classList.toggle('expanded');
+                    const isExpanded = paragraph.classList.contains('expanded');
+                    toggleButton.textContent = isExpanded ? 'Réduire' : 'Voir plus';
+                    toggleButton.setAttribute('aria-expanded', isExpanded);
+                });
+            }
         });
-    }
-});
-
     </script>
 
     <!-- carousel2 -->
@@ -824,81 +1118,82 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         });
 
-    </script><script>
-    const akaaCarousel = document.querySelector('.akaa-carousel-inner');
-    const akaaCarouselItems = document.querySelectorAll('.akaa-carousel-item');
-    const akaaPrevButton = document.querySelector('.akaa-prev');
-    const akaaNextButton = document.querySelector('.akaa-next');
-    const akaaPaginationContainer = document.querySelector('.akaa-pagination-container');
+    </script>
+    <script>
+        const akaaCarousel = document.querySelector('.akaa-carousel-inner');
+        const akaaCarouselItems = document.querySelectorAll('.akaa-carousel-item');
+        const akaaPrevButton = document.querySelector('.akaa-prev');
+        const akaaNextButton = document.querySelector('.akaa-next');
+        const akaaPaginationContainer = document.querySelector('.akaa-pagination-container');
 
-    let akaaCurrentIndex = 0;
-    const akaaTotalItems = akaaCarouselItems.length;
-    let akaaVisibleItems = window.innerWidth > 992 ? 2 : 1; // Affiche 2 éléments en grand écran et 1 en petit écran
+        let akaaCurrentIndex = 0;
+        const akaaTotalItems = akaaCarouselItems.length;
+        let akaaVisibleItems = window.innerWidth > 992 ? 2 : 1; // Affiche 2 éléments en grand écran et 1 en petit écran
 
-    function updateAkaaCarousel() {
-        const offset = -akaaCurrentIndex * (100 / akaaVisibleItems);
-        akaaCarousel.style.transform = `translateX(${offset}%)`;
-        updateAkaaPagination();
-    }
-
-    function updateAkaaPagination() {
-        const akaaDots = document.querySelectorAll('.akaa-pagination-dot');
-        akaaDots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === akaaCurrentIndex);
-        });
-    }
-
-    function createAkaaPagination() {
-        const akaaNumberOfPages = Math.ceil(akaaTotalItems / akaaVisibleItems);
-        akaaPaginationContainer.innerHTML = ''; // Nettoie les anciens dots
-
-        for (let i = 0; i < akaaNumberOfPages; i++) {
-            const akaaDot = document.createElement('div');
-            akaaDot.classList.add('akaa-pagination-dot');
-            if (i === akaaCurrentIndex) akaaDot.classList.add('active');
-            akaaDot.addEventListener('click', () => {
-                akaaCurrentIndex = i;
-                updateAkaaCarousel();
-            });
-            akaaPaginationContainer.appendChild(akaaDot);
+        function updateAkaaCarousel() {
+            const offset = -akaaCurrentIndex * (100 / akaaVisibleItems);
+            akaaCarousel.style.transform = `translateX(${offset}%)`;
+            updateAkaaPagination();
         }
-    }
 
-    akaaPrevButton.addEventListener('click', () => {
-        akaaCurrentIndex = (akaaCurrentIndex - 1 + Math.ceil(akaaTotalItems / akaaVisibleItems)) % Math.ceil(akaaTotalItems / akaaVisibleItems);
-        updateAkaaCarousel();
-    });
+        function updateAkaaPagination() {
+            const akaaDots = document.querySelectorAll('.akaa-pagination-dot');
+            akaaDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === akaaCurrentIndex);
+            });
+        }
 
-    akaaNextButton.addEventListener('click', () => {
-        akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
-        updateAkaaCarousel();
-    });
+        function createAkaaPagination() {
+            const akaaNumberOfPages = Math.ceil(akaaTotalItems / akaaVisibleItems);
+            akaaPaginationContainer.innerHTML = ''; // Nettoie les anciens dots
 
-    let akaaAutoScroll = setInterval(() => {
-        akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
-        updateAkaaCarousel();
-    }, 3000);
+            for (let i = 0; i < akaaNumberOfPages; i++) {
+                const akaaDot = document.createElement('div');
+                akaaDot.classList.add('akaa-pagination-dot');
+                if (i === akaaCurrentIndex) akaaDot.classList.add('active');
+                akaaDot.addEventListener('click', () => {
+                    akaaCurrentIndex = i;
+                    updateAkaaCarousel();
+                });
+                akaaPaginationContainer.appendChild(akaaDot);
+            }
+        }
 
-    akaaCarousel.addEventListener('mouseover', () => {
-        clearInterval(akaaAutoScroll);
-    });
+        akaaPrevButton.addEventListener('click', () => {
+            akaaCurrentIndex = (akaaCurrentIndex - 1 + Math.ceil(akaaTotalItems / akaaVisibleItems)) % Math.ceil(akaaTotalItems / akaaVisibleItems);
+            updateAkaaCarousel();
+        });
 
-    akaaCarousel.addEventListener('mouseout', () => {
-        akaaAutoScroll = setInterval(() => {
+        akaaNextButton.addEventListener('click', () => {
+            akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
+            updateAkaaCarousel();
+        });
+
+        let akaaAutoScroll = setInterval(() => {
             akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
             updateAkaaCarousel();
         }, 3000);
-    });
 
-    createAkaaPagination();
-    updateAkaaCarousel();
+        akaaCarousel.addEventListener('mouseover', () => {
+            clearInterval(akaaAutoScroll);
+        });
 
-    window.addEventListener('resize', () => {
-        akaaVisibleItems = window.innerWidth > 992 ? 2 : 1;
+        akaaCarousel.addEventListener('mouseout', () => {
+            akaaAutoScroll = setInterval(() => {
+                akaaCurrentIndex = (akaaCurrentIndex + 1) % Math.ceil(akaaTotalItems / akaaVisibleItems);
+                updateAkaaCarousel();
+            }, 3000);
+        });
+
         createAkaaPagination();
         updateAkaaCarousel();
-    });
-</script>
+
+        window.addEventListener('resize', () => {
+            akaaVisibleItems = window.innerWidth > 992 ? 2 : 1;
+            createAkaaPagination();
+            updateAkaaCarousel();
+        });
+    </script>
 
 
 </body>

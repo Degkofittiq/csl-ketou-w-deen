@@ -196,10 +196,6 @@
   }
   
   .show-more {
-    position: absolute;
-    bottom: -.5rem;
-    right: -.3rem;
-    background-color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     padding: 0 5px;
     display: block;
@@ -262,7 +258,7 @@
 
 .unique-next {
     position: absolute;
-    right: -3% !important;
+    right: 0 !important;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
