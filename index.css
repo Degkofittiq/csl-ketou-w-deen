@@ -48,24 +48,27 @@
 /*  */
 .pos{
   position: absolute;
-  top: 30%;
+  top: 50%;
+  transform: translateY(-50%);
   left: 10%;  
   width: 30%;
 }
 
+@media (max-width: 1710px) {
+  .pos{
+    width: 36%;
+  }
+}
 @media (max-width: 1230px) {
   .pos{
-    position: absolute;
-    top: 20%;
-    left: 10%;  
     width: 50%;
+  }
+  .her{
+    height: 80vh !important;
   }
 }
 @media (max-width: 900px) {
   .pos{
-    position: absolute;
-    top: 20%;
-    left: 10%;  
     width: 50%;
   }
   /* .carousel-item img{
@@ -80,9 +83,6 @@
 }
 @media (max-width: 592px) {
   .pos{
-    position: absolute;
-    top: 10%;
-    left: 10%;  
     width: 70% !important;
   }
    .carousel-item img{
@@ -97,12 +97,12 @@
   .buuton{
     white-space: none;
   }
+  .her{
+    height: 70vh !important;
+  }
 }
 @media (max-width: 430px) {
   .pos{
-    position: absolute;
-    top: 10%;
-    left: 10%;  
     width: 70% !important;
   }
    .carousel-item img{

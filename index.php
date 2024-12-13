@@ -81,7 +81,7 @@
             background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            height: 120vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -103,18 +103,18 @@
             }
         }
 
-.text-container3 p::after {
-    content: '...';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-.text-container3 p.expanded {
-    max-height: none;
-}
-.text-container3 p.expanded::after {
-    display: none;
-}
+        .text-container3 p::after {
+            content: '...';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .text-container3 p.expanded {
+            max-height: none;
+        }
+        .text-container3 p.expanded::after {
+            display: none;
+        }
 
     </style>
 </head>

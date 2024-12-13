@@ -7,7 +7,7 @@
     ?>    
     <title>Activités</title>
     <style>
-        .her {
+        .her2 {
             background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
             background-size: cover;
             background-position: center;
@@ -18,11 +18,8 @@
             align-items: center;
         }
         @media (max-width: 1250px) {
-            .her {
+            .her2 {
                 height: 40vh;
-            }
-            .her .pos{
-                margin-top: 4rem;
             }
         }
     </style>
@@ -36,7 +33,7 @@
         ?>
     </section>
     <section class="container-fluid" id="section1" style="padding-left: 0px; padding-right: 0px;">
-    <div class="her position-relative">
+    <div class="her2 position-relative">
             <div class="pos">
                     <p><strong style="color: #61BC45; font-size:2rem;"> <?= $bddContentTexts['welcome_text']['content_fr'] ?? "Welcome to CSL Arojú Owò" ?> </strong></p>
                     <h1 class="text-white" style="font-weight: 900;  font-size: clamp(20px, 10vw, 56px); text-transform:uppercase;">

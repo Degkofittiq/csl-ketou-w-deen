@@ -21,9 +21,6 @@
             .her {
                 height: 40vh;
             }
-            .her .pos{
-                margin-top: 4rem;
-            }
         }
     </style>
 </head>

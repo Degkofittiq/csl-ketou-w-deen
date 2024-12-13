@@ -7,7 +7,7 @@
     ?>    
     <title>A propos</title>
     <style>
-        .her {
+        .her1 {
             background-image: url('image/<?= $bddContentImages['home_banner_image']['path'] ?? "2.png" ?>');
             background-size: cover;
             background-position: center;
@@ -18,11 +18,8 @@
             align-items: center;
         }
         @media (max-width: 1250px) {
-            .her {
+            .her1 {
                 height: 40vh;
-            }
-            .her .pos{
-                margin-top: 4rem;
             }
         }
     </style>
@@ -37,7 +34,7 @@
     </section>
     
     <section class="container-fluid" id="section1" style="padding-left: 0px; padding-right: 0px;">
-        <div class="her position-relative">
+        <div class="her1 position-relative">
             <div class="pos">
                 <h1 class="text-white" style="font-weight: 900;">
                     <?= $bddContentTexts['nav_link_2']['content_fr'] ?? "A propos de nous" ?>
